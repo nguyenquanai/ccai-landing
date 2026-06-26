@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== SEO ===== -->
+<title>Claude Cowork AI Thực Chiến — Ebook dùng AI trong công việc | Nguyễn Quân</title>
+<meta name="description" content="Bộ ebook 3 tập hướng dẫn biến Claude Cowork thành đồng nghiệp số. Từ nền tảng đến tự động hóa workflow, có playbook theo nghề. Tiếng Việt, dễ hiểu, áp dụng ngay.">
+<meta name="keywords" content="Claude Cowork, AI thực chiến, ebook AI tiếng Việt, tự động hóa workflow, Claude AI hướng dẫn">
+<meta name="author" content="Nguyễn Quân">
+
+<!-- ===== Open Graph (Facebook / Zalo) ===== -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Claude Cowork AI Thực Chiến — Ebook của Nguyễn Quân">
+<meta property="og:description" content="Biến Claude Cowork thành đồng nghiệp số. 3 tập thực chiến, playbook theo nghề, tiếng Việt dễ hiểu.">
+<meta property="og:image" content="assets/og-image.jpg">
+
+<!-- ===== Font: Be Vietnam Pro ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     TRACKING — dán ID thật khi chạy ads (xem hướng dẫn kèm theo)
+     ============================================================ -->
+<!-- Facebook Pixel: thay FB_PIXEL_ID bằng ID pixel thật rồi bỏ comment
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'FB_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+-->
+
+<!-- Google Analytics 4: thay GA4_ID bằng Measurement ID thật rồi bỏ comment
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA4_ID"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GA4_ID');
+</script>
+-->
+
+<style>
+/* ============================================================
+   DESIGN TOKENS — từ 05_style_guide.md v1.1
+   ============================================================ */
+:root {
+  /* Color */
+  --c-bg: #FFF9F0;
+  --c-bg-alt: #FEFCF7;
+  --c-surface: #FFFFFF;
+  --c-ink: #1A1A2E;
+  --c-ink-soft: #5A5A68;
+  --c-ink-faint: #8A8A95;
+  --c-accent: #E85D26;
+  --c-accent-dark: #C9491A;
+  --c-accent-soft: #FDEDE4;
+  --c-trust: #0F6E56;
+  --c-border: #E8E4DC;
+  --c-border-strong: #D6D0C4;
+  --c-footer-bg: #1A1A2E;
+  --c-footer-text: #C7C7D1;
+  --c-success: #0F6E56;
+  --c-warning: #9A4D00;
+
+  /* Typography */
+  --font-heading: 'Be Vietnam Pro', 'Inter', system-ui, sans-serif;
+  --font-body: 'Be Vietnam Pro', 'Inter', system-ui, sans-serif;
+  --fs-h1: 44px;
+  --fs-h2: 44px;
+  --fs-h3: 24px;
+  --fs-h4: 19px;
+  --fs-body: 17px;
+  --fs-small: 14px;
+  --fs-price: 36px;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 80px;
+
+  /* Layout */
+  --container-max: 1140px;
+  --container-narrow: 768px;
+  --container-pad: 24px;
+  --section-pad: 80px;
+  --grid-gap: 24px;
+
+  /* Radius / shadow / border */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(26,26,46,0.06);
+  --shadow-md: 0 4px 16px rgba(26,26,46,0.08);
+  --shadow-lg: 0 12px 32px rgba(26,26,46,0.12);
+  --shadow-cta: 0 6px 18px rgba(232,93,38,0.28);
+  --shadow-hover: 0 8px 24px rgba(26,26,46,0.10);
+  --transition: 200ms ease;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --fs-h1: 32px;
+    --fs-h2: 32px;
+    --fs-h3: 20px;
+    --fs-h4: 18px;
+    --fs-body: 16px;
+    --fs-price: 32px;
+    --container-pad: 16px;
+    --section-pad: 48px;
+    --grid-gap: 16px;
+  }
+}
+
+/* ============================================================
+   BASE / RESET
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--c-ink);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.25; }
+h1 { font-size: var(--fs-h1); font-weight: 700; line-height: 1.2; }
+h2 { font-size: var(--fs-h2); font-weight: 700; line-height: 1.2; }
+h3 { font-size: var(--fs-h3); font-weight: 600; }
+h4 { font-size: var(--fs-h4); font-weight: 600; }
+
+p { color: var(--c-ink-soft); }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+.container--narrow { max-width: var(--container-narrow); }
+
+.section { padding-top: var(--section-pad); padding-bottom: var(--section-pad); }
+.section--bg { background: var(--c-bg); }
+.section--surface { background: var(--c-surface); }
+.section--alt { background: var(--c-bg-alt); }
+
+.section-head { text-align: center; max-width: 720px; margin: 0 auto var(--space-xl); }
+.section-head h2 { margin-bottom: var(--space-sm); }
+.section-head p { font-size: var(--fs-body); }
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--c-accent-dark);
+  background: var(--c-accent-soft);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: var(--space-sm);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 24px;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+.btn--primary {
+  background: var(--c-accent);
+  color: #fff;
+  box-shadow: var(--shadow-cta);
+}
+.btn--primary:hover { background: var(--c-accent-dark); }
+.btn--outline {
+  background: transparent;
+  color: var(--c-accent);
+  border-color: var(--c-accent);
+}
+.btn--outline:hover { background: var(--c-accent-soft); color: var(--c-accent-dark); }
+.btn--ghost { background: transparent; color: var(--c-ink); border-color: transparent; min-height: auto; padding: 8px 12px; }
+.btn--block { width: 100%; }
+.btn--lg { min-height: 58px; padding: 18px 40px; font-size: 18px; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--c-surface);
+  border-bottom: 1px solid transparent;
+  transition: var(--transition);
+}
+.header.scrolled { box-shadow: var(--shadow-sm); border-bottom-color: var(--c-border); }
+.header__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.header__brand { font-weight: 700; font-size: 28px; color: var(--c-ink); letter-spacing: -0.5px; }
+.header__brand span { color: var(--c-accent); }
+.header__nav { display: flex; gap: var(--space-md); align-items: center; }
+.header__nav a {
+  font-size: var(--fs-small); font-weight: 500; color: var(--c-ink-soft);
+  transition: var(--transition);
+}
+.header__nav a:hover { color: var(--c-accent); }
+.header__actions { display: flex; align-items: center; gap: var(--space-sm); }
+.header__cta { min-height: 44px; padding: 10px 20px; font-size: var(--fs-small); }
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  font-size: 26px; color: var(--c-ink); line-height: 1; padding: 4px 8px;
+}
+
+/* Mobile menu overlay */
+.menu-overlay {
+  position: fixed; inset: 0; z-index: 99;
+  background: rgba(26,26,46,0.45);
+  opacity: 0; visibility: hidden; transition: var(--transition);
+}
+.menu-overlay.open { opacity: 1; visibility: visible; }
+.mobile-menu {
+  position: fixed; top: 0; right: 0; z-index: 101;
+  width: 80%; max-width: 320px; height: 100%;
+  background: var(--c-surface); box-shadow: var(--shadow-md);
+  transform: translateX(100%); transition: var(--transition);
+  padding: var(--space-lg) var(--space-md);
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu__close { background: none; border: none; font-size: 28px; cursor: pointer; color: var(--c-ink); float: right; }
+.mobile-menu a {
+  display: block; font-size: var(--fs-h4); font-weight: 500;
+  color: var(--c-ink); padding: 16px 0; border-bottom: 1px solid var(--c-border);
+}
+.mobile-menu a:hover { color: var(--c-accent); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero { background: var(--c-bg); }
+.hero__grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl);
+  align-items: center;
+}
+.hero__badge {
+  display: inline-block; font-size: 24px; font-weight: 600;
+  color: var(--c-ink); background: linear-gradient(145deg, #FFFFFF 0%, #FFF3E8 100%);
+  border: 2px solid var(--c-accent-soft); padding: 14px 28px; border-radius: 16px;
+  margin-bottom: var(--space-lg);
+  box-shadow: 0 4px 0 #E8D5C4, 0 8px 20px rgba(232,93,38,0.15);
+  transform: translateY(-2px);
+  transition: var(--transition);
+  letter-spacing: -0.3px;
+}
+.hero__badge:hover { transform: translateY(-4px); box-shadow: 0 6px 0 #E8D5C4, 0 12px 28px rgba(232,93,38,0.2); }
+.hero h1 { margin-bottom: var(--space-md); }
+.hero__sub { font-size: 18px; margin-bottom: var(--space-lg); }
+.hero__cta { display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-lg); }
+.hero__trust { font-size: 17px; color: var(--c-ink); display: flex; flex-direction: column; gap: 10px; margin-top: var(--space-md); }
+.hero__trust span { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; }
+.hero__trust .tick { color: var(--c-trust); font-size: 20px; font-weight: 700; }
+.hero__img { text-align: center; }
+.hero__img img {
+  margin: 0 auto; border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg); width: 100%; max-width: 100%;
+}
+
+/* ============================================================
+   PAIN POINTS (Section 3)
+   ============================================================ */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--grid-gap); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--grid-gap); }
+
+.pain-card {
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--radius-md); padding: var(--space-md);
+}
+.pain-card .icon { font-size: 36px; margin-bottom: var(--space-sm); }
+.pain-card h4 { margin-bottom: 8px; }
+.pain-card p { font-size: var(--fs-small); }
+.transition-line { text-align: center; margin-top: var(--space-xl); font-size: var(--fs-h4); font-weight: 600; color: var(--c-ink); }
+
+/* ============================================================
+   SOLUTION (Section 4)
+   ============================================================ */
+.solution__grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-2xl); align-items: center; }
+.benefit-list li { display: flex; gap: 12px; margin-bottom: var(--space-md); align-items: flex-start; }
+.benefit-list .tick { color: var(--c-trust); font-weight: 700; font-size: 20px; flex-shrink: 0; line-height: 1.4; }
+.benefit-list strong { color: var(--c-ink); }
+.solution__note { margin-top: var(--space-lg); padding: var(--space-md); background: var(--c-surface); border-left: 4px solid var(--c-accent); border-radius: 0; font-style: italic; color: var(--c-ink); }
+.solution__img { display: flex; gap: 12px; justify-content: center; }
+.solution__img img { width: 32%; border-radius: var(--radius-sm); box-shadow: var(--shadow-md); }
+
+/* ============================================================
+   CHOOSE PACKAGE (Section 5)
+   ============================================================ */
+.choose-card {
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--radius-md); padding: var(--space-md); transition: var(--transition);
+}
+.choose-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.choose-card .icon { font-size: 32px; margin-bottom: 8px; }
+.choose-card h4 { margin-bottom: 8px; }
+.choose-card p { font-size: var(--fs-small); margin-bottom: var(--space-sm); }
+.choose-card .pick { font-weight: 600; color: var(--c-accent); font-size: var(--fs-small); }
+
+/* ============================================================
+   PRICING (Section 6)
+   ============================================================ */
+.pricing-grid {
+  display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: var(--grid-gap);
+  align-items: center;
+}
+.price-card {
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg); padding: var(--space-lg);
+  box-shadow: var(--shadow-sm); transition: var(--transition);
+  display: flex; flex-direction: column; height: 100%;
+}
+.price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.price-card--combo {
+  border: 2px solid var(--c-accent); box-shadow: var(--shadow-lg);
+  transform: scale(1.05); z-index: 2; position: relative; padding: 36px;
+}
+.price-card--combo:hover { transform: scale(1.05); box-shadow: var(--shadow-lg); }
+.price-badge {
+  display: inline-block; align-self: flex-start; font-size: 13px; font-weight: 600;
+  color: var(--c-ink-soft); background: var(--c-bg-alt);
+  padding: 5px 12px; border-radius: 999px; margin-bottom: var(--space-sm);
+}
+.price-card--combo .price-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--c-accent); color: #fff; white-space: nowrap;
+}
+.price-card h3 { margin-bottom: 4px; }
+.price-card .subtitle { font-size: var(--fs-small); color: var(--c-ink-soft); margin-bottom: var(--space-md); min-height: 40px; }
+.price-old { font-size: 16px; color: var(--c-ink-faint); text-decoration: line-through; }
+.price-now { font-size: var(--fs-price); font-weight: 700; line-height: 1.1; }
+.price-card--combo .price-now { color: var(--c-accent); }
+.price-now .unit { font-size: 0.6em; font-weight: 600; }
+.price-save {
+  display: inline-block; font-size: 13px; font-weight: 600;
+  color: var(--c-accent-dark); background: var(--c-accent-soft);
+  padding: 4px 10px; border-radius: var(--radius-sm); margin-top: 8px;
+}
+.price-card ul { margin: var(--space-md) 0; flex-grow: 1; }
+.price-card li { font-size: var(--fs-small); padding: 7px 0 7px 26px; position: relative; color: var(--c-ink-soft); }
+.price-card li::before { content: "✓"; position: absolute; left: 0; color: var(--c-trust); font-weight: 700; }
+
+/* ============================================================
+   SINGLE VOLUMES (Section 7)
+   ============================================================ */
+.single-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
+.single-item {
+  background: var(--c-bg-alt); border: 1px solid var(--c-border);
+  border-radius: var(--radius-md); padding: 20px; text-align: center;
+}
+.single-item .vol { font-weight: 600; font-size: var(--fs-h4); margin-bottom: 2px; }
+.single-item .desc { font-size: var(--fs-small); color: var(--c-ink-soft); margin-bottom: 8px; }
+.single-item .price { font-size: 22px; font-weight: 700; margin-bottom: var(--space-sm); }
+.single-note { text-align: center; margin-top: var(--space-lg); font-size: var(--fs-small); color: var(--c-ink-soft); }
+
+/* ============================================================
+   VOLUME DETAILS (Section 8)
+   ============================================================ */
+.vol-detail { display: grid; grid-template-columns: 280px 1fr; gap: var(--space-xl); align-items: center; margin-bottom: var(--space-2xl); }
+.vol-detail:last-child { margin-bottom: 0; }
+.vol-detail--rev { grid-template-columns: 1fr 280px; }
+.vol-detail--rev .vol-detail__img { order: 2; }
+.vol-detail__img img { border-radius: var(--radius-md); box-shadow: var(--shadow-md); margin: 0 auto; }
+.vol-detail__body .tag { font-size: var(--fs-small); color: var(--c-accent-dark); font-weight: 600; margin-bottom: 6px; }
+.vol-detail__body h3 { margin-bottom: 10px; }
+.vol-detail__body .suited { font-size: var(--fs-small); color: var(--c-ink-soft); margin-bottom: var(--space-sm); }
+.vol-detail__body .meta { font-size: var(--fs-small); color: var(--c-ink-faint); margin: var(--space-sm) 0; }
+
+/* ============================================================
+   PROC IMAGE ROW — 6 ảnh + mũi tên 3D (Section 9)
+   ============================================================ */
+.proc-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--c-accent-dark); background: var(--c-accent-soft);
+  border: 1px solid #F2D6C2; padding: 8px 20px; border-radius: 999px;
+  margin-bottom: var(--space-md);
+}
+.proc-img-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; flex-wrap: nowrap; margin-bottom: var(--space-xl);
+}
+.proc-img-card {
+  flex: 0 0 13%; max-width: 150px;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  cursor: pointer;
+}
+.proc-img-card:hover {
+  transform: scale(1.08) translateY(-8px);
+  z-index: 2; position: relative;
+}
+.proc-img-card img {
+  width: 100%; border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(26,26,46,0.10);
+  display: block; transition: none !important;
+  /* override global hover — card hover handles it */
+}
+.proc-img-card:hover img {
+  box-shadow: 0 16px 40px rgba(232,93,38,0.20);
+  transform: none !important;
+}
+.proc-arrow3d {
+  flex: 0 0 6%; max-width: 60px; padding: 0 4px;
+}
+.proc-arrow3d svg { width: 100%; height: auto; display: block; }
+
+@media (max-width: 1024px) {
+  .proc-img-card { flex: 0 0 14%; }
+  .proc-arrow3d { flex: 0 0 4%; }
+}
+@media (max-width: 640px) {
+  .proc-img-row { flex-wrap: wrap; gap: var(--space-sm); justify-content: center; }
+  .proc-img-card { flex: 0 0 44%; max-width: 160px; }
+  .proc-arrow3d { display: none; }
+}
+
+
+.proc-zigzag {
+  display: flex; align-items: center; justify-content: center; gap: 0;
+  padding: var(--space-xl) 0;
+}
+.proc-card {
+  flex: 0 0 155px; text-align: center; padding: 28px 16px 20px;
+  background: #FFF8F1; border: 1px solid #F2D6C2;
+  border-radius: 16px; position: relative;
+  transition: var(--transition); cursor: default;
+}
+.proc-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(232,93,38,0.12); }
+/* Zigzag: bước lẻ lên, bước chẵn xuống */
+.proc-card--up { align-self: flex-start; }
+.proc-card--down { align-self: flex-end; margin-top: 60px; }
+/* Số bước: nổi góc trên phải */
+.proc-badge {
+  position: absolute; top: -16px; right: -8px;
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 18px; color: #fff;
+  background: linear-gradient(135deg, #E85D26 0%, #F5934A 100%);
+  box-shadow: 0 4px 12px rgba(232,93,38,0.35);
+  z-index: 2;
+}
+/* Icon wrap: vòng tròn nền cam nhạt */
+.proc-icon-wrap {
+  width: 72px; height: 72px; margin: 0 auto 12px;
+  border-radius: 50%; background: #FDEDE4;
+  display: flex; align-items: center; justify-content: center;
+}
+.proc-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--c-ink); }
+.proc-card p { font-size: 13px; color: var(--c-ink-soft); line-height: 1.5; }
+/* Đường nối giữa các card */
+.proc-connector {
+  width: 24px; height: 2px; background: #F2D6C2;
+  flex-shrink: 0; align-self: center;
+  position: relative;
+}
+.proc-connector::before {
+  content: ''; position: absolute; right: -3px; top: -3px;
+  width: 8px; height: 8px; border-radius: 50%; background: #F2D6C2;
+}
+/* Highlight box */
+.proc-highlight {
+  margin-top: var(--space-xl); padding: var(--space-md) var(--space-lg);
+  background: #FFF8F1; border: 1.5px solid var(--c-accent);
+  border-radius: var(--radius-md); text-align: center;
+}
+.proc-highlight__main {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  font-size: var(--fs-body); color: var(--c-ink);
+}
+.proc-highlight__warn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 10px; font-size: var(--fs-small); color: var(--c-warning);
+}
+/* Microcopy pills */
+.proc-micro {
+  display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+.proc-micro span {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--c-ink-soft); padding: 8px 18px;
+  background: var(--c-surface); border-radius: 999px; border: 1px solid var(--c-border);
+  transition: var(--transition);
+}
+.proc-micro span:hover { border-color: var(--c-accent); color: var(--c-accent); }
+
+/* ============================================================
+   HEYZINE BENEFITS (Section 10)
+   ============================================================ */
+.heyzine-card { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius-md); padding: var(--space-md); }
+.heyzine-card .icon { font-size: 32px; margin-bottom: 8px; }
+.heyzine-card h4 { margin-bottom: 6px; }
+.heyzine-card p { font-size: var(--fs-small); }
+.heyzine-msg { text-align: center; max-width: 760px; margin: var(--space-xl) auto 0; font-size: var(--fs-h4); font-weight: 500; color: var(--c-ink); }
+
+/* ============================================================
+   TOC / CONTENT (Section 11)
+   ============================================================ */
+.toc-group { margin-bottom: var(--space-md); border: 1px solid var(--c-border); border-radius: var(--radius-md); overflow: hidden; background: var(--c-surface); }
+.toc-group > summary {
+  padding: var(--space-md); font-weight: 600; font-size: var(--fs-h4);
+  cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
+}
+.toc-group > summary::-webkit-details-marker { display: none; }
+.toc-group > summary::after { content: "+"; color: var(--c-accent); font-size: 24px; font-weight: 400; }
+.toc-group[open] > summary::after { content: "−"; }
+.toc-group ul { padding: 0 var(--space-md) var(--space-md); }
+.toc-group li { font-size: var(--fs-small); color: var(--c-ink-soft); padding: 6px 0 6px 20px; position: relative; }
+.toc-group li::before { content: "›"; position: absolute; left: 0; color: var(--c-accent); font-weight: 700; }
+
+/* ============================================================
+   AUTHOR (Section 12)
+   ============================================================ */
+.author-grid { display: grid; grid-template-columns: 240px 1fr; gap: var(--space-xl); align-items: start; }
+.author-grid img { border-radius: var(--radius-md); box-shadow: var(--shadow-md); width: 240px; }
+.author-grid h3 { margin-bottom: var(--space-sm); }
+.author-bullets { margin: var(--space-md) 0; }
+.author-bullets li { font-size: var(--fs-small); padding: 6px 0 6px 26px; position: relative; color: var(--c-ink-soft); }
+.author-bullets li::before { content: "✓"; position: absolute; left: 0; color: var(--c-trust); font-weight: 700; }
+.author-quote { margin-top: var(--space-md); padding: var(--space-md); background: var(--c-surface); border-left: 4px solid var(--c-accent); font-style: italic; color: var(--c-ink); }
+.author-quote cite { display: block; margin-top: 8px; font-style: normal; font-weight: 600; color: var(--c-ink-soft); font-size: var(--fs-small); }
+
+/* ============================================================
+   FAQ (Section 13)
+   ============================================================ */
+.faq-item { border-bottom: 1px solid var(--c-border); }
+.faq-item summary {
+  padding: 20px 0; font-weight: 600; font-size: var(--fs-h4); cursor: pointer;
+  list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--space-md);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; color: var(--c-accent); font-size: 24px; font-weight: 400; flex-shrink: 0; }
+.faq-item[open] summary::after { content: "−"; }
+.faq-item p { padding-bottom: 20px; font-size: var(--fs-body); }
+.faq-subhead { font-size: var(--fs-small); font-weight: 600; color: var(--c-accent-dark); text-transform: uppercase; letter-spacing: 0.04em; margin: var(--space-lg) 0 8px; }
+
+/* ============================================================
+   REVIEWS / ĐÁNH GIÁ
+   ============================================================ */
+.rv-summary { display: flex; align-items: center; justify-content: center; gap: var(--space-md); margin-bottom: var(--space-lg); }
+.rv-avg { display: flex; align-items: baseline; gap: 8px; }
+.rv-avg__num { font-size: 48px; font-weight: 700; color: var(--c-ink); line-height: 1; }
+.rv-avg__stars { font-size: 28px; color: var(--c-accent); letter-spacing: 2px; }
+.rv-avg__count { font-size: var(--fs-small); color: var(--c-ink-soft); }
+.rv-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--grid-gap); }
+.rv-card { background: #FFF8F1; border: 1px solid #F2D6C2; border-radius: 16px; padding: var(--space-md); transition: var(--transition); }
+.rv-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(232,93,38,0.1); }
+.rv-card__stars { color: var(--c-accent); font-size: 18px; letter-spacing: 2px; margin-bottom: 8px; }
+.rv-card__content { font-size: var(--fs-small); color: var(--c-ink); line-height: 1.6; margin-bottom: 12px; min-height: 48px; }
+.rv-card__footer { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--c-ink-soft); }
+.rv-card__name { font-weight: 600; color: var(--c-ink); }
+.rv-card__pkg { font-size: 12px; color: var(--c-ink-faint); background: var(--c-bg-alt); padding: 3px 8px; border-radius: 4px; }
+.rv-empty { grid-column: 1/-1; text-align: center; color: var(--c-ink-faint); padding: var(--space-xl) 0; font-size: var(--fs-body); }
+/* Modal */
+.rv-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(26,26,46,0.5); display: none; align-items: center; justify-content: center; padding: var(--space-md); }
+.rv-overlay.open { display: flex; }
+.rv-modal { background: var(--c-surface); border-radius: var(--radius-lg); padding: var(--space-xl); max-width: 480px; width: 100%; position: relative; box-shadow: var(--shadow-lg); max-height: 90vh; overflow-y: auto; }
+.rv-modal__close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 28px; cursor: pointer; color: var(--c-ink-soft); line-height: 1; }
+.rv-modal h3 { font-size: var(--fs-h3); margin-bottom: 4px; }
+/* Star input */
+.rv-star-input { display: flex; gap: 6px; margin-bottom: var(--space-sm); cursor: pointer; }
+.rv-star-input span { font-size: 32px; color: var(--c-border); transition: var(--transition); user-select: none; }
+.rv-star-input span.active { color: var(--c-accent); }
+.rv-star-input span:hover { transform: scale(1.15); }
+
+/* ============================================================
+   ORDER FORM (Section 14)
+   ============================================================ */
+.form-section { background: var(--c-accent-soft); }
+.order-form { background: var(--c-surface); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: var(--shadow-md); }
+.form-row { margin-bottom: var(--space-md); }
+.form-row label { display: block; font-weight: 600; font-size: var(--fs-small); margin-bottom: 8px; }
+.pkg-options { display: grid; gap: 10px; }
+.pkg-option {
+  display: flex; align-items: center; gap: 12px;
+  border: 1px solid var(--c-border-strong); border-radius: var(--radius-sm);
+  padding: 14px 16px; cursor: pointer; transition: var(--transition);
+}
+.pkg-option:hover { border-color: var(--c-accent); }
+.pkg-option input { accent-color: var(--c-accent); width: 18px; height: 18px; flex-shrink: 0; margin-right: 8px; }
+.pkg-option.selected { border-color: var(--c-accent); background: var(--c-accent-soft); }
+.pkg-option .pkg-name { font-weight: 500; flex: 1; }
+.pkg-option .pkg-price { margin-left: auto; font-weight: 600; white-space: nowrap; padding-left: 16px; }
+.order-form input[type="text"],
+.order-form input[type="email"],
+.order-form input[type="tel"],
+.order-form textarea {
+  width: 100%; min-height: 48px; padding: 14px 16px;
+  border: 1px solid var(--c-border-strong); border-radius: var(--radius-sm);
+  font-family: var(--font-body); font-size: var(--fs-body); color: var(--c-ink);
+  transition: var(--transition); background: var(--c-surface);
+}
+.order-form textarea { min-height: 90px; resize: vertical; }
+.order-form input:focus,
+.order-form textarea:focus { outline: none; border-color: var(--c-accent); box-shadow: 0 0 0 3px rgba(232,93,38,0.15); }
+.field-warn { font-size: var(--fs-small); color: var(--c-warning); margin-top: 6px; display: flex; align-items: center; gap: 6px; }
+.form-note { font-size: var(--fs-small); color: var(--c-ink-soft); margin-top: var(--space-sm); text-align: center; }
+.form-success { display: none; margin-top: var(--space-md); }
+.payment-box { background: var(--c-surface); border: 2px solid var(--c-trust); border-radius: var(--radius-lg); overflow: hidden; }
+.payment-header { display: flex; align-items: center; gap: 12px; padding: var(--space-md); background: #E1F5EE; }
+.payment-check { width: 40px; height: 40px; border-radius: 50%; background: var(--c-trust); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.payment-header strong { font-size: var(--fs-h4); color: var(--c-ink); }
+.payment-body { display: grid; grid-template-columns: auto 1fr; gap: var(--space-md); padding: var(--space-md); align-items: start; }
+.payment-qr { text-align: center; }
+.payment-qr img { border-radius: var(--radius-sm); border: 1px solid var(--c-border); }
+.payment-info { display: flex; flex-direction: column; gap: 8px; }
+.payment-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--c-bg-alt); border-radius: var(--radius-sm); }
+.payment-label { font-size: var(--fs-small); color: var(--c-ink-soft); }
+.payment-value { font-size: var(--fs-small); color: var(--c-ink); font-weight: 500; }
+.payment-amount { font-size: 18px; font-weight: 700; color: var(--c-accent); }
+.payment-content { font-family: monospace; font-size: 13px; }
+.payment-notes { padding: var(--space-md); border-top: 1px solid var(--c-border); }
+.payment-notes p { font-size: var(--fs-small); color: var(--c-ink-soft); margin-bottom: 8px; }
+.payment-notes code { background: var(--c-bg-alt); padding: 4px 8px; border-radius: 4px; font-size: 13px; font-weight: 600; color: var(--c-ink); }
+.copy-btn { background: var(--c-accent-soft); color: var(--c-accent-dark); border: none; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 4px; cursor: pointer; margin-left: 6px; }
+.copy-btn:hover { background: var(--c-accent); color: #fff; }
+@media (max-width: 640px) {
+  .payment-body { grid-template-columns: 1fr; }
+  .payment-qr img { max-width: 200px; }
+}
+
+/* ============================================================
+   FINAL CTA (Section 15)
+   ============================================================ */
+.final-cta {
+  background: linear-gradient(135deg, #FFF9F0 0%, #FDEDE4 100%);
+  text-align: center;
+}
+.final-cta h2 { margin-bottom: var(--space-sm); }
+.final-cta p { font-size: var(--fs-h4); margin-bottom: var(--space-lg); max-width: 640px; margin-left: auto; margin-right: auto; }
+
+/* ============================================================
+   FOOTER (Section 16)
+   ============================================================ */
+.footer { background: var(--c-footer-bg); color: var(--c-footer-text); padding: var(--space-2xl) 0 var(--space-lg); }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr; gap: var(--space-xl); margin-bottom: var(--space-xl); }
+.footer__brand { font-weight: 700; font-size: 18px; color: #fff; margin-bottom: var(--space-sm); }
+.footer p { color: var(--c-footer-text); font-size: var(--fs-small); }
+.footer h4 { color: #fff; font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: var(--space-sm); }
+.footer__links a, .footer__contact a { display: block; color: var(--c-footer-text); font-size: var(--fs-small); padding: 4px 0; transition: var(--transition); }
+.footer__links a:hover, .footer__contact a:hover { color: var(--c-accent); }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: var(--space-md); text-align: center; }
+.footer__bottom p { font-size: 13px; margin-bottom: 6px; }
+
+/* ============================================================
+   IMAGE HOVER EFFECT — zoom + lift toàn trang
+   ============================================================ */
+img {
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  cursor: zoom-in;
+}
+img:hover {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow: 0 16px 40px rgba(26,26,46,0.16);
+}
+/* Ảnh nhỏ (bìa tập, author) zoom nhẹ hơn */
+.vol-detail__img img:hover,
+.author-grid img:hover,
+.solution__img img:hover {
+  transform: scale(1.06) translateY(-8px);
+  box-shadow: 0 20px 48px rgba(26,26,46,0.18);
+}
+/* Hero image nổi bật hơn */
+.hero__img img:hover {
+  transform: scale(1.03) translateY(-10px);
+  box-shadow: 0 24px 56px rgba(26,26,46,0.20);
+}
+
+/* ============================================================
+   LIGHTBOX — full màn hình khi click ảnh
+   ============================================================ */
+.lightbox {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(0,0,0,0.92);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 250ms ease, visibility 250ms ease;
+  padding: 24px; cursor: zoom-out;
+}
+.lightbox.open { opacity: 1; visibility: visible; }
+.lightbox__img {
+  max-width: 92vw; max-height: 92vh;
+  object-fit: contain; border-radius: var(--radius-md);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  transform: scale(0.9); transition: transform 300ms ease;
+  cursor: zoom-out;
+}
+.lightbox.open .lightbox__img { transform: scale(1); }
+.lightbox__close {
+  position: fixed; top: 20px; right: 24px;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  color: #fff; font-size: 26px; width: 44px; height: 44px;
+  border-radius: 50%; cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  transition: background 200ms ease; line-height: 1; z-index: 1000;
+}
+.lightbox__close:hover { background: rgba(255,255,255,0.28); }
+.lightbox__hint {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,0.45); font-size: 13px;
+  font-family: var(--font-body); pointer-events: none; white-space: nowrap;
+}
+.sticky-cta {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+  display: none; align-items: center; justify-content: space-between; gap: var(--space-sm);
+  background: var(--c-surface); border-top: 1px solid var(--c-border);
+  box-shadow: 0 -4px 16px rgba(26,26,46,0.08);
+  padding: 12px var(--container-pad);
+  transform: translateY(100%); transition: var(--transition);
+}
+.sticky-cta.show { transform: translateY(0); }
+.sticky-cta__text { display: flex; flex-direction: column; line-height: 1.3; }
+.sticky-cta__text strong { font-size: 15px; color: var(--c-ink); }
+.sticky-cta__text span { font-size: var(--fs-small); color: var(--c-accent-dark); font-weight: 600; }
+.sticky-cta__text s { color: var(--c-ink-faint); font-weight: 400; }
+.sticky-cta .btn { min-height: 46px; padding: 10px 22px; white-space: nowrap; }
+
+@media (max-width: 640px) {
+  .sticky-cta { display: flex; }
+}
+
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .hero__grid, .solution__grid, .author-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+  .author-grid img { width: 200px; }
+  .proc-zigzag { flex-wrap: wrap; gap: var(--space-sm); justify-content: center; }
+  .proc-card--up, .proc-card--down { align-self: auto; margin-top: 0; }
+  .proc-card { flex: 0 0 calc(33.33% - 16px); }
+  .proc-connector { display: none; }
+}
+
+@media (max-width: 640px) {
+  .header__nav { display: none; }
+  .header__cta { display: none; }
+  .hamburger { display: block; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .price-card--combo { transform: none; order: -1; }
+  .price-card--combo:hover { transform: translateY(-4px); }
+  .single-grid { grid-template-columns: 1fr; }
+  .vol-detail, .vol-detail--rev { grid-template-columns: 1fr; gap: var(--space-md); }
+  .vol-detail--rev .vol-detail__img { order: 0; }
+  .vol-detail__img img { max-width: 240px; }
+  .proc-zigzag { flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
+  .proc-card { flex: none; display: grid; grid-template-columns: 56px 1fr; grid-template-rows: auto auto; text-align: left; padding: 16px; gap: 0 14px; }
+  .proc-card--up, .proc-card--down { margin-top: 0; align-self: auto; }
+  .proc-card .proc-badge { position: static; grid-row: 1/3; align-self: center; width: 40px; height: 40px; font-size: 16px; margin: 0 auto; }
+  .proc-card .proc-icon-wrap { display: none; }
+  .proc-card h4 { font-size: 15px; margin: 0; }
+  .proc-card p { margin: 0; }
+  .proc-connector { width: 2px; height: 16px; margin: 0 28px; align-self: auto; display: block; }
+  .proc-connector::before { display: none; }
+  .proc-highlight { padding: var(--space-md); }
+  .proc-highlight__main { flex-direction: column; font-size: var(--fs-small); }
+  .proc-micro { gap: var(--space-sm); }
+  .proc-micro span { font-size: 12px; padding: 6px 12px; }
+  .footer__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .rv-grid { grid-template-columns: 1fr; }
+  .rv-summary { flex-direction: column; gap: var(--space-sm); }
+  .rv-avg__num { font-size: 36px; }
+  .hero__cta .btn { width: 100%; }
+  .solution__img { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SECTION 1 — HEADER
+     ============================================================ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#hero" class="header__brand">Claude Cowork <span>AI Thực Chiến</span></a>
+    <nav class="header__nav">
+      <a href="#van-de">Vấn đề</a>
+      <a href="#giai-phap">Giải pháp</a>
+      <a href="#bang-gia">Các gói</a>
+      <a href="#muc-luc">Nội dung</a>
+      <a href="#tac-gia">Tác giả</a>
+      <a href="#danh-gia">Đánh giá</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header__actions">
+      <a href="#dat-mua" class="btn btn--primary header__cta">Đặt mua ngay</a>
+      <button class="hamburger" id="hamburger" aria-label="Mở menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menu di động">
+  <button class="mobile-menu__close" id="menuClose" aria-label="Đóng menu">×</button>
+  <div style="clear:both"></div>
+  <a href="#van-de">Vấn đề</a>
+  <a href="#giai-phap">Giải pháp</a>
+  <a href="#bang-gia">Các gói</a>
+  <a href="#muc-luc">Nội dung</a>
+  <a href="#tac-gia">Tác giả</a>
+  <a href="#danh-gia">Đánh giá</a>
+  <a href="#faq">FAQ</a>
+  <a href="#dat-mua" style="color:var(--c-accent);font-weight:600">Đặt mua ngay</a>
+</nav>
+
+<!-- ============================================================
+     SECTION 2 — HERO
+     ============================================================ -->
+<section class="hero section" id="hero">
+  <div class="container hero__grid">
+    <div>
+      <span class="hero__badge">📘 Bộ ebook 3 tập · Đọc online trên Heyzine</span>
+      <h1>Biến Claude Cowork thành đồng nghiệp số làm việc cùng bạn</h1>
+      <p class="hero__sub">Bộ ebook thực chiến 3 tập giúp bạn dùng AI đúng cách — từ nền tảng đến tự động hóa workflow. Tiếng Việt, dễ hiểu, áp dụng ngay vào công việc thật.</p>
+      <div class="hero__cta">
+        <a href="#bang-gia" class="btn btn--primary">Xem các gói ebook</a>
+        <a href="#giai-phap" class="btn btn--outline">Tìm hiểu thêm</a>
+      </div>
+      <div class="hero__trust">
+        <span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--c-trust)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          Đọc online trên Heyzine — không tải app
+        </span>
+        <span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--c-trust)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Mở ngay trên điện thoại, tablet, máy tính
+        </span>
+        <span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--c-trust)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          Bảo vệ bản quyền — quyền đọc gắn với email
+        </span>
+      </div>
+    </div>
+    <div class="hero__img">
+      <img src="assets/Hard_book_full.png" alt="Sách Claude Cowork AI Thực Chiến — ấn bản đầy đủ của tác giả Nguyễn Quân">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 3 — VẤN ĐỀ
+     ============================================================ -->
+<section class="section section--surface" id="van-de">
+  <div class="container">
+    <div class="section-head">
+      <h2>Bạn có đang gặp những vấn đề này?</h2>
+      <p>Hầu hết người đi làm đều biết AI quan trọng, nhưng phần lớn vẫn chưa dùng được AI vào đúng công việc của mình.</p>
+    </div>
+    <div class="grid-4">
+      <div class="pain-card">
+        <div class="icon">🔍</div>
+        <h4>Dùng AI như Google nâng cao</h4>
+        <p>Bạn chỉ hỏi đáp, copy ra ngoài. Chưa biết giao việc phức tạp như xử lý file, tổng hợp dữ liệu, tạo báo cáo — chưa tận dụng được dù 10% sức mạnh thật.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">📋</div>
+        <h4>Copy prompt nhưng kết quả chung chung</h4>
+        <p>Bạn lấy prompt trên mạng về dùng, nhưng kết quả hời hợt, không sát việc. Vấn đề không ở prompt — mà ở cách tư duy giao việc cho AI.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">⚙️</div>
+        <h4>Muốn tự động hóa nhưng không biết bắt đầu</h4>
+        <p>Bạn nghe nói Connectors, Skills, Automation, Sub-agents... nhưng mỗi thứ một nơi, không biết ghép thành một quy trình làm việc thật ra sao.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">🌐</div>
+        <h4>Tài liệu toàn tiếng Anh, quá kỹ thuật</h4>
+        <p>Hướng dẫn hay thì bằng tiếng Anh, đầy thuật ngữ. Bạn đọc vài trang rồi bỏ cuộc vì không ai diễn giải lại bằng ngôn ngữ dễ hiểu, gắn với công việc Việt Nam.</p>
+      </div>
+    </div>
+    <p class="transition-line">Nếu bạn gặp ít nhất một trong bốn vấn đề trên, bộ ebook này được viết cho bạn.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4 — GIẢI PHÁP
+     ============================================================ -->
+<section class="section section--alt" id="giai-phap">
+  <div class="container">
+    <div class="solution__grid">
+      <div>
+        <h2>Giải pháp: Học Claude Cowork theo lộ trình thực chiến</h2>
+        <p style="margin:var(--space-md) 0;"><em>Claude Cowork AI Thực Chiến</em> là bộ ebook 3 tập hướng dẫn bạn biến Claude thành đồng nghiệp số — không chỉ trả lời câu hỏi, mà xử lý file, tạo tài liệu, kết nối công cụ và tự động hóa quy trình. Tất cả bằng tiếng Việt, theo lộ trình rõ ràng từ cơ bản đến nâng cao.</p>
+        <ul class="benefit-list">
+          <li><span class="tick">✓</span><span><strong>Thực chiến, không lý thuyết</strong> — Mỗi chương có prompt mẫu, checklist và bài tập áp dụng được ngay vào việc thật.</span></li>
+          <li><span class="tick">✓</span><span><strong>Lộ trình 3 tập rõ ràng</strong> — Nền tảng → Kết nối &amp; Tự động hóa → Thực chiến theo nghề. Học đến đâu dùng được đến đó.</span></li>
+          <li><span class="tick">✓</span><span><strong>Playbook theo nghề</strong> — Marketing, kế toán, quản lý dự án, HR, founder đều có phần hướng dẫn riêng.</span></li>
+          <li><span class="tick">✓</span><span><strong>Tiếng Việt, dễ hiểu</strong> — Không cần biết code, không cần background kỹ thuật. Người mới cũng theo được.</span></li>
+          <li><span class="tick">✓</span><span><strong>Đọc online trên Heyzine</strong> — Mở trên điện thoại, tablet hoặc máy tính. Không cần cài app phức tạp.</span></li>
+        </ul>
+        <p class="solution__note">Đây không phải sách dạy bạn ngưỡng mộ AI. Đây là sách giúp bạn dùng được AI vào đúng công việc của mình.</p>
+      </div>
+      <div class="solution__img" style="display:flex;flex-direction:column;gap:var(--space-md);align-items:center;">
+        <img src="assets/Smartphone-tap123.png" alt="3 tập Claude Cowork AI Thực Chiến đọc trên smartphone qua Heyzine" style="width:100%;max-width:480px;border-radius:var(--radius-md);">
+        <div style="display:flex;gap:12px;justify-content:center;">
+          <img src="assets/tap-1-cover.jpg" alt="Bìa Tập 1" style="width:32%;border-radius:var(--radius-sm);box-shadow:var(--shadow-md);">
+          <img src="assets/tap-2-cover.jpg" alt="Bìa Tập 2" style="width:32%;border-radius:var(--radius-sm);box-shadow:var(--shadow-md);">
+          <img src="assets/tap-3-cover.jpg" alt="Bìa Tập 3" style="width:32%;border-radius:var(--radius-sm);box-shadow:var(--shadow-md);">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 5 — BẠN NÊN CHỌN GÓI NÀO?
+     ============================================================ -->
+<section class="section section--surface" id="chon-goi">
+  <div class="container">
+    <div class="section-head">
+      <h2>Bạn nên chọn gói nào?</h2>
+      <p>Mỗi người có một điểm xuất phát khác nhau. Chọn cách học phù hợp với bạn:</p>
+    </div>
+    <div class="grid-4">
+      <a href="#bang-gia" class="choose-card">
+        <div class="icon">🌱</div>
+        <h4>Nếu bạn mới bắt đầu với AI</h4>
+        <p>Bắt đầu từ nền tảng để hiểu Claude Cowork hoạt động thế nào và cách giao việc cho AI.</p>
+        <span class="pick">→ Chọn Tập 1 — 119.000đ</span>
+      </a>
+      <a href="#bang-gia" class="choose-card">
+        <div class="icon">🚀</div>
+        <h4>Nếu muốn học trọn lộ trình &amp; tiết kiệm</h4>
+        <p>Học đầy đủ từ nền tảng đến tự động hóa và ứng dụng theo nghề, với mức giá tiết kiệm nhất.</p>
+        <span class="pick">→ Chọn Combo 3 tập — 399.000đ</span>
+      </a>
+      <a href="#bang-gia" class="choose-card">
+        <div class="icon">📖</div>
+        <h4>Nếu muốn bản tra cứu đầy đủ</h4>
+        <p>Sở hữu toàn bộ nội dung trong một bản full edition liền mạch, dùng như cẩm nang tra cứu dài hạn.</p>
+        <span class="pick">→ Chọn Bản đầy đủ — 519.000đ</span>
+      </a>
+      <a href="#mua-le" class="choose-card">
+        <div class="icon">🎯</div>
+        <h4>Nếu chỉ cần đúng một phần cụ thể</h4>
+        <p>Bạn đã có nền tảng và chỉ cần phần tự động hóa hoặc phần theo nghề.</p>
+        <span class="pick">→ Mua từng tập lẻ theo nhu cầu</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 6 — PRICING
+     ============================================================ -->
+<section class="section section--bg" id="bang-gia">
+  <div class="container">
+    <div class="section-head">
+      <h2>Chọn gói phù hợp với bạn</h2>
+      <p>Tất cả các gói đều là quyền đọc online trên Heyzine, cấp qua email sau khi thanh toán.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- Card Tập 1 -->
+      <div class="price-card">
+        <span class="price-badge">Dành cho người mới</span>
+        <h3>Tập 1 Heyzine</h3>
+        <p class="subtitle">Nền tảng Claude Cowork</p>
+        <div><span class="price-now">119.000<span class="unit">đ</span></span></div>
+        <ul>
+          <li>Hiểu nền tảng &amp; tư duy giao việc cho AI</li>
+          <li>Làm việc với file, trích xuất dữ liệu</li>
+          <li>Tạo tài liệu, báo cáo, bảng tính tự động</li>
+          <li>Nghệ thuật viết prompt cho agent (khung VKDRT)</li>
+        </ul>
+        <a href="#dat-mua" class="btn btn--outline btn--block" data-pkg="tap1">Bắt đầu với Tập 1</a>
+      </div>
+      <!-- Card Combo -->
+      <div class="price-card price-card--combo">
+        <span class="price-badge">⭐ Khuyên dùng</span>
+        <h3>Combo 3 tập Heyzine</h3>
+        <p class="subtitle">Trọn lộ trình: Nền tảng → Tự động hóa → Thực chiến</p>
+        <div>
+          <span class="price-old">517.000đ</span>
+          <div><span class="price-now">399.000<span class="unit">đ</span></span></div>
+          <span class="price-save">Tiết kiệm 118.000đ</span>
+        </div>
+        <ul>
+          <li>Toàn bộ nội dung Tập 1 + Tập 2 + Tập 3</li>
+          <li>Connectors, Skills, MCP, Projects, Automation</li>
+          <li>Playbook theo nghề + 9 phụ lục tra cứu</li>
+          <li>2 Capstone project thực tế</li>
+        </ul>
+        <a href="#dat-mua" class="btn btn--primary btn--block" data-pkg="combo">Mua Combo 3 tập</a>
+      </div>
+      <!-- Card Bản đầy đủ -->
+      <div class="price-card">
+        <span class="price-badge">Đầy đủ nhất</span>
+        <h3>Bản đầy đủ Heyzine</h3>
+        <p class="subtitle">Full edition — cẩm nang tra cứu dài hạn</p>
+        <div><span class="price-now">519.000<span class="unit">đ</span></span></div>
+        <ul>
+          <li>Toàn bộ nội dung trong một ebook liền mạch</li>
+          <li>Dùng như cẩm nang tra cứu dài hạn</li>
+          <li>Phù hợp founder, quản lý, trainer</li>
+        </ul>
+        <a href="#dat-mua" class="btn btn--outline btn--block" data-pkg="full">Sở hữu bản đầy đủ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 7 — MUA TỪNG TẬP
+     ============================================================ -->
+<section class="section section--alt" id="mua-le">
+  <div class="container">
+    <div class="section-head">
+      <h2>Hoặc mua từng tập theo nhu cầu</h2>
+    </div>
+    <div class="single-grid">
+      <div class="single-item">
+        <div class="vol">Tập 1</div>
+        <div class="desc">Nền tảng Claude Cowork</div>
+        <div class="price">119.000đ</div>
+        <a href="#dat-mua" class="btn btn--outline btn--block" data-pkg="tap1">Mua Tập 1</a>
+      </div>
+      <div class="single-item">
+        <div class="vol">Tập 2</div>
+        <div class="desc">Kết nối &amp; Tự động hóa</div>
+        <div class="price">179.000đ</div>
+        <a href="#dat-mua" class="btn btn--outline btn--block" data-pkg="tap2">Mua Tập 2</a>
+      </div>
+      <div class="single-item">
+        <div class="vol">Tập 3</div>
+        <div class="desc">Thực chiến theo nghề</div>
+        <div class="price">219.000đ</div>
+        <a href="#dat-mua" class="btn btn--outline btn--block" data-pkg="tap3">Mua Tập 3</a>
+      </div>
+    </div>
+    <p class="single-note">💡 Nếu bạn dự định học đủ cả 3 tập, Combo 3 tập tiết kiệm hơn 118.000đ so với mua từng tập lẻ.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 8 — CHI TIẾT TỪNG TẬP
+     ============================================================ -->
+<section class="section section--alt" id="chi-tiet">
+  <div class="container">
+    <div class="section-head">
+      <h2>Bên trong từng tập có gì?</h2>
+    </div>
+    <!-- Tập 1 -->
+    <div class="vol-detail">
+      <div class="vol-detail__img"><img src="assets/tap-1-cover.jpg" alt="Bìa Tập 1 — Nền tảng" width="240"></div>
+      <div class="vol-detail__body">
+        <div class="tag">TẬP 1 — NỀN TẢNG</div>
+        <h3>Hiểu &amp; làm chủ nền tảng Claude Cowork</h3>
+        <p class="suited"><strong>Phù hợp với:</strong> Người mới bắt đầu, nhân viên văn phòng muốn ứng dụng AI</p>
+        <p>Hiểu Cowork khác Chat thường ở đâu, kiến trúc hoạt động (mô hình Não – Tay – Sandbox), cách cài đặt và cấu hình, làm việc với file, trích xuất dữ liệu, tạo Word/Excel/PowerPoint tự động, và nghệ thuật viết prompt cho agent qua khung VKDRT.</p>
+        <p class="meta">📚 8 chương + Lời mở đầu</p>
+        <a href="#dat-mua" class="btn btn--outline" data-pkg="tap1">Bắt đầu với Tập 1 — 119.000đ</a>
+      </div>
+    </div>
+    <!-- Tập 2 (đảo chiều) -->
+    <div class="vol-detail vol-detail--rev">
+      <div class="vol-detail__body">
+        <div class="tag">TẬP 2 — KẾT NỐI &amp; TỰ ĐỘNG HÓA</div>
+        <h3>Biến Cowork thành hệ thống làm việc tự động</h3>
+        <p class="suited"><strong>Phù hợp với:</strong> Người đã nắm nền tảng, muốn nâng cấp lên workflow tự động</p>
+        <p>Kết nối Cowork với Gmail, Drive, Notion, Slack qua Connectors; đóng gói Skills; dùng Computer Use và Claude in Chrome; hiểu MCP; dựng Projects; và tự động hóa với Scheduled Tasks, Dispatch, Sub-agents.</p>
+        <p class="meta">📚 8 chương (Chương 9–16)</p>
+        <a href="#dat-mua" class="btn btn--outline" data-pkg="tap2">Mua Tập 2 — 179.000đ</a>
+      </div>
+      <div class="vol-detail__img"><img src="assets/tap-2-cover.jpg" alt="Bìa Tập 2 — Kết nối & Tự động hóa" width="240"></div>
+    </div>
+    <!-- Tập 3 -->
+    <div class="vol-detail">
+      <div class="vol-detail__img"><img src="assets/tap-3-cover.jpg" alt="Bìa Tập 3 — Thực chiến theo nghề" width="240"></div>
+      <div class="vol-detail__body">
+        <div class="tag">TẬP 3 — THỰC CHIẾN THEO NGHỀ</div>
+        <h3>Playbook áp dụng vào công việc thật theo từng nghề</h3>
+        <p class="suited"><strong>Phù hợp với:</strong> Marketer, kế toán, PM, HR, founder, freelancer</p>
+        <p>Playbook theo nghề: Marketing &amp; Content, Tài chính – Kế toán – Phân tích, Quản lý dự án &amp; Vận hành, Nghiên cứu – Pháp lý – HR, Founder &amp; SME. Kèm chương bảo mật &amp; prompt injection, quản lý usage &amp; tối ưu chi phí, xử lý lỗi, 2 capstone project và 9 phụ lục A–I.</p>
+        <p class="meta">📚 10 chương (Chương 17–26) + 9 phụ lục</p>
+        <a href="#dat-mua" class="btn btn--outline" data-pkg="tap3">Mua Tập 3 — 219.000đ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 9 — QUY TRÌNH NHẬN QUYỀN ĐỌC (ảnh 6 bước)
+     ============================================================ -->
+<section class="section section--surface" id="quy-trinh">
+  <div class="container">
+    <div class="section-head">
+      <div class="proc-eyebrow">
+        <svg width="26" height="26" viewBox="0 0 64 64" fill="none"><rect x="8" y="28" width="48" height="30" rx="4" fill="#FDEDE4" stroke="#E85D26" stroke-width="2.5"/><rect x="16" y="16" width="32" height="14" rx="3" fill="#E85D26"/><path d="M32 16 C32 16 24 8 20 12 C16 16 24 20 32 20 C40 20 48 16 44 12 C40 8 32 16 32 16Z" fill="#C9491A"/><line x1="32" y1="28" x2="32" y2="58" stroke="#E85D26" stroke-width="2.5"/></svg>
+        QUY TRÌNH 6 BƯỚC ĐỂ BẠN NHẬN ĐƯỢC EBOOK
+      </div>
+      <h2>Sau khi mua, bạn sẽ nhận sách như thế nào?</h2>
+      <p>Quy trình đơn giản, minh bạch — bạn biết chính xác mình sẽ nhận gì và nhận bằng cách nào.</p>
+    </div>
+
+    <div class="proc-img-row">
+      <div class="proc-img-card"><img src="assets/QT_Ebook_b1.png" alt="Bước 1 — Chọn gói ebook"></div>
+      <div class="proc-arrow3d"><svg viewBox="0 0 60 32" fill="none"><defs><linearGradient id="ag1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FDEDE4"/><stop offset="100%" stop-color="#E85D26"/></linearGradient></defs><path d="M4 16 Q30 4 52 16" stroke="url(#ag1)" stroke-width="4" stroke-linecap="round" fill="none"/><polygon points="48,9 60,16 48,23" fill="#E85D26"/><ellipse cx="30" cy="20" rx="26" ry="7" fill="rgba(232,93,38,0.08)"/></svg></div>
+      <div class="proc-img-card"><img src="assets/QT_Ebook_b2.png" alt="Bước 2 — Điền form"></div>
+      <div class="proc-arrow3d"><svg viewBox="0 0 60 32" fill="none"><defs><linearGradient id="ag2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FDEDE4"/><stop offset="100%" stop-color="#E85D26"/></linearGradient></defs><path d="M4 16 Q30 4 52 16" stroke="url(#ag2)" stroke-width="4" stroke-linecap="round" fill="none"/><polygon points="48,9 60,16 48,23" fill="#E85D26"/><ellipse cx="30" cy="20" rx="26" ry="7" fill="rgba(232,93,38,0.08)"/></svg></div>
+      <div class="proc-img-card"><img src="assets/QT_Ebook_b3.png" alt="Bước 3 — Thanh toán"></div>
+      <div class="proc-arrow3d"><svg viewBox="0 0 60 32" fill="none"><defs><linearGradient id="ag3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FDEDE4"/><stop offset="100%" stop-color="#E85D26"/></linearGradient></defs><path d="M4 16 Q30 4 52 16" stroke="url(#ag3)" stroke-width="4" stroke-linecap="round" fill="none"/><polygon points="48,9 60,16 48,23" fill="#E85D26"/><ellipse cx="30" cy="20" rx="26" ry="7" fill="rgba(232,93,38,0.08)"/></svg></div>
+      <div class="proc-img-card"><img src="assets/QT_Ebook_b4.png" alt="Bước 4 — Xác nhận"></div>
+      <div class="proc-arrow3d"><svg viewBox="0 0 60 32" fill="none"><defs><linearGradient id="ag4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FDEDE4"/><stop offset="100%" stop-color="#E85D26"/></linearGradient></defs><path d="M4 16 Q30 4 52 16" stroke="url(#ag4)" stroke-width="4" stroke-linecap="round" fill="none"/><polygon points="48,9 60,16 48,23" fill="#E85D26"/><ellipse cx="30" cy="20" rx="26" ry="7" fill="rgba(232,93,38,0.08)"/></svg></div>
+      <div class="proc-img-card"><img src="assets/QT_Ebook_b5.png" alt="Bước 5 — Cấp quyền đọc"></div>
+      <div class="proc-arrow3d"><svg viewBox="0 0 60 32" fill="none"><defs><linearGradient id="ag5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FDEDE4"/><stop offset="100%" stop-color="#E85D26"/></linearGradient></defs><path d="M4 16 Q30 4 52 16" stroke="url(#ag5)" stroke-width="4" stroke-linecap="round" fill="none"/><polygon points="48,9 60,16 48,23" fill="#E85D26"/><ellipse cx="30" cy="20" rx="26" ry="7" fill="rgba(232,93,38,0.08)"/></svg></div>
+      <div class="proc-img-card"><img src="assets/QT_Ebook_b6.png" alt="Bước 6 — Đọc online"></div>
+    </div>
+
+    <div class="proc-highlight">
+      <div class="proc-highlight__main">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--c-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <strong>Thời gian xử lý: trong vòng 24 giờ làm việc sau khi xác nhận thanh toán.</strong>
+      </div>
+      <p class="proc-highlight__warn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Vui lòng nhập đúng email — quyền đọc được cấp theo email bạn đăng ký.
+      </p>
+    </div>
+    <div class="proc-micro">
+      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Không cần tải app riêng</span>
+      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-accent)" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Đọc online qua link Heyzine</span>
+      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-accent)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Hỗ trợ nếu nhập sai email</span>
+    </div>
+  </div>
+</section>
+<!-- ============================================================
+     SECTION 10 — LỢI ÍCH HEYZINE
+     ============================================================ -->
+<section class="section section--bg" id="heyzine">
+  <div class="container">
+    <div class="section-head">
+      <h2>Vì sao ebook đọc online trên Heyzine?</h2>
+    </div>
+    <div class="grid-4">
+      <div class="heyzine-card"><div class="icon">📱</div><h4>Đọc trên mọi thiết bị</h4><p>Mở trình duyệt là đọc được — điện thoại, máy tính bảng hay máy tính. Không cần cài app.</p></div>
+      <div class="heyzine-card"><div class="icon">📖</div><h4>Trải nghiệm sách lật</h4><p>Giao diện sách lật chuyên nghiệp: lật trang mượt, hình ảnh rõ nét, dễ đọc lâu.</p></div>
+      <div class="heyzine-card"><div class="icon">🔒</div><h4>Bảo vệ bản quyền</h4><p>Quyền đọc gắn với email của bạn. Nội dung được bảo vệ, không lo phát tán tràn lan.</p></div>
+      <div class="heyzine-card"><div class="icon">🔄</div><h4>Tra cứu bất cứ lúc nào</h4><p>Mở lại link bất cứ khi nào cần, đọc lại bất kỳ chương nào — như cẩm nang luôn bên bạn.</p></div>
+    </div>
+    <p class="heyzine-msg">Bạn không mua một file PDF để tải về rồi bỏ quên trong máy. Bạn nhận quyền đọc một bộ ebook thực chiến, giúp bạn học theo lộ trình rõ ràng và tra cứu lại bất cứ khi nào cần.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 11 — MỤC LỤC NỔI BẬT
+     ============================================================ -->
+<section class="section section--surface" id="muc-luc">
+  <div class="container container--narrow">
+    <div class="section-head">
+      <h2>Bên trong bộ ebook có gì?</h2>
+      <p>Hơn 26 chương và 9 phụ lục, xây dựng theo mạch xuyên suốt từ nền tảng đến thực chiến.</p>
+    </div>
+    <details class="toc-group" open>
+      <summary>Tập 1 — Nền tảng (8 chương)</summary>
+      <ul>
+        <li>Chương 1: Cowork là gì và khác Chat thông thường ở đâu</li>
+        <li>Chương 2: Kiến trúc &amp; cách Cowork hoạt động (Não – Tay – Sandbox)</li>
+        <li>Chương 3: Giao diện Cowork — Tour 360 độ</li>
+        <li>Chương 4: Cài đặt, kích hoạt và cấu hình ban đầu</li>
+        <li>Chương 5: Quản lý file &amp; thư mục với Cowork</li>
+        <li>Chương 6: Trích xuất, tổng hợp dữ liệu từ tài liệu</li>
+        <li>Chương 7: Tạo tài liệu, báo cáo, bảng tính tự động</li>
+        <li>Chương 8: Nghệ thuật viết prompt cho agent (khung VKDRT)</li>
+      </ul>
+    </details>
+    <details class="toc-group">
+      <summary>Tập 2 — Kết nối &amp; Tự động hóa (Chương 9–16)</summary>
+      <ul>
+        <li>Connectors: kết nối Gmail, Drive, Notion, Slack</li>
+        <li>Skills &amp; Plugins — mở rộng khả năng của Cowork</li>
+        <li>Computer Use &amp; Claude in Chrome</li>
+        <li>MCP — Model Context Protocol</li>
+        <li>Projects — workspace bền vững có instructions &amp; memory riêng</li>
+        <li>Scheduled Tasks — tự động chạy theo lịch</li>
+        <li>Dispatch — giao việc từ điện thoại</li>
+        <li>Sub-agents — chia việc cho nhiều agent</li>
+      </ul>
+    </details>
+    <details class="toc-group">
+      <summary>Tập 3 — Thực chiến theo nghề (Chương 17–26 + 9 phụ lục)</summary>
+      <ul>
+        <li>Chương 17: Cowork cho Marketing &amp; Content</li>
+        <li>Chương 18: Cowork cho Tài chính – Kế toán – Phân tích</li>
+        <li>Chương 19: Cowork cho Quản lý dự án &amp; Vận hành</li>
+        <li>Chương 20: Cowork cho Nghiên cứu, Pháp lý, HR</li>
+        <li>Chương 21: Cowork cho Founder &amp; Chủ doanh nghiệp nhỏ</li>
+        <li>Chương 22: Bảo mật, quyền truy cập &amp; rủi ro prompt injection</li>
+        <li>Chương 23: Quản lý usage, gói cước và tối ưu chi phí</li>
+        <li>+ Xử lý lỗi, 2 Capstone project và 9 phụ lục tra cứu A–I</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 12 — TÁC GIẢ
+     ============================================================ -->
+<section class="section section--alt" id="tac-gia">
+  <div class="container">
+    <div class="section-head">
+      <h2>Về tác giả</h2>
+    </div>
+    <div class="author-grid">
+      <img src="assets/author-nguyen-quan.jpg" alt="Tác giả Nguyễn Quân">
+      <div>
+        <h3>Nguyễn Quân</h3>
+        <p>Nguyễn Quân là tác giả bộ sách <em>Claude Cowork AI Thực Chiến</em>. Xuất phát từ nhu cầu thực tế của chính mình và những người đi làm xung quanh, anh dành thời gian nghiên cứu và thử nghiệm cách dùng Claude Cowork như một đồng nghiệp số: xử lý file, tạo báo cáo, kết nối công cụ và tự động hóa quy trình. Bộ sách được viết bằng tiếng Việt rõ ràng, dễ hiểu cho người mới, nhưng vẫn đủ sâu để quản lý và founder áp dụng vào hệ thống làm việc thật.</p>
+        <ul class="author-bullets">
+          <li>Tác giả bộ sách 3 tập <em>Claude Cowork AI Thực Chiến</em></li>
+          <li>Tập trung vào ứng dụng AI thực chiến cho công việc văn phòng &amp; vận hành SME</li>
+          <li>Phương pháp theo use case cụ thể: framework, checklist, prompt mẫu áp dụng ngay</li>
+          <li>Quan điểm rõ ràng: AI là đồng nghiệp số, người dùng vẫn là người ra quyết định</li>
+        </ul>
+        <blockquote class="author-quote">
+          "Tôi không viết sách để bạn ngưỡng mộ AI. Tôi viết để bạn dùng được AI vào đúng công việc của mình — ngay ngày mai."
+          <cite>— Nguyễn Quân</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 12.5 — ĐÁNH GIÁ TỪ ĐỘC GIẢ
+     ============================================================ -->
+<section class="section section--surface" id="danh-gia">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">⭐ ĐÁNH GIÁ TỪ ĐỘC GIẢ</span>
+      <h2>Độc giả nói gì về bộ ebook?</h2>
+      <p>Chỉ người đã mua và thanh toán mới có thể đánh giá.</p>
+    </div>
+    <!-- Thống kê tổng -->
+    <div class="rv-summary" id="rvSummary" style="display:none;">
+      <div class="rv-avg">
+        <span class="rv-avg__num" id="rvAvgNum">0</span>
+        <span class="rv-avg__stars" id="rvAvgStars">☆☆☆☆☆</span>
+      </div>
+      <span class="rv-avg__count" id="rvCount">0 đánh giá</span>
+    </div>
+    <!-- Danh sách reviews -->
+    <div class="rv-grid" id="rvGrid">
+      <div class="rv-empty" id="rvEmpty">Chưa có đánh giá nào. Hãy là người đầu tiên!</div>
+    </div>
+    <!-- Nút thêm đánh giá -->
+    <div style="text-align:center;margin-top:var(--space-lg)">
+      <button class="btn btn--outline" id="rvOpenBtn" onclick="openReviewModal()">✍ Thêm đánh giá của bạn</button>
+    </div>
+  </div>
+</section>
+
+<!-- Modal đánh giá -->
+<div class="rv-overlay" id="rvOverlay">
+  <div class="rv-modal">
+    <button class="rv-modal__close" onclick="closeReviewModal()">×</button>
+    <!-- Step 1: Verify email -->
+    <div id="rvStep1">
+      <h3>Xác minh email đã mua</h3>
+      <p style="color:var(--c-ink-soft);font-size:var(--fs-small);margin-bottom:var(--space-md)">Nhập email bạn đã dùng khi mua ebook để đánh giá.</p>
+      <input type="email" id="rvEmail" placeholder="email@example.com" style="width:100%;min-height:48px;padding:14px 16px;border:1px solid var(--c-border-strong);border-radius:var(--radius-sm);font-size:var(--fs-body);margin-bottom:12px;">
+      <div id="rvVerifyMsg" style="font-size:var(--fs-small);margin-bottom:12px;display:none;"></div>
+      <button class="btn btn--primary btn--block" id="rvVerifyBtn" onclick="verifyReviewEmail()">Xác minh</button>
+    </div>
+    <!-- Step 2: Form đánh giá -->
+    <div id="rvStep2" style="display:none;">
+      <h3>Viết đánh giá</h3>
+      <p style="color:var(--c-ink-soft);font-size:var(--fs-small);margin-bottom:var(--space-md)">Gói: <strong id="rvPkgDisplay"></strong></p>
+      <label style="font-size:var(--fs-small);font-weight:600;display:block;margin-bottom:6px;">Tên hiển thị</label>
+      <input type="text" id="rvName" placeholder="VD: Minh T." style="width:100%;min-height:44px;padding:12px 16px;border:1px solid var(--c-border-strong);border-radius:var(--radius-sm);font-size:var(--fs-body);margin-bottom:var(--space-sm);">
+      <label style="font-size:var(--fs-small);font-weight:600;display:block;margin-bottom:6px;">Đánh giá</label>
+      <div class="rv-star-input" id="rvStarInput">
+        <span data-star="1">☆</span><span data-star="2">☆</span><span data-star="3">☆</span><span data-star="4">☆</span><span data-star="5">☆</span>
+      </div>
+      <label style="font-size:var(--fs-small);font-weight:600;display:block;margin-bottom:6px;">Nội dung (tối đa 300 ký tự)</label>
+      <textarea id="rvContent" placeholder="Chia sẻ trải nghiệm đọc ebook của bạn..." maxlength="300" style="width:100%;min-height:100px;padding:12px 16px;border:1px solid var(--c-border-strong);border-radius:var(--radius-sm);font-size:var(--fs-body);resize:vertical;margin-bottom:var(--space-sm);font-family:var(--font-body);"></textarea>
+      <div id="rvSubmitMsg" style="font-size:var(--fs-small);margin-bottom:12px;display:none;"></div>
+      <button class="btn btn--primary btn--block" id="rvSubmitBtn" onclick="submitReview()">Gửi đánh giá</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SECTION 13 — FAQ
+     ============================================================ -->
+<section class="section section--surface" id="faq">
+  <div class="container container--narrow">
+    <div class="section-head">
+      <h2>Câu hỏi thường gặp</h2>
+    </div>
+
+    <div class="faq-subhead">Về hình thức &amp; Heyzine</div>
+    <details class="faq-item"><summary>Tôi có nhận file PDF không?</summary><p>Không. Bạn nhận quyền đọc ebook online dạng sách lật trên Heyzine, không phải file PDF tải về.</p></details>
+    <details class="faq-item"><summary>Tôi đọc sách ở đâu?</summary><p>Bạn đọc trực tiếp trên trình duyệt qua link Heyzine được cấp sau khi thanh toán được xác nhận.</p></details>
+    <details class="faq-item"><summary>Tôi có cần cài app không?</summary><p>Không. Bạn chỉ cần trình duyệt trên điện thoại, máy tính bảng hoặc máy tính.</p></details>
+    <details class="faq-item"><summary>Tôi có tải ebook về được không?</summary><p>Không. Ebook được đọc online để bảo vệ bản quyền tác giả.</p></details>
+    <details class="faq-item"><summary>Có đọc được trên điện thoại không?</summary><p>Có. Ebook hiển thị tốt trên điện thoại, máy tính bảng và máy tính.</p></details>
+
+    <div class="faq-subhead">Về quyền đọc &amp; email</div>
+    <details class="faq-item"><summary>Quyền đọc có gắn với email không?</summary><p>Có. Quyền đọc được cấp theo email bạn đăng ký khi mua.</p></details>
+    <details class="faq-item"><summary>Tôi nhập sai email thì sao?</summary><p>Bạn liên hệ tác giả qua Zalo hoặc email để được cập nhật lại email nhận quyền đọc.</p></details>
+    <details class="faq-item"><summary>Tôi có được chia sẻ link cho người khác không?</summary><p>Không. Quyền đọc dành riêng cho bạn — chia sẻ link cho người khác là vi phạm bản quyền.</p></details>
+
+    <div class="faq-subhead">Về gói mua &amp; giá</div>
+    <details class="faq-item"><summary>Tôi có thể mua từng tập một không?</summary><p>Có. Bạn có thể mua từng tập lẻ theo nhu cầu.</p></details>
+    <details class="faq-item"><summary>Tôi mua Tập 1 rồi nâng cấp lên Combo được không?</summary><p>Được. Bạn liên hệ tác giả để được hướng dẫn phương án nâng cấp phù hợp.</p></details>
+    <details class="faq-item"><summary>Mua từng tập rồi sau muốn mua combo thì tính thế nào?</summary><p>Bạn liên hệ tác giả để được hỗ trợ phương án hợp lý theo phần đã mua.</p></details>
+    <details class="faq-item"><summary>Nên mua Tập 1, Combo 3 tập hay Bản đầy đủ?</summary><p>Mới bắt đầu → Tập 1. Muốn học trọn lộ trình và tiết kiệm → Combo 3 tập. Muốn bản tra cứu đầy đủ trong một ebook → Bản đầy đủ.</p></details>
+    <details class="faq-item"><summary>Vì sao Combo 3 tập rẻ hơn mua từng tập lẻ?</summary><p>Combo là gói trọn bộ ưu đãi. Mua lẻ 3 tập là 517.000đ, còn Combo chỉ 399.000đ — tiết kiệm 118.000đ.</p></details>
+    <details class="faq-item"><summary>Bản đầy đủ khác gì Combo 3 tập?</summary><p>Bản đầy đủ là một ebook full edition liền mạch, dùng như cẩm nang tra cứu. Combo là 3 tập riêng theo lộ trình học.</p></details>
+
+    <div class="faq-subhead">Về nội dung</div>
+    <details class="faq-item"><summary>Sách có phù hợp với người không biết code không?</summary><p>Có. Sách được viết cho người không biết code, hướng dẫn bằng tiếng Việt dễ hiểu.</p></details>
+    <details class="faq-item"><summary>Sách có phù hợp với người mới dùng AI không?</summary><p>Có. Tập 1 bắt đầu từ nền tảng, phù hợp cả với người mới tiếp cận AI.</p></details>
+    <details class="faq-item"><summary>Nội dung Claude/Cowork có bị lỗi thời không?</summary><p>Công cụ có thể thay đổi theo thời gian. Sách tập trung vào tư duy và phương pháp áp dụng lâu dài, nên bạn nên kiểm tra tài liệu chính thức khi cần chi tiết mới nhất.</p></details>
+
+    <div class="faq-subhead">Về thanh toán &amp; hỗ trợ</div>
+    <details class="faq-item"><summary>Khi thanh toán xong bao lâu nhận được quyền đọc?</summary><p>Thường trong vòng 24 giờ làm việc sau khi thanh toán được xác nhận.</p></details>
+    <details class="faq-item"><summary>Có hỗ trợ sau khi mua không?</summary><p>Có. Bạn được hỗ trợ qua Zalo hoặc email khi gặp vấn đề về quyền đọc.</p></details>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 14 — FORM ĐẶT MUA
+     ============================================================ -->
+<section class="section form-section" id="dat-mua">
+  <div class="container container--narrow">
+    <div class="section-head">
+      <h2>Đặt mua ebook</h2>
+      <p>Điền thông tin bên dưới. Sau khi gửi, bạn sẽ nhận hướng dẫn thanh toán qua email hoặc Zalo.</p>
+    </div>
+    <!-- Form gửi qua JS (fetch) tới Google Sheet — xem SHEET_ENDPOINT trong <script> cuối trang -->
+    <form class="order-form" id="orderForm" method="POST" onsubmit="return false;">
+      <div class="form-row">
+        <label style="display:block;text-align:center;font-family:'Palatino Linotype','Palatino','Book Antiqua',serif;font-size:var(--fs-h4);font-weight:600;margin-bottom:12px">Bạn hãy chọn gói &amp; điền thông tin</label>
+        <div class="pkg-options" id="pkgOptions">
+          <label class="pkg-option"><input type="radio" name="package" value="Tập 1 Heyzine — 119.000đ"><span class="pkg-name">Tập 1 Heyzine</span><span class="pkg-price">💵👉 119.000đ</span></label>
+          <label class="pkg-option"><input type="radio" name="package" value="Tập 2 Heyzine — 179.000đ"><span class="pkg-name">Tập 2 Heyzine</span><span class="pkg-price">💵👉 179.000đ</span></label>
+          <label class="pkg-option"><input type="radio" name="package" value="Tập 3 Heyzine — 219.000đ"><span class="pkg-name">Tập 3 Heyzine</span><span class="pkg-price">💵👉 219.000đ</span></label>
+          <label class="pkg-option selected"><input type="radio" name="package" value="Combo 3 tập Heyzine — 399.000đ" checked><span class="pkg-name">Combo 3 tập Heyzine ⭐</span><span class="pkg-price">💵👉 399.000đ</span></label>
+          <label class="pkg-option"><input type="radio" name="package" value="Bản đầy đủ Heyzine — 519.000đ"><span class="pkg-name">Bản đầy đủ Heyzine</span><span class="pkg-price">💵👉 519.000đ</span></label>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="fullname">Họ và tên</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Nguyễn Văn A" required>
+      </div>
+      <div class="form-row">
+        <label for="email">Email nhận quyền đọc</label>
+        <input type="email" id="email" name="email" placeholder="email@example.com" required>
+        <div class="field-warn">⚠️ Nhập chính xác — quyền đọc được cấp theo email này</div>
+      </div>
+      <div class="form-row">
+        <label for="phone">Số điện thoại / Zalo</label>
+        <input type="tel" id="phone" name="phone" placeholder="0901 234 567" required>
+      </div>
+      <div class="form-row">
+        <label for="note">Ghi chú (tùy chọn)</label>
+        <textarea id="note" name="note" placeholder="Câu hỏi hoặc yêu cầu thêm (nếu có)"></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary btn--block btn--lg">Gửi đơn đặt mua</button>
+      <p class="form-note">Sau khi gửi form, bạn sẽ nhận hướng dẫn thanh toán. Quyền đọc được cấp trong vòng 24 giờ làm việc sau khi xác nhận.</p>
+      <div class="form-success" id="formSuccess">
+        <div class="payment-box">
+          <div class="payment-header">
+            <span class="payment-check">✓</span>
+            <div>
+              <strong>Đã ghi nhận đơn đặt mua!</strong>
+              <p style="margin:4px 0 0;font-size:var(--fs-small)">Quét mã QR bên dưới để thanh toán ngay</p>
+            </div>
+          </div>
+          <div class="payment-body">
+            <div class="payment-qr">
+              <img id="qrDynamic" src="" alt="QR thanh toán MB Bank" width="240" height="240">
+              <noscript><img src="assets/qr-mbbank.jpg" alt="QR MB Bank" width="240"></noscript>
+            </div>
+            <div class="payment-info">
+              <div class="payment-row"><span class="payment-label">Ngân hàng</span><span class="payment-value">MB Bank</span></div>
+              <div class="payment-row"><span class="payment-label">Số tài khoản</span><span class="payment-value" style="font-weight:700;letter-spacing:0.5px">0904667411</span></div>
+              <div class="payment-row"><span class="payment-label">Chủ tài khoản</span><span class="payment-value">NGUYEN VAN QUAN</span></div>
+              <div class="payment-row"><span class="payment-label">Số tiền</span><span class="payment-value payment-amount" id="payAmount">399.000đ</span></div>
+              <div class="payment-row"><span class="payment-label">Nội dung CK</span><span class="payment-value payment-content" id="payContent">CCAI [tên] [gói]</span></div>
+            </div>
+          </div>
+          <div class="payment-notes">
+            <p>📋 <strong>Nội dung chuyển khoản gợi ý:</strong> <code id="payContentCopy">CCAI...</code> <button type="button" class="copy-btn" id="copyBtn" title="Copy nội dung CK">Sao chép</button></p>
+            <p>⏱️ Quyền đọc Heyzine được cấp trong vòng <strong>24 giờ làm việc</strong> sau khi xác nhận thanh toán.</p>
+            <p>📧 Quyền đọc gửi qua email: <strong id="payEmail">—</strong></p>
+            <div style="margin-top:12px;font-size:13px;color:var(--c-ink-soft);line-height:1.8">
+              <p style="margin-bottom:4px">Nếu cần hỗ trợ, hãy liên hệ:</p>
+              <p>📱 Zalo: <strong>0904667411</strong></p>
+              <p>📧 Email: <strong>nguyenquan140882@gmail.com</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 15 — FINAL CTA
+     ============================================================ -->
+<section class="section final-cta" id="final-cta">
+  <div class="container">
+    <h2>Sẵn sàng biến Claude Cowork thành đồng nghiệp số?</h2>
+    <p>Combo 3 tập — trọn lộ trình từ nền tảng đến tự động hóa, chỉ 399.000đ. Tiết kiệm 118.000đ so với mua lẻ.</p>
+    <a href="#dat-mua" class="btn btn--primary btn--lg" data-pkg="combo">Đặt mua ngay</a>
+  </div>
+</section>
+
+<!-- Sticky CTA mobile (chỉ hiện trên mobile khi cuộn qua hero) -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta__text">
+    <strong>Combo 3 tập</strong>
+    <span><s>517.000đ</s> 399.000đ</span>
+  </div>
+  <a href="#dat-mua" class="btn btn--primary" data-pkg="combo">Đặt mua ngay</a>
+</div>
+
+<!-- ============================================================
+     SECTION 16 — FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">Claude Cowork AI Thực Chiến</div>
+        <p>Bộ ebook thực chiến giúp bạn dùng Claude Cowork như một đồng nghiệp số.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Liên kết</h4>
+        <a href="#van-de">Vấn đề</a>
+        <a href="#giai-phap">Giải pháp</a>
+        <a href="#bang-gia">Các gói</a>
+        <a href="#muc-luc">Nội dung</a>
+        <a href="#tac-gia">Tác giả</a>
+        <a href="#faq">FAQ</a>
+        <a href="#dat-mua">Đặt mua</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Liên hệ</h4>
+        <p style="color:#fff;margin-bottom:8px;">Tác giả: Nguyễn Quân</p>
+        <a href="mailto:nguyenquan140882@gmail.com">nguyenquan140882@gmail.com</a>
+        <a href="https://facebook.com/profile.php?id=61590310835534" target="_blank" rel="noopener">Fanpage Facebook</a>
+        <a href="https://zalo.me/0904667411" target="_blank" rel="noopener">📱 Zalo: 0904667411</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>Ebook đọc online trên Heyzine. Quyền đọc gắn với email đăng ký, không chia sẻ link.</p>
+      <p>© 2026 Nguyễn Quân. Bảo lưu mọi quyền.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh toàn màn hình">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Đóng (Esc)">×</button>
+  <img class="lightbox__img" id="lightboxImg" src="" alt="">
+  <span class="lightbox__hint">Nhấn Esc hoặc click để đóng</span>
+</div>
+
+<script>
+/* ============================================================
+   JS — header scroll, mobile menu, FAQ, form, chọn gói
+   ============================================================ */
+
+// 1. Header shadow khi scroll
+var header = document.getElementById('header');
+window.addEventListener('scroll', function () {
+  header.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// ============================================================
+// UTM TRACKING — bắt nguồn quảng cáo từ URL (?utm_source=facebook)
+// Lưu vào sessionStorage để giữ được dù khách cuộn qua nhiều section
+// rồi mới điền form, hoặc rời trang rồi quay lại trong cùng phiên.
+// ============================================================
+(function captureUTM() {
+  var params = new URLSearchParams(window.location.search);
+  var utmSource = params.get('utm_source'); // VD: facebook, zalo, google, tiktok
+  if (utmSource) {
+    // Chuẩn hóa tên kênh cho khớp với dropdown "Hiệu quả theo kênh"
+    var map = {
+      'facebook': 'Facebook Ads',
+      'fb': 'Facebook Ads',
+      'zalo': 'Zalo Ads',
+      'google': 'Google Ads',
+      'tiktok': 'TikTok Ads'
+    };
+    var normalized = map[utmSource.toLowerCase()] || utmSource;
+    sessionStorage.setItem('ccai_utm_source', normalized);
+  }
+})();
+function getTrackedSource() {
+  return sessionStorage.getItem('ccai_utm_source') || 'Website (trực tiếp)';
+}
+
+// 2. Mobile menu
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+var menuOverlay = document.getElementById('menuOverlay');
+var menuClose = document.getElementById('menuClose');
+
+function openMenu() { mobileMenu.classList.add('open'); menuOverlay.classList.add('open'); }
+function closeMenu() { mobileMenu.classList.remove('open'); menuOverlay.classList.remove('open'); }
+
+hamburger.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+menuOverlay.addEventListener('click', closeMenu);
+mobileMenu.querySelectorAll('a').forEach(function (a) {
+  a.addEventListener('click', closeMenu);
+});
+
+// 3. FAQ + mục lục: chỉ mở 1 item cùng nhóm (accordion behaviour cho FAQ)
+document.querySelectorAll('.faq-item').forEach(function (item) {
+  item.addEventListener('toggle', function () {
+    if (item.open) {
+      document.querySelectorAll('.faq-item').forEach(function (other) {
+        if (other !== item) other.open = false;
+      });
+    }
+  });
+});
+
+// 4. Pricing CTA → tự chọn đúng gói trong form
+var pkgMap = {
+  tap1: 'Tập 1 Heyzine — 119.000đ',
+  tap2: 'Tập 2 Heyzine — 179.000đ',
+  tap3: 'Tập 3 Heyzine — 219.000đ',
+  combo: 'Combo 3 tập Heyzine — 399.000đ',
+  full: 'Bản đầy đủ Heyzine — 519.000đ'
+};
+document.querySelectorAll('[data-pkg]').forEach(function (el) {
+  el.addEventListener('click', function () {
+    var val = pkgMap[el.getAttribute('data-pkg')];
+    document.querySelectorAll('input[name="package"]').forEach(function (radio) {
+      if (radio.value === val) { radio.checked = true; }
+    });
+    syncSelected();
+  });
+});
+
+// 5. Highlight radio gói đang chọn
+function syncSelected() {
+  document.querySelectorAll('.pkg-option').forEach(function (opt) {
+    var input = opt.querySelector('input');
+    opt.classList.toggle('selected', input.checked);
+  });
+}
+document.querySelectorAll('input[name="package"]').forEach(function (radio) {
+  radio.addEventListener('change', syncSelected);
+});
+
+// 6. Form submit → gửi vào Google Sheet qua Apps Script
+// ⚠️ THAY URL DƯỚI bằng link Web App sau khi deploy Apps Script (xem hướng dẫn kèm theo)
+var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxUnNH08UNgKJIrfQ4S2PHvg-OMEdHUA5n6Up-ayUXDqK-n60SZ5MqeRKqvI_oC3_M/exec';
+
+var form = document.getElementById('orderForm');
+var submitBtn = form.querySelector('button[type="submit"]');
+var successBox = document.getElementById('formSuccess');
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  // Validate phía client
+  var email = form.email.value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Vui lòng nhập email hợp lệ — quyền đọc được cấp theo email này.');
+    form.email.focus();
+    return;
+  }
+
+  // Gom dữ liệu
+  var data = {
+    package: (form.querySelector('input[name="package"]:checked') || {}).value || '',
+    fullname: form.fullname.value.trim(),
+    email: email,
+    phone: form.phone.value.trim(),
+    note: form.note.value.trim(),
+    time: new Date().toLocaleString('vi-VN'),
+    source: getTrackedSource()
+  };
+
+  // Trạng thái đang gửi
+  var originalText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Đang gửi...';
+
+  // Nếu chưa cấu hình endpoint thì báo rõ (tránh mất đơn âm thầm)
+  if (SHEET_ENDPOINT.indexOf('PASTE_') === 0) {
+    alert('⚠️ Chưa cấu hình link Google Sheet. Vui lòng dán SHEET_ENDPOINT trong code trước khi chạy thật.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+    return;
+  }
+
+  // Gửi tới Apps Script (no-cors: Apps Script không trả CORS header, nên không đọc được response — coi như thành công nếu không lỗi mạng)
+  fetch(SHEET_ENDPOINT, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(data)
+  })
+  .then(function () {
+    // Lấy thông tin gói + khách
+    var pkg = data.package;
+    var name = data.fullname.trim();
+    var email = data.email;
+
+    // Map gói → số tiền
+    var priceMap = {
+      'Tập 1 Heyzine — 119.000đ': { amount: 119000, short: 'Tap1', display: '119.000đ' },
+      'Tập 2 Heyzine — 179.000đ': { amount: 179000, short: 'Tap2', display: '179.000đ' },
+      'Tập 3 Heyzine — 219.000đ': { amount: 219000, short: 'Tap3', display: '219.000đ' },
+      'Combo 3 tập Heyzine — 399.000đ': { amount: 399000, short: 'Combo3', display: '399.000đ' },
+      'Bản đầy đủ Heyzine — 519.000đ': { amount: 519000, short: 'Full', display: '519.000đ' }
+    };
+    var info = priceMap[pkg] || { amount: 0, short: 'Ebook', display: pkg };
+
+    // Bỏ dấu tiếng Việt để nội dung CK hiện đúng tên
+    function removeDiacritics(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+               .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+    }
+    var cleanName = removeDiacritics(name).toUpperCase().replace(/[^A-Z0-9 ]/g, '').trim();
+    var cleanPhone = data.phone.replace(/[^0-9]/g, '');
+    var transferContent = 'CCAI ' + info.short + ' ' + cleanName + ' ' + cleanPhone;
+
+    // Tạo QR động qua VietQR API
+    var qrUrl = 'https://img.vietqr.io/image/MB-0904667411-compact2.png'
+      + '?amount=' + info.amount
+      + '&addInfo=' + encodeURIComponent(transferContent)
+      + '&accountName=' + encodeURIComponent('NGUYEN VAN QUAN');
+    var qrImg = document.getElementById('qrDynamic');
+    qrImg.src = qrUrl;
+    // Fallback nếu VietQR không load
+    qrImg.onerror = function() { qrImg.src = 'assets/qr-mbbank.jpg'; };
+
+    // Điền thông tin thanh toán
+    document.getElementById('payAmount').textContent = info.display;
+    document.getElementById('payContent').textContent = transferContent;
+    document.getElementById('payContentCopy').textContent = transferContent;
+    document.getElementById('payEmail').textContent = email;
+
+    // Reset form nhưng GIỮ thông tin hiển thị
+    form.reset();
+    syncSelected();
+
+    // Hiện khung thanh toán
+    successBox.style.display = 'block';
+    successBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Bắn event chuyển đổi cho pixel (nếu đã cài)
+    if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+    if (typeof gtag === 'function') { gtag('event', 'generate_lead', { package: data.package, value: info.amount }); }
+  })
+  .catch(function () {
+    alert('Có lỗi khi gửi đơn. Vui lòng thử lại hoặc liên hệ Zalo/email của tác giả.');
+  })
+  .finally(function () {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  });
+});
+
+// 7. Sticky CTA mobile — hiện khi cuộn qua hero, ẩn khi tới form
+var stickyCta = document.getElementById('stickyCta');
+
+// 8. Copy nội dung chuyển khoản
+document.getElementById('copyBtn').addEventListener('click', function() {
+  var text = document.getElementById('payContentCopy').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById('copyBtn');
+    btn.textContent = 'Đã copy ✓';
+    setTimeout(function() { btn.textContent = 'Sao chép'; }, 2000);
+  });
+});
+
+// ============================================================
+// 9. HỆ THỐNG ĐÁNH GIÁ
+// ============================================================
+var rvSelectedStars = 5;
+var rvVerifiedEmail = '';
+var rvVerifiedPkg = '';
+
+// Fetch và hiển thị reviews khi load trang
+(function loadReviews() {
+  fetch(SHEET_ENDPOINT)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.reviews && data.reviews.length > 0) {
+        renderReviews(data.reviews, data.avg, data.total);
+      }
+    })
+    .catch(function() { /* im lặng nếu lỗi */ });
+})();
+
+function renderReviews(reviews, avg, total) {
+  var grid = document.getElementById('rvGrid');
+  var summary = document.getElementById('rvSummary');
+  var empty = document.getElementById('rvEmpty');
+
+  if (reviews.length === 0) { empty.style.display = 'block'; summary.style.display = 'none'; return; }
+
+  empty.style.display = 'none';
+  summary.style.display = 'flex';
+  document.getElementById('rvAvgNum').textContent = avg;
+  document.getElementById('rvAvgStars').textContent = renderStars(Math.round(avg));
+  document.getElementById('rvCount').textContent = total + ' đánh giá';
+
+  grid.innerHTML = '';
+  reviews.forEach(function(rv) {
+    var card = document.createElement('div');
+    card.className = 'rv-card';
+    card.innerHTML =
+      '<div class="rv-card__stars">' + renderStars(rv.stars) + '</div>' +
+      '<div class="rv-card__content">"' + escHtml(rv.content) + '"</div>' +
+      '<div class="rv-card__footer">' +
+        '<span class="rv-card__name">' + escHtml(rv.name) + '</span>' +
+        (rv.package ? '<span class="rv-card__pkg">' + escHtml(rv.package.split('—')[0].trim()) + '</span>' : '') +
+      '</div>';
+    grid.appendChild(card);
+  });
+}
+
+function renderStars(n) {
+  var s = '';
+  for (var i = 1; i <= 5; i++) s += i <= n ? '★' : '☆';
+  return s;
+}
+
+function escHtml(t) {
+  var d = document.createElement('div'); d.textContent = t; return d.innerHTML;
+}
+
+// Modal
+function openReviewModal() {
+  document.getElementById('rvOverlay').classList.add('open');
+  document.getElementById('rvStep1').style.display = 'block';
+  document.getElementById('rvStep2').style.display = 'none';
+  document.getElementById('rvVerifyMsg').style.display = 'none';
+  document.getElementById('rvEmail').value = '';
+}
+function closeReviewModal() {
+  document.getElementById('rvOverlay').classList.remove('open');
+}
+document.getElementById('rvOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeReviewModal();
+});
+
+// Verify email
+function verifyReviewEmail() {
+  var email = document.getElementById('rvEmail').value.trim();
+  if (!email) { showVerifyMsg('Vui lòng nhập email.', true); return; }
+
+  var btn = document.getElementById('rvVerifyBtn');
+  btn.disabled = true; btn.textContent = 'Đang kiểm tra...';
+
+  fetch(SHEET_ENDPOINT, {
+    method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'},
+    body: JSON.stringify({ action: 'verify_email', email: email })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.verified) {
+      rvVerifiedEmail = email;
+      rvVerifiedPkg = data.package || '';
+      document.getElementById('rvPkgDisplay').textContent = rvVerifiedPkg || 'Ebook';
+      // Pre-fill nếu có review cũ
+      if (data.existingReview) {
+        document.getElementById('rvName').value = data.existingReview.name || '';
+        document.getElementById('rvContent').value = data.existingReview.content || '';
+        setStarRating(data.existingReview.stars || 5);
+      } else {
+        setStarRating(5);
+      }
+      document.getElementById('rvStep1').style.display = 'none';
+      document.getElementById('rvStep2').style.display = 'block';
+    } else {
+      showVerifyMsg(data.message || 'Email chưa mua ebook.', true);
+    }
+  })
+  .catch(function() { showVerifyMsg('Có lỗi, vui lòng thử lại.', true); })
+  .finally(function() { btn.disabled = false; btn.textContent = 'Xác minh'; });
+}
+
+function showVerifyMsg(msg, isError) {
+  var el = document.getElementById('rvVerifyMsg');
+  el.style.display = 'block';
+  el.style.color = isError ? 'var(--c-warning)' : 'var(--c-trust)';
+  el.textContent = msg;
+}
+
+// Star rating input
+var starInput = document.getElementById('rvStarInput');
+starInput.querySelectorAll('span').forEach(function(span) {
+  span.addEventListener('click', function() { setStarRating(Number(this.getAttribute('data-star'))); });
+  span.addEventListener('mouseenter', function() { highlightStars(Number(this.getAttribute('data-star'))); });
+});
+starInput.addEventListener('mouseleave', function() { highlightStars(rvSelectedStars); });
+
+function setStarRating(n) {
+  rvSelectedStars = n;
+  highlightStars(n);
+}
+function highlightStars(n) {
+  starInput.querySelectorAll('span').forEach(function(s) {
+    var v = Number(s.getAttribute('data-star'));
+    s.textContent = v <= n ? '★' : '☆';
+    s.classList.toggle('active', v <= n);
+  });
+}
+
+// Submit review
+function submitReview() {
+  var name = document.getElementById('rvName').value.trim();
+  var content = document.getElementById('rvContent').value.trim();
+  if (!name || !content) { showSubmitMsg('Vui lòng điền đầy đủ tên và nội dung.', true); return; }
+
+  var btn = document.getElementById('rvSubmitBtn');
+  btn.disabled = true; btn.textContent = 'Đang gửi...';
+
+  fetch(SHEET_ENDPOINT, {
+    method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'},
+    body: JSON.stringify({
+      action: 'submit_review',
+      email: rvVerifiedEmail,
+      name: name,
+      stars: rvSelectedStars,
+      content: content,
+      package: rvVerifiedPkg
+    })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.result === 'success') {
+      showSubmitMsg(data.message, false);
+      setTimeout(function() {
+        closeReviewModal();
+        // Reload reviews
+        fetch(SHEET_ENDPOINT).then(function(r){return r.json();}).then(function(d){
+          if(d.reviews) renderReviews(d.reviews, d.avg, d.total);
+        });
+      }, 1500);
+    } else {
+      showSubmitMsg(data.message || 'Có lỗi, vui lòng thử lại.', true);
+    }
+  })
+  .catch(function() { showSubmitMsg('Có lỗi, vui lòng thử lại.', true); })
+  .finally(function() { btn.disabled = false; btn.textContent = 'Gửi đánh giá'; });
+}
+
+function showSubmitMsg(msg, isError) {
+  var el = document.getElementById('rvSubmitMsg');
+  el.style.display = 'block';
+  el.style.color = isError ? 'var(--c-warning)' : 'var(--c-trust)';
+  el.textContent = msg;
+}
+
+// ============================================================
+// LIGHTBOX — click ảnh mở full màn hình, Esc để đóng
+// ============================================================
+window.addEventListener('load', function() {
+var lightbox = document.getElementById('lightbox');
+var lightboxImg = document.getElementById('lightboxImg');
+var lightboxClose = document.getElementById('lightboxClose');
+if (!lightbox || !lightboxImg || !lightboxClose) return;
+
+function openLightbox(src, alt) {
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || '';
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(function() { lightboxImg.src = ''; }, 300);
+}
+
+document.querySelectorAll('img:not(#qrDynamic):not([src*="qr"])').forEach(function(img) {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', function() {
+    if (this.src) openLightbox(this.src, this.alt);
+  });
+});
+
+lightbox.addEventListener('click', function(e) {
+  if (e.target === lightbox || e.target === lightboxImg) closeLightbox();
+});
+lightboxClose.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+});
+});
+var heroSection = document.getElementById('hero');
+var formSection = document.getElementById('dat-mua');
+window.addEventListener('scroll', function () {
+  var y = window.scrollY;
+  var pastHero = y > (heroSection.offsetHeight - 100);
+  var formTop = formSection.getBoundingClientRect().top;
+  var formVisible = formTop < window.innerHeight && formTop > -formSection.offsetHeight;
+  stickyCta.classList.toggle('show', pastHero && !formVisible);
+});
+</script>
+
+
+</body>
+</html>
