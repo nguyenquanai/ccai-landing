@@ -16,9 +16,6 @@
 <meta property="og:description" content="Biến Claude Cowork thành đồng nghiệp số. 3 tập thực chiến, playbook theo nghề, tiếng Việt dễ hiểu.">
 <meta property="og:image" content="assets/og-image.jpg">
 
-<!-- ===== Favicon ===== -->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-     
 <!-- ===== Font: Be Vietnam Pro ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1945,6 +1942,225 @@ window.addEventListener('scroll', function () {
   stickyCta.classList.toggle('show', pastHero && !formVisible);
 });
 </script>
+
+
+<!-- ============================================================
+     FAQ CHAT WIDGET v1.0 — Chat bot tự động trả lời từ Google Sheet
+     Kết nối sheet FAQ_Bot qua Apps Script v11
+     ============================================================ -->
+<div id="faqChatWidget">
+  <!-- Nút chat nổi -->
+  <button id="faqChatBtn" onclick="toggleFaqChat()" aria-label="Mở chat hỗ trợ">
+    <svg id="faqIconOpen" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+    </svg>
+    <svg id="faqIconClose" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+
+  <!-- Khung chat -->
+  <div id="faqChatBox" class="faq-hidden">
+    <div id="faqChatHeader">
+      <div id="faqChatHeaderInfo">
+        <strong>Hỗ trợ mua sách</strong>
+        <span>Trả lời tự động 24/7</span>
+      </div>
+      <button onclick="toggleFaqChat()" aria-label="Đóng chat">&times;</button>
+    </div>
+    <div id="faqChatMessages">
+      <div class="faq-msg faq-bot">
+        <div class="faq-msg-content">Chào bạn! 👋 Mình có thể giúp bạn tìm hiểu về ebook <strong>Claude Cowork AI Thực Chiến</strong>. Bạn muốn hỏi gì?</div>
+      </div>
+      <div id="faqSuggestions">
+        <button class="faq-suggest" onclick="askSuggestion('Có những gói nào?')">Có những gói nào?</button>
+        <button class="faq-suggest" onclick="askSuggestion('Nên mua gói nào?')">Nên mua gói nào?</button>
+        <button class="faq-suggest" onclick="askSuggestion('Tôi có nhận file PDF không?')">Có nhận PDF không?</button>
+        <button class="faq-suggest" onclick="askSuggestion('Sau khi mua thì nhận sách như thế nào?')">Cách nhận sách?</button>
+      </div>
+    </div>
+    <div id="faqChatInput">
+      <input type="text" id="faqInput" placeholder="Nhập câu hỏi của bạn..." onkeydown="if(event.key==='Enter')sendFaqQuestion()" />
+      <button onclick="sendFaqQuestion()" aria-label="Gửi">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+/* === FAQ CHAT WIDGET === */
+#faqChatWidget{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:var(--font-body)}
+#faqChatBtn{width:60px;height:60px;border-radius:50%;background:var(--c-accent);color:#fff;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(232,93,38,0.35);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s}
+#faqChatBtn:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(232,93,38,0.45)}
+
+#faqChatBox{position:absolute;bottom:76px;right:0;width:370px;max-height:520px;background:var(--c-bg);border:1px solid var(--c-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;overflow:hidden;transition:opacity .25s,transform .25s}
+#faqChatBox.faq-hidden{opacity:0;transform:translateY(16px) scale(0.95);pointer-events:none}
+#faqChatBox.faq-show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+
+#faqChatHeader{background:var(--c-accent);color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+#faqChatHeaderInfo{display:flex;flex-direction:column;gap:2px}
+#faqChatHeaderInfo strong{font-size:15px}
+#faqChatHeaderInfo span{font-size:12px;opacity:0.85}
+#faqChatHeader button{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;padding:0 4px;line-height:1}
+
+#faqChatMessages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;min-height:280px;max-height:360px}
+.faq-msg{display:flex;gap:8px;max-width:92%}
+.faq-bot{align-self:flex-start}
+.faq-user{align-self:flex-end;flex-direction:row-reverse}
+.faq-msg-content{padding:10px 14px;border-radius:var(--radius-md);font-size:var(--fs-small);line-height:1.55;white-space:pre-wrap;word-break:break-word}
+.faq-bot .faq-msg-content{background:var(--c-surface);color:var(--c-ink);border:1px solid var(--c-border);border-bottom-left-radius:4px}
+.faq-user .faq-msg-content{background:var(--c-accent);color:#fff;border-bottom-right-radius:4px}
+
+#faqSuggestions{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.faq-suggest{background:var(--c-surface);border:1px solid var(--c-accent);color:var(--c-accent);padding:6px 12px;border-radius:20px;font-size:13px;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap;font-family:var(--font-body)}
+.faq-suggest:hover{background:var(--c-accent);color:#fff}
+
+#faqChatInput{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--c-border);background:var(--c-surface);flex-shrink:0}
+#faqInput{flex:1;border:1px solid var(--c-border);border-radius:24px;padding:10px 16px;font-size:var(--fs-small);outline:none;background:var(--c-bg-alt);font-family:var(--font-body)}
+#faqInput:focus{border-color:var(--c-accent)}
+#faqChatInput button{width:40px;height:40px;border:none;background:var(--c-accent);color:#fff;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+#faqChatInput button:hover{background:var(--c-accent-dark)}
+
+.faq-typing{display:flex;gap:4px;padding:10px 14px;align-self:flex-start}
+.faq-typing span{width:8px;height:8px;background:#ccc;border-radius:50%;animation:faqBounce 1.2s infinite}
+.faq-typing span:nth-child(2){animation-delay:.2s}
+.faq-typing span:nth-child(3){animation-delay:.4s}
+@keyframes faqBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+
+@media(max-width:480px){
+  #faqChatBox{width:calc(100vw - 32px);right:-8px;bottom:70px;max-height:70vh}
+  #faqChatBtn{width:54px;height:54px}
+  #faqChatWidget{bottom:16px;right:16px}
+}
+</style>
+
+<script>
+/* === FAQ CHAT WIDGET LOGIC v1.0 === */
+(function(){
+  var faqData = [];
+  var faqLoaded = false;
+  var chatOpen = false;
+
+  window.loadFaqData = function() {
+    if (faqLoaded) return;
+    fetch(SHEET_ENDPOINT + '?type=faq')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if (data && data.faq) { faqData = data.faq; faqLoaded = true; }
+      })
+      .catch(function(err){ console.log('FAQ load error:', err); });
+  };
+
+  window.toggleFaqChat = function() {
+    var box = document.getElementById('faqChatBox');
+    var iconOpen = document.getElementById('faqIconOpen');
+    var iconClose = document.getElementById('faqIconClose');
+    chatOpen = !chatOpen;
+    if (chatOpen) {
+      box.classList.remove('faq-hidden');
+      box.classList.add('faq-show');
+      iconOpen.style.display = 'none';
+      iconClose.style.display = 'block';
+      loadFaqData();
+      setTimeout(function(){ document.getElementById('faqInput').focus(); }, 300);
+    } else {
+      box.classList.remove('faq-show');
+      box.classList.add('faq-hidden');
+      iconOpen.style.display = 'block';
+      iconClose.style.display = 'none';
+    }
+  };
+
+  window.askSuggestion = function(text) {
+    var sugBox = document.getElementById('faqSuggestions');
+    if (sugBox) sugBox.style.display = 'none';
+    document.getElementById('faqInput').value = text;
+    sendFaqQuestion();
+  };
+
+  window.sendFaqQuestion = function() {
+    var input = document.getElementById('faqInput');
+    var question = input.value.trim();
+    if (!question) return;
+    input.value = '';
+    addMessage(question, 'user');
+    var sugBox = document.getElementById('faqSuggestions');
+    if (sugBox) sugBox.style.display = 'none';
+    var typing = showTyping();
+    setTimeout(function(){
+      removeTyping(typing);
+      var match = findBestMatch(question);
+      if (match) {
+        addMessage(match.answer, 'bot');
+        countQuestionHit(match.rowIndex);
+      } else {
+        addMessage('Mình chưa có câu trả lời cho câu hỏi này. Bạn liên hệ trực tiếp để được hỗ trợ nhé:\n\n📱 Zalo: 0904667411\n📧 Email: nguyenquan140882@gmail.com', 'bot');
+        logUnansweredQuestion(question);
+      }
+    }, 600 + Math.random() * 400);
+  };
+
+  function findBestMatch(question) {
+    if (!faqData.length) return null;
+    var q = question.toLowerCase().replace(/[?.!,]/g, '');
+    var bestMatch = null;
+    var bestScore = 0;
+    for (var i = 0; i < faqData.length; i++) {
+      var item = faqData[i];
+      var keywords = item.keywords.toLowerCase().split(',');
+      var score = 0;
+      for (var k = 0; k < keywords.length; k++) {
+        var kw = keywords[k].trim();
+        if (kw && q.indexOf(kw) !== -1) { score += kw.length; }
+      }
+      var origQ = item.question.toLowerCase().replace(/[?.!,]/g, '');
+      if (q === origQ) { score += 100; }
+      else if (q.indexOf(origQ) !== -1 || origQ.indexOf(q) !== -1) { score += 30; }
+      if (score > bestScore) { bestScore = score; bestMatch = item; }
+    }
+    return bestScore >= 3 ? bestMatch : null;
+  }
+
+  function addMessage(text, type) {
+    var container = document.getElementById('faqChatMessages');
+    var msgDiv = document.createElement('div');
+    msgDiv.className = 'faq-msg faq-' + type;
+    var contentDiv = document.createElement('div');
+    contentDiv.className = 'faq-msg-content';
+    contentDiv.innerHTML = text.replace(/\n/g, '<br>');
+    msgDiv.appendChild(contentDiv);
+    container.appendChild(msgDiv);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function showTyping() {
+    var container = document.getElementById('faqChatMessages');
+    var typing = document.createElement('div');
+    typing.className = 'faq-typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    container.appendChild(typing);
+    container.scrollTop = container.scrollHeight;
+    return typing;
+  }
+  function removeTyping(el) { if (el && el.parentNode) el.parentNode.removeChild(el); }
+
+  function logUnansweredQuestion(question) {
+    fetch(SHEET_ENDPOINT, {
+      method: 'POST', headers: {'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({ action: 'logQuestion', question: question })
+    }).catch(function(e){ console.log('Log question error:', e); });
+  }
+
+  function countQuestionHit(rowIndex) {
+    fetch(SHEET_ENDPOINT, {
+      method: 'POST', headers: {'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({ action: 'countQuestion', rowIndex: rowIndex })
+    }).catch(function(e){ console.log('Count error:', e); });
+  }
+})();
+</script>
+<!-- === HẾT FAQ CHAT WIDGET === -->
 
 
 </body>
