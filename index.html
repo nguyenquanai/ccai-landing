@@ -763,6 +763,46 @@ img:hover {
 }
 
 /* ============================================================
+   PROMO — thanh khuyến mãi + badge + giá gạch động
+   ============================================================ */
+.promo-bar {
+  background: linear-gradient(135deg, #E85D26 0%, #C9491A 100%);
+  color: #fff; text-align: center; position: sticky; top: 0; z-index: 60;
+  box-shadow: 0 2px 12px rgba(232,93,38,0.3);
+}
+.promo-bar__inner {
+  max-width: var(--container-max); margin: 0 auto; padding: 10px var(--container-pad);
+  display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+  font-size: 15px; font-weight: 600;
+}
+.promo-bar__countdown {
+  background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 999px;
+  font-variant-numeric: tabular-nums; letter-spacing: 0.5px; white-space: nowrap;
+}
+.promo-bar__cta { color: #fff; text-decoration: underline; font-weight: 700; white-space: nowrap; }
+.promo-bar__cta:hover { opacity: 0.85; }
+/* Badge % giảm trên card chính */
+.promo-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: #C9491A; color: #fff; font-size: 13px; font-weight: 700;
+  padding: 5px 12px; border-radius: 999px; z-index: 3;
+  box-shadow: 0 2px 8px rgba(201,73,26,0.4);
+}
+.price-card { position: relative; }
+/* Giá gạch động (khi có KM) — card chính */
+.price-old-dyn {
+  font-size: 18px; color: var(--c-ink-faint); text-decoration: line-through;
+  display: block; margin-bottom: 2px;
+}
+/* Mini card giá gạch (mua từng tập) */
+.mini-old { color: var(--c-ink-faint); text-decoration: line-through; font-size: 0.85em; margin-right: 6px; }
+.mini-now { font-weight: 700; }
+@media (max-width: 640px) {
+  .promo-bar__inner { gap: 8px; font-size: 13px; padding: 8px 12px; }
+  .promo-bar__cta { flex-basis: 100%; }
+}
+
+/* ============================================================
    LIGHTBOX — full màn hình khi click ảnh
    ============================================================ */
 .lightbox {
@@ -861,6 +901,17 @@ img:hover {
 </style>
 </head>
 <body>
+
+<!-- ============================================================
+     PROMO BAR — thanh khuyến mãi + đếm ngược (ẩn mặc định, JS bật khi có KM)
+     ============================================================ -->
+<div class="promo-bar" id="promoBar" style="display:none;">
+  <div class="promo-bar__inner">
+    <span class="promo-bar__text" id="promoBarText"></span>
+    <span class="promo-bar__countdown" id="promoCountdown"></span>
+    <a href="#bang-gia" class="promo-bar__cta">Xem ưu đãi →</a>
+  </div>
+</div>
 
 <!-- ============================================================
      SECTION 1 — HEADER
@@ -1053,11 +1104,12 @@ img:hover {
     </div>
     <div class="pricing-grid">
       <!-- Card Tập 1 -->
-      <div class="price-card">
+      <div class="price-card" data-pkg-name="Tập 1 Heyzine — 119.000đ">
+        <span class="promo-badge" style="display:none;"></span>
         <span class="price-badge">Dành cho người mới</span>
         <h3>Tập 1 Heyzine</h3>
         <p class="subtitle">Nền tảng Claude Cowork</p>
-        <div><span class="price-now">119.000<span class="unit">đ</span></span></div>
+        <div class="price-block"><span class="price-old-dyn" style="display:none;"></span><div><span class="price-now">119.000<span class="unit">đ</span></span></div></div>
         <ul>
           <li>Hiểu nền tảng &amp; tư duy giao việc cho AI</li>
           <li>Làm việc với file, trích xuất dữ liệu</li>
@@ -1067,12 +1119,14 @@ img:hover {
         <a href="#dat-mua" class="btn btn--outline btn--block" data-pkg="tap1">Bắt đầu với Tập 1</a>
       </div>
       <!-- Card Combo -->
-      <div class="price-card price-card--combo">
+      <div class="price-card price-card--combo" data-pkg-name="Combo 3 tập Heyzine — 399.000đ">
+        <span class="promo-badge" style="display:none;"></span>
         <span class="price-badge">⭐ Khuyên dùng</span>
         <h3>Combo 3 tập Heyzine</h3>
         <p class="subtitle">Trọn lộ trình: Nền tảng → Tự động hóa → Thực chiến</p>
-        <div>
+        <div class="price-block">
           <span class="price-old">517.000đ</span>
+          <span class="price-old-dyn" style="display:none;"></span>
           <div><span class="price-now">399.000<span class="unit">đ</span></span></div>
           <span class="price-save">Tiết kiệm 118.000đ</span>
         </div>
@@ -1085,11 +1139,12 @@ img:hover {
         <a href="#dat-mua" class="btn btn--primary btn--block" data-pkg="combo">Mua Combo 3 tập</a>
       </div>
       <!-- Card Bản đầy đủ -->
-      <div class="price-card">
+      <div class="price-card" data-pkg-name="Bản đầy đủ Heyzine — 519.000đ">
+        <span class="promo-badge" style="display:none;"></span>
         <span class="price-badge">Đầy đủ nhất</span>
         <h3>Bản đầy đủ Heyzine</h3>
         <p class="subtitle">Full edition — cẩm nang tra cứu dài hạn</p>
-        <div><span class="price-now">519.000<span class="unit">đ</span></span></div>
+        <div class="price-block"><span class="price-old-dyn" style="display:none;"></span><div><span class="price-now">519.000<span class="unit">đ</span></span></div></div>
         <ul>
           <li>Toàn bộ nội dung trong một ebook liền mạch</li>
           <li>Dùng như cẩm nang tra cứu dài hạn</li>
@@ -1110,22 +1165,22 @@ img:hover {
       <h2>Hoặc mua từng tập theo nhu cầu</h2>
     </div>
     <div class="single-grid">
-      <div class="single-item">
+      <div class="single-item" data-pkg-name="Tập 1 Heyzine — 119.000đ">
         <div class="vol">Tập 1</div>
         <div class="desc">Nền tảng Claude Cowork</div>
-        <div class="price">119.000đ</div>
+        <div class="price"><span class="mini-old" style="display:none;"></span><span class="mini-now">119.000đ</span></div>
         <a href="#dat-mua" class="btn btn--outline btn--block" data-pkg="tap1">Mua Tập 1</a>
       </div>
-      <div class="single-item">
+      <div class="single-item" data-pkg-name="Tập 2 Heyzine — 179.000đ">
         <div class="vol">Tập 2</div>
         <div class="desc">Kết nối &amp; Tự động hóa</div>
-        <div class="price">179.000đ</div>
+        <div class="price"><span class="mini-old" style="display:none;"></span><span class="mini-now">179.000đ</span></div>
         <a href="#dat-mua" class="btn btn--outline btn--block" data-pkg="tap2">Mua Tập 2</a>
       </div>
-      <div class="single-item">
+      <div class="single-item" data-pkg-name="Tập 3 Heyzine — 219.000đ">
         <div class="vol">Tập 3</div>
         <div class="desc">Thực chiến theo nghề</div>
-        <div class="price">219.000đ</div>
+        <div class="price"><span class="mini-old" style="display:none;"></span><span class="mini-now">219.000đ</span></div>
         <a href="#dat-mua" class="btn btn--outline btn--block" data-pkg="tap3">Mua Tập 3</a>
       </div>
     </div>
@@ -1454,11 +1509,11 @@ img:hover {
         <div class="form-row">
           <label style="display:block;text-align:center;font-family:'Palatino Linotype','Palatino','Book Antiqua',serif;font-size:var(--fs-h4);font-weight:600;margin-bottom:12px">Bạn hãy chọn gói &amp; điền thông tin</label>
           <div class="pkg-options" id="pkgOptions">
-            <label class="pkg-option"><input type="radio" name="package" value="Tập 1 Heyzine — 119.000đ"><span class="pkg-name">Tập 1 Heyzine</span><span class="pkg-price">💵👉 119.000đ</span></label>
-            <label class="pkg-option"><input type="radio" name="package" value="Tập 2 Heyzine — 179.000đ"><span class="pkg-name">Tập 2 Heyzine</span><span class="pkg-price">💵👉 179.000đ</span></label>
-            <label class="pkg-option"><input type="radio" name="package" value="Tập 3 Heyzine — 219.000đ"><span class="pkg-name">Tập 3 Heyzine</span><span class="pkg-price">💵👉 219.000đ</span></label>
-            <label class="pkg-option selected"><input type="radio" name="package" value="Combo 3 tập Heyzine — 399.000đ" checked><span class="pkg-name">Combo 3 tập Heyzine ⭐</span><span class="pkg-price">💵👉 399.000đ</span></label>
-            <label class="pkg-option"><input type="radio" name="package" value="Bản đầy đủ Heyzine — 519.000đ"><span class="pkg-name">Bản đầy đủ Heyzine</span><span class="pkg-price">💵👉 519.000đ</span></label>
+            <label class="pkg-option"><input type="radio" name="package" value="Tập 1 Heyzine — 119.000đ"><span class="pkg-name">Tập 1 Heyzine</span><span class="pkg-price">💵👉 <span class="pkg-price-text">119.000đ</span></span></label>
+            <label class="pkg-option"><input type="radio" name="package" value="Tập 2 Heyzine — 179.000đ"><span class="pkg-name">Tập 2 Heyzine</span><span class="pkg-price">💵👉 <span class="pkg-price-text">179.000đ</span></span></label>
+            <label class="pkg-option"><input type="radio" name="package" value="Tập 3 Heyzine — 219.000đ"><span class="pkg-name">Tập 3 Heyzine</span><span class="pkg-price">💵👉 <span class="pkg-price-text">219.000đ</span></span></label>
+            <label class="pkg-option selected"><input type="radio" name="package" value="Combo 3 tập Heyzine — 399.000đ" checked><span class="pkg-name">Combo 3 tập Heyzine ⭐</span><span class="pkg-price">💵👉 <span class="pkg-price-text">399.000đ</span></span></label>
+            <label class="pkg-option"><input type="radio" name="package" value="Bản đầy đủ Heyzine — 519.000đ"><span class="pkg-name">Bản đầy đủ Heyzine</span><span class="pkg-price">💵👉 <span class="pkg-price-text">519.000đ</span></span></label>
           </div>
         </div>
         <div class="form-row">
@@ -1732,7 +1787,7 @@ document.querySelectorAll('input[name="package"]').forEach(function (radio) {
 
 // 6. Form submit → gửi vào Google Sheet qua Apps Script
 // ⚠️ THAY URL DƯỚI bằng link Web App sau khi deploy Apps Script (xem hướng dẫn kèm theo)
-var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxUnNH08UNgKJIrfQ4S2PHvg-OMEdHUA5n6Up-ayUXDqK-n60SZ5MqeRKqvI_oC3_M/exec';
+var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbysEFJLgsAkWh_0L11u9A7s09vHybwmezeh9RwybMIlItMOerOAeR_eSX3_2AMWLYtS/exec';
 
 var form = document.getElementById('orderForm');
 
@@ -1761,6 +1816,13 @@ form.addEventListener('submit', function (e) {
 
   var pkg = (form.querySelector('input[name="package"]:checked') || {}).value || '';
   var info = priceMap[pkg] || { amount: 0, short: 'Ebook', display: pkg };
+  // ✨ Nếu gói đang có khuyến mãi còn hiệu lực → dùng giá KM cho màn xác nhận
+  if (window.CCAI_PROMOS && window.CCAI_PROMOS[pkg]) {
+    info = Object.assign({}, info, {
+      amount: window.CCAI_PROMOS[pkg].salePrice,
+      display: formatVND(window.CCAI_PROMOS[pkg].salePrice)
+    });
+  }
 
   pendingOrderData = {
     package: pkg,
@@ -1815,6 +1877,13 @@ document.getElementById('omConfirmBtn').addEventListener('click', function () {
     var name = data.fullname.trim();
     var email = data.email;
     var info = priceMap[pkg] || { amount: 0, short: 'Ebook', display: pkg };
+    // ✨ Nếu gói đang có khuyến mãi còn hiệu lực → QR + số tiền dùng giá KM (đảm bảo khớp SePay đối soát)
+    if (window.CCAI_PROMOS && window.CCAI_PROMOS[pkg]) {
+      info = Object.assign({}, info, {
+        amount: window.CCAI_PROMOS[pkg].salePrice,
+        display: formatVND(window.CCAI_PROMOS[pkg].salePrice)
+      });
+    }
 
     // Bỏ dấu tiếng Việt để nội dung CK hiện đúng tên
     function removeDiacritics(str) {
@@ -1885,16 +1954,132 @@ var rvVerifiedEmail = '';
 var rvVerifiedPkg = '';
 
 // Fetch và hiển thị reviews khi load trang
-(function loadReviews() {
+// Fetch reviews + khuyến mãi khi load trang (dùng chung 1 request)
+window.CCAI_PROMOS = {};
+(function loadData() {
   fetch(SHEET_ENDPOINT)
     .then(function(r) { return r.json(); })
     .then(function(data) {
       if (data.reviews && data.reviews.length > 0) {
         renderReviews(data.reviews, data.avg, data.total);
       }
+      if (data.promos) {
+        window.CCAI_PROMOS = data.promos;
+        applyPromos(data.promos);
+      }
     })
     .catch(function() { /* im lặng nếu lỗi */ });
 })();
+
+// ============================================================
+// KHUYẾN MÃI — format tiền, áp giá KM lên card/mini-card/form, đếm ngược
+// ============================================================
+function formatVND(n) {
+  return Number(n).toLocaleString('vi-VN') + 'đ';
+}
+
+function applyPromos(promos) {
+  var keys = Object.keys(promos);
+  if (keys.length === 0) return;
+
+  // 1. Cập nhật pricing card lớn + mini-card (đều dùng chung [data-pkg-name])
+  document.querySelectorAll('[data-pkg-name]').forEach(function (el) {
+    var pkgName = el.getAttribute('data-pkg-name');
+    var promo = promos[pkgName];
+    if (!promo) return;
+
+    // Pricing card lớn
+    var priceNow = el.querySelector('.price-now');
+    var oldDyn = el.querySelector('.price-old-dyn');
+    var badge = el.querySelector('.promo-badge');
+    if (priceNow) {
+      priceNow.innerHTML = formatVND(promo.salePrice).replace('đ', '<span class="unit">đ</span>');
+      if (oldDyn) {
+        oldDyn.textContent = formatVND(promo.originalPrice);
+        oldDyn.style.display = 'block';
+      }
+    }
+    // Mini card (section mua từng tập)
+    var miniNow = el.querySelector('.mini-now');
+    var miniOld = el.querySelector('.mini-old');
+    if (miniNow) {
+      miniNow.textContent = formatVND(promo.salePrice);
+      if (miniOld) {
+        miniOld.textContent = formatVND(promo.originalPrice);
+        miniOld.style.display = 'inline';
+      }
+    }
+    // Badge % (chỉ card lớn có .promo-badge)
+    if (badge) {
+      badge.textContent = '-' + promo.percent + '%';
+      badge.style.display = 'inline-block';
+    }
+  });
+
+  // 2. Cập nhật giá trong modal — 5 radio chọn gói (Bước 1)
+  document.querySelectorAll('.pkg-option input[name="package"]').forEach(function (input) {
+    var pkgName = input.value;
+    var promo = promos[pkgName];
+    var priceText = input.parentNode.querySelector('.pkg-price-text');
+    if (promo && priceText) {
+      priceText.innerHTML = '<span style="text-decoration:line-through;color:#8A8A95;font-weight:400;">' +
+        formatVND(promo.originalPrice) + '</span> ' +
+        '<span style="color:#E85D26;font-weight:700;">' + formatVND(promo.salePrice) + '</span>';
+    }
+  });
+
+  // 3. Sticky bar + đếm ngược — lấy đợt có ngày kết thúc gần nhất
+  var soonestEnd = null;
+  var promoLabel = '';
+  keys.forEach(function (k) {
+    var p = promos[k];
+    if (p.endDate) {
+      var d = new Date(p.endDate);
+      if (!soonestEnd || d < soonestEnd) {
+        soonestEnd = d;
+        promoLabel = p.label || 'Ưu đãi có hạn';
+      }
+    } else if (!promoLabel) {
+      promoLabel = p.label || 'Ưu đãi đặc biệt';
+    }
+  });
+
+  var bar = document.getElementById('promoBar');
+  var barText = document.getElementById('promoBarText');
+  var cd = document.getElementById('promoCountdown');
+  if (bar && barText) {
+    var maxPercent = Math.max.apply(null, keys.map(function (k) { return promos[k].percent; }));
+    barText.textContent = '🔥 ' + promoLabel + ' — giảm đến ' + maxPercent + '%';
+    bar.style.display = 'block';
+    if (soonestEnd && cd) {
+      startCountdown(soonestEnd, cd);
+    }
+  }
+}
+
+function startCountdown(endDate, cdEl) {
+  function tick() {
+    var now = new Date();
+    var diff = endDate - now;
+    if (diff <= 0) {
+      cdEl.textContent = 'Đã kết thúc';
+      clearInterval(timer);
+      window.CCAI_PROMOS = {};
+      setTimeout(function () { location.reload(); }, 1500);
+      return;
+    }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    var txt = '⏳ ';
+    if (d > 0) txt += d + ' ngày ';
+    txt += (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+    cdEl.textContent = txt;
+  }
+  tick();
+  var timer = setInterval(tick, 1000);
+}
 
 function renderReviews(reviews, avg, total) {
   var grid = document.getElementById('rvGrid');
