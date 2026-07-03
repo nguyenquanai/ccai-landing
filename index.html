@@ -321,6 +321,14 @@ ul { list-style: none; }
 .pain-card {
   background: var(--c-surface); border: 1px solid var(--c-border);
   border-radius: var(--radius-md); padding: var(--space-md);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+  cursor: default;
+}
+.pain-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--c-accent);
+  background: var(--c-accent-soft);
 }
 .pain-card .icon { font-size: 36px; margin-bottom: var(--space-sm); }
 .pain-card h4 { margin-bottom: 8px; }
