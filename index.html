@@ -550,7 +550,7 @@ ul { list-style: none; }
 /* ============================================================
    TOC / CONTENT (Section 11)
    ============================================================ */
-.toc-group { margin-bottom: var(--space-md); border: 1px solid var(--c-border); border-radius: var(--radius-md); overflow: hidden; background: transparent; }
+.toc-group { position: relative; margin-bottom: var(--space-md); border: 1px solid var(--c-border); border-radius: var(--radius-md); background: transparent; }
 .toc-group > summary {
   padding: var(--space-md); font-weight: 600; font-size: var(--fs-h4);
   cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
@@ -558,7 +558,14 @@ ul { list-style: none; }
 .toc-group > summary::-webkit-details-marker { display: none; }
 .toc-group > summary::after { content: "+"; color: var(--c-accent); font-size: 24px; font-weight: 400; }
 .toc-group[open] > summary::after { content: "−"; }
-.toc-group ul { padding: 0 var(--space-md) var(--space-md); }
+/* Danh sách chương nổi thành lớp riêng, KHÔNG đẩy giãn layout xung quanh (tránh ảnh bìa bị canh giữa lại) */
+.toc-group ul {
+  position: absolute; top: 100%; left: 0; right: 0; z-index: 5;
+  margin: -1px 0 0; padding: var(--space-sm) var(--space-md) var(--space-md);
+  background: var(--c-bg-alt); border: 1px solid var(--c-border); border-top: none;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  box-shadow: var(--shadow-md); max-height: 320px; overflow-y: auto;
+}
 .toc-group li { font-size: var(--fs-small); color: var(--c-ink-soft); padding: 6px 0 6px 20px; position: relative; }
 .toc-group li::before { content: "›"; position: absolute; left: 0; color: var(--c-accent); font-weight: 700; }
 
