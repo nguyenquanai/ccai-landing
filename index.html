@@ -17,9 +17,10 @@
 <meta property="og:image" content="assets/og-image.jpg">
 
 <!-- ===== Font: Be Vietnam Pro ===== -->
+<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=EB+Garamond:wght@700&family=Caladea:wght@700&display=swap" rel="stylesheet">
 
 <!-- ============================================================
      TRACKING — dán ID thật khi chạy ads (xem hướng dẫn kèm theo)
@@ -229,8 +230,11 @@ ul { list-style: none; }
   display: flex; align-items: center; justify-content: space-between;
   height: 72px;
 }
-.header__brand { font-weight: 700; font-size: 28px; color: var(--c-ink); letter-spacing: -0.5px; }
-.header__brand span { color: var(--c-accent); }
+.header__brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.header__brand-icon { width: 44px; height: 44px; flex-shrink: 0; display: block; }
+.header__brand-text { line-height: 1.15; }
+.header__brand-line1 { font-family: 'EB Garamond', serif; font-size: 19px; font-weight: 700; color: var(--c-ink); white-space: nowrap; }
+.header__brand-line2 { font-family: 'Caladea', serif; font-size: 19px; font-weight: 700; color: var(--c-accent); white-space: nowrap; }
 .header__nav { display: flex; gap: var(--space-md); align-items: center; }
 .header__nav a {
   font-size: var(--fs-small); font-weight: 500; color: var(--c-ink-soft);
@@ -610,6 +614,43 @@ ul { list-style: none; }
 .order-form { background: var(--c-surface); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: var(--shadow-md); }
 .form-row { margin-bottom: var(--space-md); }
 .form-row label { display: block; font-weight: 600; font-size: var(--fs-small); margin-bottom: 8px; }
+
+/* ============================================================
+   ORDER MODAL — hộp thoại đặt mua 3 bước (thay cho cuộn xuống form)
+   ============================================================ */
+.om-overlay {
+  position: fixed; inset: 0; z-index: 250;
+  background: rgba(26,26,46,0.6); display: none;
+  align-items: center; justify-content: center;
+  padding: var(--space-md); overflow-y: auto;
+}
+.om-overlay.open { display: flex; }
+.om-modal {
+  background: var(--c-surface); border-radius: var(--radius-lg);
+  padding: var(--space-xl); max-width: 560px; width: 100%;
+  position: relative; box-shadow: var(--shadow-lg);
+  max-height: 92vh; overflow-y: auto; margin: auto;
+}
+.om-close {
+  position: absolute; top: 14px; right: 14px; background: none; border: none;
+  font-size: 28px; cursor: pointer; color: var(--c-ink-soft); line-height: 1; z-index: 2;
+}
+.om-close:hover { color: var(--c-ink); }
+.om-step { display: none; }
+.om-step.active { display: block; }
+/* Bên trong modal, form không cần tự làm thẻ card riêng nữa (modal đã là card) */
+.om-modal .order-form { background: none; padding: 0; box-shadow: none; }
+.om-modal .section-head { margin-bottom: var(--space-md); }
+/* Step 2 — màn hình xác nhận */
+.om-review-row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--c-border); font-size: var(--fs-small); }
+.om-review-row:last-child { border-bottom: none; }
+.om-review-label { color: var(--c-ink-soft); flex-shrink: 0; }
+.om-review-value { font-weight: 600; color: var(--c-ink); text-align: right; word-break: break-word; }
+.om-review-actions { display: flex; gap: 12px; margin-top: var(--space-lg); }
+.om-review-actions .btn { flex: 1; }
+/* Step 3 — payment box gọn lại trong modal, bỏ khung ngoài trùng lặp */
+.om-modal .form-success { display: block; margin-top: 0; }
+.om-modal .payment-box { border: none; }
 .pkg-options { display: grid; gap: 10px; }
 .pkg-option {
   display: flex; align-items: center; gap: 12px;
@@ -644,6 +685,8 @@ ul { list-style: none; }
 .payment-qr { text-align: center; }
 .payment-qr img { border-radius: var(--radius-sm); border: 1px solid var(--c-border); }
 .payment-info { display: flex; flex-direction: column; gap: 8px; }
+.payment-row--full { grid-column: 1 / -1; flex-wrap: wrap; row-gap: 4px; }
+.payment-row--full .payment-content { text-align: right; word-break: break-word; }
 .payment-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--c-bg-alt); border-radius: var(--radius-sm); }
 .payment-label { font-size: var(--fs-small); color: var(--c-ink-soft); }
 .payment-value { font-size: var(--fs-small); color: var(--c-ink); font-weight: 500; }
@@ -813,7 +856,13 @@ img:hover {
      ============================================================ -->
 <header class="header" id="header">
   <div class="container header__inner">
-    <a href="#hero" class="header__brand">Claude Cowork <span>AI Thực Chiến</span></a>
+    <a href="#hero" class="header__brand">
+      <img src="assets/favicon.ico" alt="Logo Claude Cowork AI Thực Chiến" class="header__brand-icon">
+      <span class="header__brand-text">
+        <span class="header__brand-line1">Claude Cowork</span><br>
+        <span class="header__brand-line2">AI Thực Chiến</span>
+      </span>
+    </a>
     <nav class="header__nav">
       <a href="#van-de">Vấn đề</a>
       <a href="#giai-phap">Giải pháp</a>
@@ -1364,49 +1413,82 @@ img:hover {
 <!-- ============================================================
      SECTION 14 — FORM ĐẶT MUA
      ============================================================ -->
-<section class="section form-section" id="dat-mua">
-  <div class="container container--narrow">
-    <div class="section-head">
-      <h2>Đặt mua ebook</h2>
-      <p>Điền thông tin bên dưới. Sau khi gửi, bạn sẽ nhận hướng dẫn thanh toán qua email hoặc Zalo.</p>
-    </div>
-    <!-- Form gửi qua JS (fetch) tới Google Sheet — xem SHEET_ENDPOINT trong <script> cuối trang -->
-    <form class="order-form" id="orderForm" method="POST" onsubmit="return false;">
-      <div class="form-row">
-        <label style="display:block;text-align:center;font-family:'Palatino Linotype','Palatino','Book Antiqua',serif;font-size:var(--fs-h4);font-weight:600;margin-bottom:12px">Bạn hãy chọn gói &amp; điền thông tin</label>
-        <div class="pkg-options" id="pkgOptions">
-          <label class="pkg-option"><input type="radio" name="package" value="Tập 1 Heyzine — 119.000đ"><span class="pkg-name">Tập 1 Heyzine</span><span class="pkg-price">💵👉 119.000đ</span></label>
-          <label class="pkg-option"><input type="radio" name="package" value="Tập 2 Heyzine — 179.000đ"><span class="pkg-name">Tập 2 Heyzine</span><span class="pkg-price">💵👉 179.000đ</span></label>
-          <label class="pkg-option"><input type="radio" name="package" value="Tập 3 Heyzine — 219.000đ"><span class="pkg-name">Tập 3 Heyzine</span><span class="pkg-price">💵👉 219.000đ</span></label>
-          <label class="pkg-option selected"><input type="radio" name="package" value="Combo 3 tập Heyzine — 399.000đ" checked><span class="pkg-name">Combo 3 tập Heyzine ⭐</span><span class="pkg-price">💵👉 399.000đ</span></label>
-          <label class="pkg-option"><input type="radio" name="package" value="Bản đầy đủ Heyzine — 519.000đ"><span class="pkg-name">Bản đầy đủ Heyzine</span><span class="pkg-price">💵👉 519.000đ</span></label>
+<!-- Giữ id neo cũ để tương thích ngược (link cũ trỏ #dat-mua vẫn không lỗi), nội dung thật nằm trong modal bên dưới -->
+<section id="dat-mua" aria-hidden="true" style="display:none;"></section>
+
+<!-- ============================================================
+     ORDER MODAL — hộp thoại đặt mua 3 bước
+     ============================================================ -->
+<div class="om-overlay" id="orderModalOverlay">
+  <div class="om-modal" id="orderModalCard" role="dialog" aria-modal="true" aria-label="Đặt mua ebook">
+    <button type="button" class="om-close" id="orderModalClose" aria-label="Đóng">×</button>
+
+    <!-- BƯỚC 1: Chọn gói & điền thông tin -->
+    <div class="om-step active" id="omStep1">
+      <div class="section-head">
+        <h2 style="font-size:var(--fs-h3);">Đặt mua ebook</h2>
+        <p>Điền thông tin bên dưới để nhận hướng dẫn thanh toán.</p>
+      </div>
+      <!-- Form gửi qua JS (fetch) tới Google Sheet — xem SHEET_ENDPOINT trong <script> cuối trang -->
+      <form class="order-form" id="orderForm" method="POST" onsubmit="return false;">
+        <div class="form-row">
+          <label style="display:block;text-align:center;font-family:'Palatino Linotype','Palatino','Book Antiqua',serif;font-size:var(--fs-h4);font-weight:600;margin-bottom:12px">Bạn hãy chọn gói &amp; điền thông tin</label>
+          <div class="pkg-options" id="pkgOptions">
+            <label class="pkg-option"><input type="radio" name="package" value="Tập 1 Heyzine — 119.000đ"><span class="pkg-name">Tập 1 Heyzine</span><span class="pkg-price">💵👉 119.000đ</span></label>
+            <label class="pkg-option"><input type="radio" name="package" value="Tập 2 Heyzine — 179.000đ"><span class="pkg-name">Tập 2 Heyzine</span><span class="pkg-price">💵👉 179.000đ</span></label>
+            <label class="pkg-option"><input type="radio" name="package" value="Tập 3 Heyzine — 219.000đ"><span class="pkg-name">Tập 3 Heyzine</span><span class="pkg-price">💵👉 219.000đ</span></label>
+            <label class="pkg-option selected"><input type="radio" name="package" value="Combo 3 tập Heyzine — 399.000đ" checked><span class="pkg-name">Combo 3 tập Heyzine ⭐</span><span class="pkg-price">💵👉 399.000đ</span></label>
+            <label class="pkg-option"><input type="radio" name="package" value="Bản đầy đủ Heyzine — 519.000đ"><span class="pkg-name">Bản đầy đủ Heyzine</span><span class="pkg-price">💵👉 519.000đ</span></label>
+          </div>
         </div>
+        <div class="form-row">
+          <label for="fullname">Họ và tên</label>
+          <input type="text" id="fullname" name="fullname" placeholder="Nguyễn Văn A" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email nhận quyền đọc</label>
+          <input type="email" id="email" name="email" placeholder="email@example.com" required>
+          <div class="field-warn">⚠️ Nhập chính xác — quyền đọc được cấp theo email này</div>
+        </div>
+        <div class="form-row">
+          <label for="phone">Số điện thoại / Zalo</label>
+          <input type="tel" id="phone" name="phone" placeholder="0901 234 567" required>
+        </div>
+        <div class="form-row">
+          <label for="note">Ghi chú (tùy chọn)</label>
+          <textarea id="note" name="note" placeholder="Câu hỏi hoặc yêu cầu thêm (nếu có)"></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--block btn--lg">Đặt mua ngay</button>
+        <p class="form-note">Sau khi xác nhận, bạn sẽ nhận hướng dẫn thanh toán ngay. Quyền đọc được cấp trong vòng 24 giờ làm việc sau khi xác nhận.</p>
+      </form>
+    </div>
+
+    <!-- BƯỚC 2: Xác nhận thông tin -->
+    <div class="om-step" id="omStep2">
+      <div class="section-head">
+        <h2 style="font-size:var(--fs-h3);">Xác nhận thông tin đơn hàng</h2>
+        <p>Vui lòng kiểm tra lại trước khi đặt mua.</p>
       </div>
-      <div class="form-row">
-        <label for="fullname">Họ và tên</label>
-        <input type="text" id="fullname" name="fullname" placeholder="Nguyễn Văn A" required>
+      <div class="om-review-row"><span class="om-review-label">Gói</span><span class="om-review-value" id="omReviewPkg">—</span></div>
+      <div class="om-review-row"><span class="om-review-label">Họ và tên</span><span class="om-review-value" id="omReviewName">—</span></div>
+      <div class="om-review-row"><span class="om-review-label">Email</span><span class="om-review-value" id="omReviewEmail">—</span></div>
+      <div class="om-review-row"><span class="om-review-label">Số điện thoại</span><span class="om-review-value" id="omReviewPhone">—</span></div>
+      <div class="om-review-row"><span class="om-review-label">Số tiền</span><span class="om-review-value" style="color:var(--c-accent);font-size:18px;" id="omReviewAmount">—</span></div>
+      <div class="field-warn" style="margin-top:12px;">⚠️ Quyền đọc được cấp theo email này — vui lòng kiểm tra kỹ trước khi xác nhận.</div>
+      <div class="om-review-actions">
+        <button type="button" class="btn btn--outline btn--block" id="omBackBtn">← Sửa lại</button>
+        <button type="button" class="btn btn--primary btn--block" id="omConfirmBtn">Xác nhận &amp; Đặt mua</button>
       </div>
-      <div class="form-row">
-        <label for="email">Email nhận quyền đọc</label>
-        <input type="email" id="email" name="email" placeholder="email@example.com" required>
-        <div class="field-warn">⚠️ Nhập chính xác — quyền đọc được cấp theo email này</div>
-      </div>
-      <div class="form-row">
-        <label for="phone">Số điện thoại / Zalo</label>
-        <input type="tel" id="phone" name="phone" placeholder="0901 234 567" required>
-      </div>
-      <div class="form-row">
-        <label for="note">Ghi chú (tùy chọn)</label>
-        <textarea id="note" name="note" placeholder="Câu hỏi hoặc yêu cầu thêm (nếu có)"></textarea>
-      </div>
-      <button type="submit" class="btn btn--primary btn--block btn--lg">Gửi đơn đặt mua</button>
-      <p class="form-note">Sau khi gửi form, bạn sẽ nhận hướng dẫn thanh toán. Quyền đọc được cấp trong vòng 24 giờ làm việc sau khi xác nhận.</p>
+    </div>
+
+    <!-- BƯỚC 3: Thanh toán + Thành công -->
+    <div class="om-step" id="omStep3">
       <div class="form-success" id="formSuccess">
         <div class="payment-box">
           <div class="payment-header">
             <span class="payment-check">✓</span>
             <div>
-              <strong>Đã ghi nhận đơn đặt mua!</strong>
+              <strong id="omThankYou">Đăng ký thành công!</strong>
               <p style="margin:4px 0 0;font-size:var(--fs-small)">Quét mã QR bên dưới để thanh toán ngay</p>
             </div>
           </div>
@@ -1420,7 +1502,10 @@ img:hover {
               <div class="payment-row"><span class="payment-label">Số tài khoản</span><span class="payment-value" style="font-weight:700;letter-spacing:0.5px">0904667411</span></div>
               <div class="payment-row"><span class="payment-label">Chủ tài khoản</span><span class="payment-value">NGUYEN VAN QUAN</span></div>
               <div class="payment-row"><span class="payment-label">Số tiền</span><span class="payment-value payment-amount" id="payAmount">399.000đ</span></div>
-              <div class="payment-row"><span class="payment-label">Nội dung CK</span><span class="payment-value payment-content" id="payContent">CCAI [tên] [gói]</span></div>
+            </div>
+            <div class="payment-row payment-row--full">
+              <span class="payment-label">Nội dung CK</span>
+              <span class="payment-value payment-content" id="payContent">CCAI [tên] [gói]</span>
             </div>
           </div>
           <div class="payment-notes">
@@ -1433,11 +1518,13 @@ img:hover {
               <p>📧 Email: <strong>nguyenquan140882@gmail.com</strong></p>
             </div>
           </div>
+          <button type="button" class="btn btn--primary btn--block" id="omOkBtn" style="margin-top:20px;">OK</button>
         </div>
       </div>
-    </form>
+    </div>
+
   </div>
-</section>
+</div>
 
 <!-- ============================================================
      SECTION 15 — FINAL CTA
@@ -1565,7 +1652,7 @@ document.querySelectorAll('.faq-item').forEach(function (item) {
   });
 });
 
-// 4. Pricing CTA → tự chọn đúng gói trong form
+// 4. Pricing CTA → mở modal đặt mua + tự chọn đúng gói
 var pkgMap = {
   tap1: 'Tập 1 Heyzine — 119.000đ',
   tap2: 'Tập 2 Heyzine — 179.000đ',
@@ -1573,14 +1660,43 @@ var pkgMap = {
   combo: 'Combo 3 tập Heyzine — 399.000đ',
   full: 'Bản đầy đủ Heyzine — 519.000đ'
 };
-document.querySelectorAll('[data-pkg]').forEach(function (el) {
-  el.addEventListener('click', function () {
-    var val = pkgMap[el.getAttribute('data-pkg')];
+document.querySelectorAll('[data-pkg], a[href="#dat-mua"]').forEach(function (el) {
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    var code = el.getAttribute('data-pkg') || 'combo'; // mặc định Combo nếu nút không gắn gói cụ thể
+    var val = pkgMap[code];
     document.querySelectorAll('input[name="package"]').forEach(function (radio) {
       if (radio.value === val) { radio.checked = true; }
     });
     syncSelected();
+    openOrderModal();
   });
+});
+
+// 4b. Quản lý mở/đóng modal đặt mua + chuyển bước
+var omOverlay = document.getElementById('orderModalOverlay');
+function openOrderModal() {
+  omGoToStep(1);
+  omOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (typeof stickyCta !== 'undefined' && stickyCta) stickyCta.classList.remove('show');
+}
+function closeOrderModal() {
+  omOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function omGoToStep(n) {
+  document.getElementById('omStep1').classList.toggle('active', n === 1);
+  document.getElementById('omStep2').classList.toggle('active', n === 2);
+  document.getElementById('omStep3').classList.toggle('active', n === 3);
+  omOverlay.scrollTop = 0;
+}
+document.getElementById('orderModalClose').addEventListener('click', closeOrderModal);
+omOverlay.addEventListener('click', function (e) {
+  if (e.target === omOverlay) closeOrderModal();
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && omOverlay.classList.contains('open')) closeOrderModal();
 });
 
 // 5. Highlight radio gói đang chọn
@@ -1599,13 +1715,23 @@ document.querySelectorAll('input[name="package"]').forEach(function (radio) {
 var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxUnNH08UNgKJIrfQ4S2PHvg-OMEdHUA5n6Up-ayUXDqK-n60SZ5MqeRKqvI_oC3_M/exec';
 
 var form = document.getElementById('orderForm');
-var submitBtn = form.querySelector('button[type="submit"]');
-var successBox = document.getElementById('formSuccess');
 
+// Map gói → số tiền (dùng chung cho cả màn xác nhận Bước 2 và tạo QR Bước 3)
+var priceMap = {
+  'Tập 1 Heyzine — 119.000đ': { amount: 119000, short: 'Tap1', display: '119.000đ' },
+  'Tập 2 Heyzine — 179.000đ': { amount: 179000, short: 'Tap2', display: '179.000đ' },
+  'Tập 3 Heyzine — 219.000đ': { amount: 219000, short: 'Tap3', display: '219.000đ' },
+  'Combo 3 tập Heyzine — 399.000đ': { amount: 399000, short: 'Combo3', display: '399.000đ' },
+  'Bản đầy đủ Heyzine — 519.000đ': { amount: 519000, short: 'Full', display: '519.000đ' }
+};
+
+
+var pendingOrderData = null; // Lưu tạm dữ liệu form giữa Bước 1 (điền) và Bước 2 (xác nhận)
+
+// BƯỚC 1 → 2: Validate + hiện màn xác nhận (CHƯA gửi đi đâu cả)
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  // Validate phía client
   var email = form.email.value.trim();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     alert('Vui lòng nhập email hợp lệ — quyền đọc được cấp theo email này.');
@@ -1613,9 +1739,11 @@ form.addEventListener('submit', function (e) {
     return;
   }
 
-  // Gom dữ liệu
-  var data = {
-    package: (form.querySelector('input[name="package"]:checked') || {}).value || '',
+  var pkg = (form.querySelector('input[name="package"]:checked') || {}).value || '';
+  var info = priceMap[pkg] || { amount: 0, short: 'Ebook', display: pkg };
+
+  pendingOrderData = {
+    package: pkg,
     fullname: form.fullname.value.trim(),
     email: email,
     phone: form.phone.value.trim(),
@@ -1624,16 +1752,34 @@ form.addEventListener('submit', function (e) {
     source: getTrackedSource()
   };
 
-  // Trạng thái đang gửi
-  var originalText = submitBtn.textContent;
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Đang gửi...';
+  // Điền màn xác nhận Bước 2
+  document.getElementById('omReviewPkg').textContent = pkg.split('—')[0].trim();
+  document.getElementById('omReviewName').textContent = pendingOrderData.fullname;
+  document.getElementById('omReviewEmail').textContent = pendingOrderData.email;
+  document.getElementById('omReviewPhone').textContent = pendingOrderData.phone;
+  document.getElementById('omReviewAmount').textContent = info.display;
 
-  // Nếu chưa cấu hình endpoint thì báo rõ (tránh mất đơn âm thầm)
+  omGoToStep(2);
+});
+
+// Bước 2 → quay lại Bước 1 để sửa
+document.getElementById('omBackBtn').addEventListener('click', function () {
+  omGoToStep(1);
+});
+
+// BƯỚC 2 → 3: Khách xác nhận đúng → gửi thật + tạo QR + hiện thành công
+document.getElementById('omConfirmBtn').addEventListener('click', function () {
+  if (!pendingOrderData) return;
+  var data = pendingOrderData;
+  var confirmBtn = this;
+  var originalText = confirmBtn.textContent;
+  confirmBtn.disabled = true;
+  confirmBtn.textContent = 'Đang gửi...';
+
   if (SHEET_ENDPOINT.indexOf('PASTE_') === 0) {
     alert('⚠️ Chưa cấu hình link Google Sheet. Vui lòng dán SHEET_ENDPOINT trong code trước khi chạy thật.');
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalText;
+    confirmBtn.disabled = false;
+    confirmBtn.textContent = originalText;
     return;
   }
 
@@ -1645,19 +1791,9 @@ form.addEventListener('submit', function (e) {
     body: JSON.stringify(data)
   })
   .then(function () {
-    // Lấy thông tin gói + khách
     var pkg = data.package;
     var name = data.fullname.trim();
     var email = data.email;
-
-    // Map gói → số tiền
-    var priceMap = {
-      'Tập 1 Heyzine — 119.000đ': { amount: 119000, short: 'Tap1', display: '119.000đ' },
-      'Tập 2 Heyzine — 179.000đ': { amount: 179000, short: 'Tap2', display: '179.000đ' },
-      'Tập 3 Heyzine — 219.000đ': { amount: 219000, short: 'Tap3', display: '219.000đ' },
-      'Combo 3 tập Heyzine — 399.000đ': { amount: 399000, short: 'Combo3', display: '399.000đ' },
-      'Bản đầy đủ Heyzine — 519.000đ': { amount: 519000, short: 'Full', display: '519.000đ' }
-    };
     var info = priceMap[pkg] || { amount: 0, short: 'Ebook', display: pkg };
 
     // Bỏ dấu tiếng Việt để nội dung CK hiện đúng tên
@@ -1676,22 +1812,16 @@ form.addEventListener('submit', function (e) {
       + '&accountName=' + encodeURIComponent('NGUYEN VAN QUAN');
     var qrImg = document.getElementById('qrDynamic');
     qrImg.src = qrUrl;
-    // Fallback nếu VietQR không load
     qrImg.onerror = function() { qrImg.src = 'assets/qr-mbbank.jpg'; };
 
-    // Điền thông tin thanh toán
+    // Điền thông tin thanh toán + lời cảm ơn kèm tên khách
+    document.getElementById('omThankYou').textContent = 'Đăng ký thành công! Cảm ơn ' + name;
     document.getElementById('payAmount').textContent = info.display;
     document.getElementById('payContent').textContent = transferContent;
     document.getElementById('payContentCopy').textContent = transferContent;
     document.getElementById('payEmail').textContent = email;
 
-    // Reset form nhưng GIỮ thông tin hiển thị
-    form.reset();
-    syncSelected();
-
-    // Hiện khung thanh toán
-    successBox.style.display = 'block';
-    successBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    omGoToStep(3);
 
     // Bắn event chuyển đổi cho pixel (nếu đã cài)
     if (typeof fbq === 'function') { fbq('track', 'Lead'); }
@@ -1701,12 +1831,20 @@ form.addEventListener('submit', function (e) {
     alert('Có lỗi khi gửi đơn. Vui lòng thử lại hoặc liên hệ Zalo/email của tác giả.');
   })
   .finally(function () {
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalText;
+    confirmBtn.disabled = false;
+    confirmBtn.textContent = originalText;
   });
 });
 
-// 7. Sticky CTA mobile — hiện khi cuộn qua hero, ẩn khi tới form
+// BƯỚC 3: Bấm OK → reset form + đóng toàn bộ modal
+document.getElementById('omOkBtn').addEventListener('click', function () {
+  form.reset();
+  syncSelected();
+  pendingOrderData = null;
+  closeOrderModal();
+});
+
+// 7. Sticky CTA mobile — hiện khi cuộn qua hero
 var stickyCta = document.getElementById('stickyCta');
 
 // 8. Copy nội dung chuyển khoản
@@ -1937,13 +2075,10 @@ document.addEventListener('keydown', function(e) {
 });
 });
 var heroSection = document.getElementById('hero');
-var formSection = document.getElementById('dat-mua');
 window.addEventListener('scroll', function () {
   var y = window.scrollY;
   var pastHero = y > (heroSection.offsetHeight - 100);
-  var formTop = formSection.getBoundingClientRect().top;
-  var formVisible = formTop < window.innerHeight && formTop > -formSection.offsetHeight;
-  stickyCta.classList.toggle('show', pastHero && !formVisible);
+  stickyCta.classList.toggle('show', pastHero && !omOverlay.classList.contains('open'));
 });
 </script>
 
