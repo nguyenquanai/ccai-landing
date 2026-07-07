@@ -1565,10 +1565,10 @@ img:hover {
             <span class="payment-check">✓</span>
             <div>
               <strong id="omThankYou">Đăng ký thành công!</strong>
-              <p style="margin:4px 0 0;font-size:var(--fs-small)">Quét mã QR bên dưới để thanh toán ngay</p>
+              <p style="margin:4px 0 0;font-size:var(--fs-small)" id="omSubtitle">Quét mã QR bên dưới để thanh toán ngay</p>
             </div>
           </div>
-          <div class="payment-body">
+          <div class="payment-body" id="paymentBodyBlock">
             <div class="payment-qr">
               <img id="qrDynamic" src="" alt="QR thanh toán MB Bank" width="240" height="240">
               <noscript><img src="assets/qr-mbbank.jpg" alt="QR MB Bank" width="240"></noscript>
@@ -1585,8 +1585,8 @@ img:hover {
             </div>
           </div>
           <div class="payment-notes">
-            <p>📋 <strong>Nội dung chuyển khoản gợi ý:</strong> <code id="payContentCopy">CCAI...</code> <button type="button" class="copy-btn" id="copyBtn" title="Copy nội dung CK">Sao chép</button></p>
-            <p>⏱️ Quyền đọc Heyzine được cấp trong vòng <strong>24 giờ làm việc</strong> sau khi xác nhận thanh toán.</p>
+            <p id="paymentCKNote">📋 <strong>Nội dung chuyển khoản gợi ý:</strong> <code id="payContentCopy">CCAI...</code> <button type="button" class="copy-btn" id="copyBtn" title="Copy nội dung CK">Sao chép</button></p>
+            <p id="paymentTimingNote">⏱️ Quyền đọc Heyzine được cấp trong vòng <strong>24 giờ làm việc</strong> sau khi xác nhận thanh toán.</p>
             <p>📧 Quyền đọc gửi qua email: <strong id="payEmail">—</strong></p>
             <div style="margin-top:12px;font-size:13px;color:var(--c-ink-soft);line-height:1.8">
               <p style="margin-bottom:4px">Nếu cần hỗ trợ, hãy liên hệ:</p>
@@ -1788,7 +1788,7 @@ document.querySelectorAll('input[name="package"]').forEach(function (radio) {
 
 // 6. Form submit → gửi vào Google Sheet qua Apps Script
 // ⚠️ THAY URL DƯỚI bằng link Web App sau khi deploy Apps Script (xem hướng dẫn kèm theo)
-var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbysEFJLgsAkWh_0L11u9A7s09vHybwmezeh9RwybMIlItMOerOAeR_eSX3_2AMWLYtS/exec';
+var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwwQm4fftbg0WXXCnrIoG1_qkM_fxKbFu8vsWZa1hnhjrrWeGcqnXZObmH0QEnRHwjT/exec';
 
 var form = document.getElementById('orderForm');
 
@@ -1857,7 +1857,7 @@ document.getElementById('omConfirmBtn').addEventListener('click', function () {
   var confirmBtn = this;
   var originalText = confirmBtn.textContent;
   confirmBtn.disabled = true;
-  confirmBtn.textContent = 'Đang gửi...';
+  confirmBtn.textContent = 'Đang kiểm tra...';
 
   if (SHEET_ENDPOINT.indexOf('PASTE_') === 0) {
     alert('⚠️ Chưa cấu hình link Google Sheet. Vui lòng dán SHEET_ENDPOINT trong code trước khi chạy thật.');
@@ -1865,6 +1865,30 @@ document.getElementById('omConfirmBtn').addEventListener('click', function () {
     confirmBtn.textContent = originalText;
     return;
   }
+
+  // ✨ v12: Kiểm tra xem đây có phải đơn được TẶNG MIỄN PHÍ không (GET riêng, đọc được response, KHÔNG ảnh hưởng luồng thanh toán bên dưới)
+  var checkUrl = SHEET_ENDPOINT + '?action=check_gift&email=' + encodeURIComponent(data.email) + '&package=' + encodeURIComponent(data.package);
+  fetch(checkUrl)
+    .then(function (r) { return r.json(); })
+    .catch(function () { return { isGift: false }; }) // lỗi mạng khi kiểm tra → coi như không phải quà tặng, chạy luồng thường (an toàn)
+    .then(function (checkResult) {
+      if (checkResult && checkResult.isGift) {
+        submitAsGift(data, confirmBtn, originalText);
+      } else {
+        submitAsPaidOrder(data, confirmBtn, originalText);
+      }
+    });
+});
+
+// ============================================================
+// Luồng THANH TOÁN BÌNH THƯỜNG — giữ nguyên 100% logic cũ, không đổi gì
+// ============================================================
+function submitAsPaidOrder(data, confirmBtn, originalText) {
+  confirmBtn.textContent = 'Đang gửi...';
+  // Đảm bảo khối QR/CK hiện lại đầy đủ (phòng trường hợp trước đó có 1 đơn tặng đã ẩn nó đi)
+  document.getElementById('paymentBodyBlock').style.display = '';
+  document.getElementById('paymentCKNote').style.display = '';
+  document.getElementById('omSubtitle').textContent = 'Quét mã QR bên dưới để thanh toán ngay';
 
   // Gửi tới Apps Script (no-cors: Apps Script không trả CORS header, nên không đọc được response — coi như thành công nếu không lỗi mạng)
   fetch(SHEET_ENDPOINT, {
@@ -1924,7 +1948,43 @@ document.getElementById('omConfirmBtn').addEventListener('click', function () {
     confirmBtn.disabled = false;
     confirmBtn.textContent = originalText;
   });
-});
+}
+
+// ============================================================
+// ✨ v12: Luồng TẶNG MIỄN PHÍ — nhánh riêng, không tạo QR, không cần thanh toán
+// ============================================================
+function submitAsGift(data, confirmBtn, originalText) {
+  confirmBtn.textContent = 'Đang xử lý...';
+
+  fetch(SHEET_ENDPOINT, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(Object.assign({}, data, { action: 'claim_gift' }))
+  })
+  .then(function () {
+    var name = data.fullname.trim();
+    // Ẩn khối QR/ngân hàng + ghi chú nội dung CK — không cần thanh toán
+    document.getElementById('paymentBodyBlock').style.display = 'none';
+    document.getElementById('paymentCKNote').style.display = 'none';
+    document.getElementById('omSubtitle').textContent = 'Email cấp quyền đọc đã được gửi ngay tới hộp thư của bạn.';
+    document.getElementById('omThankYou').textContent = '🎁 Bạn đã được tặng miễn phí! Cảm ơn ' + name;
+    document.getElementById('payEmail').textContent = data.email;
+
+    omGoToStep(3);
+
+    if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+  })
+  .catch(function () {
+    alert('Có lỗi khi xử lý đơn tặng. Vui lòng thử lại hoặc liên hệ Zalo/email của tác giả.');
+  })
+  .finally(function () {
+    confirmBtn.disabled = false;
+    confirmBtn.textContent = originalText;
+  });
+}
+
+
 
 // BƯỚC 3: Bấm OK → reset form + đóng toàn bộ modal
 document.getElementById('omOkBtn').addEventListener('click', function () {
