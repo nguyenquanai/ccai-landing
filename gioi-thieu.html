@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== SEO ===== -->
+<title>Giới thiệu Nguyễn Quân — Tác giả Claude Cowork AI Thực Chiến</title>
+<meta name="description" content="Nguyễn Quân — hơn 20 năm kinh nghiệm Quản lý Sản xuất, Cơ khí & Tự động hóa, hiện đang ứng dụng AI Agent & Automation vào sản xuất và đào tạo. Tác giả bộ ebook Claude Cowork AI Thực Chiến.">
+<meta name="keywords" content="Nguyễn Quân, Claude Cowork AI Thực Chiến, quản lý sản xuất, cơ khí tự động hóa, AI Agent, chuyển đổi số nhà máy">
+<meta name="author" content="Nguyễn Quân">
+
+<!-- ===== Open Graph (Facebook / Zalo) ===== -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Giới thiệu Nguyễn Quân — Tác giả Claude Cowork AI Thực Chiến">
+<meta property="og:description" content="20+ năm kinh nghiệm Quản lý Sản xuất, Cơ khí – Tự động hóa. Hiện ứng dụng AI Agent & Automation vào sản xuất và đào tạo.">
+<meta property="og:image" content="https://nguyenquanai.vn/assets/author-nguyen-quan.jpg">
+<meta property="og:url" content="https://nguyenquanai.vn/gioi-thieu.html">
+
+<!-- ===== Font: Be Vietnam Pro (đồng bộ với trang chủ) ===== -->
+<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=EB+Garamond:wght@700&family=Caladea:wght@700&display=swap" rel="stylesheet">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LSDVNKJLVM"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-LSDVNKJLVM');
+</script>
+
+<style>
+/* ============================================================
+   DESIGN TOKENS — copy nguyên vẹn từ index.html để đồng bộ 100%
+   ============================================================ */
+:root {
+  /* Color */
+  --c-bg: #FFF9F0;
+  --c-bg-alt: #FEFCF7;
+  --c-surface: #FFFFFF;
+  --c-ink: #1A1A2E;
+  --c-ink-soft: #5A5A68;
+  --c-ink-faint: #8A8A95;
+  --c-accent: #E85D26;
+  --c-accent-dark: #C9491A;
+  --c-accent-soft: #FDEDE4;
+  --c-trust: #0F6E56;
+  --c-border: #E8E4DC;
+  --c-border-strong: #D6D0C4;
+  --c-footer-bg: #1A1A2E;
+  --c-footer-text: #C7C7D1;
+  --c-success: #0F6E56;
+  --c-warning: #9A4D00;
+
+  /* Typography */
+  --font-heading: 'Be Vietnam Pro', 'Inter', system-ui, sans-serif;
+  --font-body: 'Be Vietnam Pro', 'Inter', system-ui, sans-serif;
+  --fs-h1: 44px;
+  --fs-h2: 44px;
+  --fs-h3: 24px;
+  --fs-h4: 19px;
+  --fs-body: 17px;
+  --fs-small: 14px;
+  --fs-price: 36px;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 80px;
+
+  /* Layout */
+  --container-max: 1140px;
+  --container-narrow: 768px;
+  --container-pad: 24px;
+  --section-pad: 80px;
+  --grid-gap: 24px;
+
+  /* Radius / shadow / border */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(26,26,46,0.06);
+  --shadow-md: 0 4px 16px rgba(26,26,46,0.08);
+  --shadow-lg: 0 12px 32px rgba(26,26,46,0.12);
+  --shadow-cta: 0 6px 18px rgba(232,93,38,0.28);
+  --shadow-hover: 0 8px 24px rgba(26,26,46,0.10);
+  --transition: 200ms ease;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --fs-h1: 32px;
+    --fs-h2: 32px;
+    --fs-h3: 20px;
+    --fs-h4: 18px;
+    --fs-body: 16px;
+    --fs-price: 32px;
+    --container-pad: 16px;
+    --section-pad: 48px;
+    --grid-gap: 16px;
+  }
+}
+
+/* ============================================================
+   BASE / RESET
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--c-ink);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.25; }
+h1 { font-size: var(--fs-h1); font-weight: 700; line-height: 1.2; }
+.hl-accent { color: var(--c-accent); font-weight: 800; }
+h2 { font-size: var(--fs-h2); font-weight: 700; line-height: 1.2; }
+h3 { font-size: var(--fs-h3); font-weight: 600; }
+h4 { font-size: var(--fs-h4); font-weight: 600; }
+
+p { color: var(--c-ink-soft); }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+.container--narrow { max-width: var(--container-narrow); }
+
+.section { padding-top: var(--section-pad); padding-bottom: var(--section-pad); }
+.section--bg { background: var(--c-bg); }
+.section--surface { background: var(--c-surface); }
+.section--alt { background: var(--c-bg-alt); }
+
+.section-head { text-align: center; max-width: 720px; margin: 0 auto var(--space-xl); }
+.section-head h2 { margin-bottom: var(--space-sm); }
+.section-head p { font-size: var(--fs-body); }
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--c-accent-dark);
+  background: var(--c-accent-soft);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: var(--space-sm);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 24px;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+.btn--primary {
+  background: var(--c-accent);
+  color: #fff;
+  box-shadow: var(--shadow-cta);
+}
+.btn--primary:hover { background: var(--c-accent-dark); }
+.btn--outline {
+  background: transparent;
+  color: var(--c-accent);
+  border-color: var(--c-accent);
+}
+.btn--outline:hover { background: var(--c-accent-soft); color: var(--c-accent-dark); }
+.btn--lg { min-height: 58px; padding: 18px 40px; font-size: 18px; }
+
+/* ============================================================
+   HEADER (nguyên bản từ index.html)
+   ============================================================ */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--c-surface);
+  border-bottom: 1px solid transparent;
+  transition: var(--transition);
+}
+.header.scrolled { box-shadow: var(--shadow-sm); border-bottom-color: var(--c-border); }
+.header__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.header__brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.header__brand-icon { width: 44px; height: 44px; flex-shrink: 0; display: block; }
+.header__brand-text { line-height: 1.15; }
+.header__brand-line1 { font-family: 'EB Garamond', serif; font-size: 19px; font-weight: 700; color: var(--c-ink); white-space: nowrap; }
+.header__brand-line2 { font-family: 'Caladea', serif; font-size: 19px; font-weight: 700; color: var(--c-accent); white-space: nowrap; }
+.header__nav { display: flex; gap: var(--space-md); align-items: center; }
+.header__nav a {
+  font-size: var(--fs-small); font-weight: 500; color: var(--c-ink-soft);
+  transition: var(--transition);
+}
+.header__nav a:hover, .header__nav a.active { color: var(--c-accent); }
+.header__actions { display: flex; align-items: center; gap: var(--space-sm); }
+.header__cta { min-height: 44px; padding: 10px 20px; font-size: var(--fs-small); }
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  font-size: 26px; color: var(--c-ink); line-height: 1; padding: 4px 8px;
+}
+
+/* Mobile menu overlay */
+.menu-overlay {
+  position: fixed; inset: 0; z-index: 99;
+  background: rgba(26,26,46,0.45);
+  opacity: 0; visibility: hidden; transition: var(--transition);
+}
+.menu-overlay.open { opacity: 1; visibility: visible; }
+.mobile-menu {
+  position: fixed; top: 0; right: 0; z-index: 101;
+  width: 80%; max-width: 320px; height: 100%;
+  background: var(--c-surface); box-shadow: var(--shadow-md);
+  transform: translateX(100%); transition: var(--transition);
+  padding: var(--space-lg) var(--space-md);
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu__close { background: none; border: none; font-size: 28px; cursor: pointer; color: var(--c-ink); float: right; }
+.mobile-menu a {
+  display: block; font-size: var(--fs-h4); font-weight: 500;
+  color: var(--c-ink); padding: 16px 0; border-bottom: 1px solid var(--c-border);
+}
+.mobile-menu a:hover, .mobile-menu a.active { color: var(--c-accent); }
+
+@media (max-width: 860px) {
+  .header__nav { display: none; }
+  .hamburger { display: block; }
+}
+
+/* ============================================================
+   FOOTER (nguyên bản từ index.html)
+   ============================================================ */
+.footer { background: var(--c-footer-bg); color: var(--c-footer-text); padding: var(--space-2xl) 0 var(--space-lg); }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr; gap: var(--space-xl); margin-bottom: var(--space-xl); }
+.footer__brand { font-weight: 700; font-size: 18px; color: #fff; margin-bottom: var(--space-sm); }
+.footer p { color: var(--c-footer-text); font-size: var(--fs-small); }
+.footer h4 { color: #fff; font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: var(--space-sm); }
+.footer__links a, .footer__contact a { display: block; color: var(--c-footer-text); font-size: var(--fs-small); padding: 4px 0; transition: var(--transition); }
+.footer__links a:hover, .footer__contact a:hover { color: var(--c-accent); }
+.footer__contact-line { color: var(--c-footer-text); font-size: var(--fs-small); padding: 4px 0; margin: 0; }
+.footer__contact-link { display: inline; color: var(--c-footer-text); padding: 0; text-decoration: none; }
+.footer__contact-link:hover { color: var(--c-accent); }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: var(--space-md); text-align: center; }
+.footer__bottom p { font-size: 13px; margin-bottom: 6px; }
+
+@media (max-width: 700px) {
+  .footer__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+}
+
+/* ============================================================
+   TRANG GIỚI THIỆU — style riêng của trang này
+   ============================================================ */
+
+/* ---- Hero ---- */
+.about-hero { background: var(--c-bg); }
+.about-hero__grid {
+  display: grid; grid-template-columns: 280px 1fr; gap: var(--space-2xl);
+  align-items: center;
+}
+.about-hero__photo {
+  width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow-lg); border: 4px solid var(--c-surface);
+}
+.about-hero__photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-hero__name { margin-bottom: 6px; }
+.about-hero__role { color: var(--c-accent-dark); font-weight: 600; font-size: var(--fs-h4); margin-bottom: var(--space-sm); }
+.about-hero__desc { max-width: 620px; margin-bottom: var(--space-md); }
+.about-hero__tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.about-hero__tag {
+  font-size: var(--fs-small); font-weight: 500; color: var(--c-ink-soft);
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  padding: 6px 14px; border-radius: 999px;
+}
+
+@media (max-width: 760px) {
+  .about-hero__grid { grid-template-columns: 1fr; text-align: center; }
+  .about-hero__photo { width: 160px; margin: 0 auto var(--space-md); }
+  .about-hero__tags { justify-content: center; }
+}
+
+/* ---- Timeline (Nền tảng giáo dục / Kinh nghiệm làm việc) ---- */
+.timeline { max-width: 760px; margin: 0 auto; position: relative; }
+.timeline::before {
+  content: ""; position: absolute; left: 19px; top: 8px; bottom: 8px;
+  width: 2px; background: var(--c-border-strong);
+}
+.timeline__item {
+  position: relative; padding-left: 56px; padding-bottom: var(--space-lg);
+}
+.timeline__item:last-child { padding-bottom: 0; }
+.timeline__dot {
+  position: absolute; left: 0; top: 2px;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--c-accent-soft); color: var(--c-accent-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 15px; border: 2px solid var(--c-surface);
+  box-shadow: 0 0 0 2px var(--c-border-strong);
+}
+.timeline__card {
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--radius-md); padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+.timeline__period { font-size: var(--fs-small); font-weight: 600; color: var(--c-accent-dark); margin-bottom: 4px; }
+.timeline__title { font-size: var(--fs-h4); font-weight: 700; margin-bottom: 2px; }
+.timeline__org { font-size: var(--fs-small); color: var(--c-ink-faint); margin-bottom: 6px; }
+.timeline__desc { font-size: var(--fs-small); color: var(--c-ink-soft); margin: 0; }
+
+/* ---- Định hướng phát triển (cards ngang) ---- */
+.direction-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
+.direction-card {
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg); padding: var(--space-lg);
+  box-shadow: var(--shadow-sm); transition: var(--transition);
+}
+.direction-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.direction-card__icon { font-size: 30px; margin-bottom: var(--space-sm); }
+.direction-card h3 { margin-bottom: 8px; }
+.direction-card p { font-size: var(--fs-small); margin: 0; }
+
+@media (max-width: 860px) {
+  .direction-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Thế mạnh nổi bật (grid 6 ô) ---- */
+.strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
+.strength-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  border-radius: var(--radius-md); padding: var(--space-md);
+}
+.strength-item__icon {
+  flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px;
+  background: var(--c-accent-soft); color: var(--c-accent-dark);
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+}
+.strength-item h4 { margin-bottom: 4px; }
+.strength-item p { font-size: var(--fs-small); margin: 0; }
+
+@media (max-width: 860px) {
+  .strength-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .strength-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- CTA cuối trang ---- */
+.about-cta {
+  background: var(--c-footer-bg); color: #fff; border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-lg); text-align: center;
+}
+.about-cta h2 { color: #fff; margin-bottom: var(--space-sm); }
+.about-cta p { color: var(--c-footer-text); max-width: 560px; margin: 0 auto var(--space-lg); }
+.about-cta__actions { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER — nguyên bản index.html, thêm tab "Giới thiệu" + đánh dấu active
+     ============================================================ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="index.html#hero" class="header__brand">
+      <img src="assets/favicon.ico" alt="Logo Claude Cowork AI Thực Chiến" class="header__brand-icon">
+      <span class="header__brand-text">
+        <span class="header__brand-line1">Claude Cowork</span><br>
+        <span class="header__brand-line2">AI Thực Chiến</span>
+      </span>
+    </a>
+    <nav class="header__nav">
+      <a href="index.html#van-de">Vấn đề</a>
+      <a href="index.html#giai-phap">Giải pháp</a>
+      <a href="index.html#bang-gia">Các gói</a>
+      <a href="index.html#chi-tiet">Nội dung</a>
+      <a href="index.html#tac-gia">Tác giả</a>
+      <a href="gioi-thieu.html" class="active">Giới thiệu</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+    <div class="header__actions">
+      <a href="index.html#dat-mua" class="btn btn--primary header__cta">Đặt mua ngay</a>
+      <button class="hamburger" id="hamburger" aria-label="Mở menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menu di động">
+  <button class="mobile-menu__close" id="menuClose" aria-label="Đóng menu">×</button>
+  <div style="clear:both"></div>
+  <a href="index.html#van-de">Vấn đề</a>
+  <a href="index.html#giai-phap">Giải pháp</a>
+  <a href="index.html#bang-gia">Các gói</a>
+  <a href="index.html#chi-tiet">Nội dung</a>
+  <a href="index.html#tac-gia">Tác giả</a>
+  <a href="gioi-thieu.html" class="active">Giới thiệu</a>
+  <a href="index.html#faq">FAQ</a>
+  <a href="index.html#dat-mua" style="color:var(--c-accent);font-weight:600">Đặt mua ngay</a>
+</nav>
+
+<!-- ============================================================
+     HERO — ảnh + tên + mô tả ngắn
+     ============================================================ -->
+<section class="about-hero section" id="hero">
+  <div class="container about-hero__grid">
+    <div class="about-hero__photo">
+      <img src="assets/author-nguyen-quan.jpg" alt="Nguyễn Quân — tác giả Claude Cowork AI Thực Chiến">
+    </div>
+    <div>
+      <span class="eyebrow">👋 Giới thiệu</span>
+      <h1 class="about-hero__name">Nguyễn Quân</h1>
+      <p class="about-hero__role">Quản lý Sản xuất · Cơ khí – Tự động hóa · AI Agent & Automation</p>
+      <p class="about-hero__desc">Hơn 20 năm kinh nghiệm trong lĩnh vực Quản lý Sản xuất, Cơ khí – Tự động hóa tại các doanh nghiệp sản xuất. Hiện đang theo đuổi hướng ứng dụng AI Agent & Automation vào sản xuất và đào tạo, với mong muốn giúp người đi làm Việt Nam dùng AI đúng cách, hiệu quả và bền vững.</p>
+      <div class="about-hero__tags">
+        <span class="about-hero__tag">🏭 20+ năm Sản xuất & Cơ khí</span>
+        <span class="about-hero__tag">🤖 AI Agent & Automation</span>
+        <span class="about-hero__tag">📘 Tác giả Claude Cowork AI Thực Chiến</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     NỀN TẢNG GIÁO DỤC
+     ============================================================ -->
+<section class="section section--surface" id="giao-duc">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">🎓 Học vấn</span>
+      <h2>Nền tảng giáo dục</h2>
+      <p>Hành trình học tập trải dài từ kỹ thuật cơ khí nền tảng đến quản trị kinh doanh và ứng dụng AI hiện đại.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline__item">
+        <div class="timeline__dot">01</div>
+        <div class="timeline__card">
+          <div class="timeline__period">2001 – 2006</div>
+          <div class="timeline__title">Kỹ sư Cơ khí</div>
+          <div class="timeline__org">Đại học Bách Khoa Hà Nội</div>
+          <p class="timeline__desc">Nền tảng kỹ thuật cơ khí — thiết kế, chế tạo, nguyên lý máy — làm bệ phóng cho toàn bộ sự nghiệp sản xuất sau này.</p>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__dot">02</div>
+        <div class="timeline__card">
+          <div class="timeline__period">2012 – 2014</div>
+          <div class="timeline__title">MBA</div>
+          <div class="timeline__org">Đại học Kinh tế Quốc dân</div>
+          <p class="timeline__desc">Bổ sung tư duy quản trị doanh nghiệp, tài chính và vận hành cho nền tảng kỹ thuật đã có.</p>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__dot">03</div>
+        <div class="timeline__card">
+          <div class="timeline__period">2016</div>
+          <div class="timeline__title">CPO — Chief Production Officer</div>
+          <div class="timeline__org">PTI</div>
+          <p class="timeline__desc">Chứng chỉ quản trị sản xuất cấp cao, chuẩn hóa năng lực điều hành xưởng sản xuất quy mô lớn.</p>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__dot">04</div>
+        <div class="timeline__card">
+          <div class="timeline__period">2020</div>
+          <div class="timeline__title">CEO</div>
+          <div class="timeline__org">PTI</div>
+          <p class="timeline__desc">Chứng chỉ quản trị điều hành, mở rộng tư duy từ quản lý sản xuất sang quản trị tổng thể doanh nghiệp.</p>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__dot">05</div>
+        <div class="timeline__card">
+          <div class="timeline__period">2025</div>
+          <div class="timeline__title">CMA — ChatGPT Master Application</div>
+          <div class="timeline__org">Unica</div>
+          <p class="timeline__desc">Bước ngoặt chuyển hướng sang ứng dụng AI thực chiến — khởi đầu cho hành trình viết bộ ebook Claude Cowork AI Thực Chiến.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     KINH NGHIỆM LÀM VIỆC
+     ============================================================ -->
+<section class="section section--bg" id="kinh-nghiem">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">💼 Sự nghiệp</span>
+      <h2>Kinh nghiệm làm việc</h2>
+      <p>Hơn 20 năm gắn bó với sản xuất — từ kỹ sư thiết kế đến trưởng phòng điều hành xưởng sản xuất thực tế.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline__item">
+        <div class="timeline__dot">①</div>
+        <div class="timeline__card">
+          <div class="timeline__period">01/2007 – 06/2014</div>
+          <div class="timeline__title">Kỹ sư thiết kế máy → Trưởng phòng Kỹ thuật</div>
+          <div class="timeline__org">BKMECH</div>
+          <p class="timeline__desc">Khởi đầu sự nghiệp từ vị trí kỹ sư thiết kế, phát triển năng lực chuyên môn và được đề bạt lên Trưởng phòng Kỹ thuật sau hơn 7 năm gắn bó.</p>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__dot">②</div>
+        <div class="timeline__card">
+          <div class="timeline__period">06/2014 – 05/2015</div>
+          <div class="timeline__title">Kỹ thuật sản xuất</div>
+          <div class="timeline__org">APS PLASTIC</div>
+          <p class="timeline__desc">Trực tiếp xử lý kỹ thuật sản xuất, tích lũy kinh nghiệm thực tế ở môi trường sản xuất nhựa công nghiệp.</p>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__dot">③</div>
+        <div class="timeline__card">
+          <div class="timeline__period">06/2017 – nay</div>
+          <div class="timeline__title">Trưởng phòng Sản xuất</div>
+          <div class="timeline__org">CNC VINA</div>
+          <p class="timeline__desc">Điều hành trực tiếp xưởng sản xuất, chịu trách nhiệm quy trình, chất lượng, năng suất — và là nơi khởi nguồn cho việc ứng dụng AI/Automation vào quản trị sản xuất thực tế.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ĐỊNH HƯỚNG PHÁT TRIỂN
+     ============================================================ -->
+<section class="section section--surface" id="dinh-huong">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">🚀 Tương lai</span>
+      <h2>Định hướng phát triển</h2>
+      <p>Ba hướng đi trọng tâm trong giai đoạn tiếp theo, kết nối kinh nghiệm sản xuất thực tế với công nghệ AI hiện đại.</p>
+    </div>
+    <div class="direction-grid">
+      <div class="direction-card">
+        <div class="direction-card__icon">📊</div>
+        <h3>Dashboard quản trị sản xuất thông minh</h3>
+        <p>Xây dựng hệ thống theo dõi, cảnh báo và ra quyết định sản xuất theo thời gian thực, dựa trên dữ liệu thật của xưởng.</p>
+      </div>
+      <div class="direction-card">
+        <div class="direction-card__icon">🤖</div>
+        <h3>Ứng dụng AI Agent & Automation</h3>
+        <p>Triển khai các agent AI xử lý công việc lặp lại, báo cáo, tổng hợp dữ liệu — giải phóng thời gian cho công việc ra quyết định.</p>
+      </div>
+      <div class="direction-card">
+        <div class="direction-card__icon">🏭</div>
+        <h3>Chuyển đổi số nhà máy</h3>
+        <p>Đưa công nghệ số và AI vào vận hành nhà máy một cách thực tế, từng bước, phù hợp với nguồn lực doanh nghiệp vừa và nhỏ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     THẾ MẠNH NỔI BẬT
+     ============================================================ -->
+<section class="section section--bg" id="the-manh">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">⭐ Chuyên môn</span>
+      <h2>Thế mạnh nổi bật</h2>
+      <p>Kết hợp giữa kinh nghiệm sản xuất thực chiến và năng lực ứng dụng công nghệ mới.</p>
+    </div>
+    <div class="strength-grid">
+      <div class="strength-item">
+        <div class="strength-item__icon">⚙️</div>
+        <div>
+          <h4>Quản lý sản xuất & cải tiến quy trình</h4>
+          <p>Điều hành xưởng sản xuất, tối ưu quy trình, nâng cao năng suất và chất lượng.</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-item__icon">🔧</div>
+        <div>
+          <h4>Thiết kế cơ khí & máy CNC</h4>
+          <p>Nền tảng kỹ thuật vững chắc từ thiết kế đến chế tạo máy móc, thiết bị CNC.</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-item__icon">📋</div>
+        <div>
+          <h4>Hệ thống quản lý chất lượng</h4>
+          <p>Xây dựng và vận hành hệ thống theo tiêu chuẩn ISO 9001:2015, IATF 16949.</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-item__icon">🧠</div>
+        <div>
+          <h4>Ứng dụng AI / ChatGPT / NotebookLM</h4>
+          <p>Sử dụng thành thạo các công cụ AI để xử lý thông tin, tài liệu và hỗ trợ ra quyết định.</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-item__icon">🔗</div>
+        <div>
+          <h4>Tự động hóa với Make.com</h4>
+          <p>Xây dựng các quy trình tự động hóa kết nối công cụ, tiết kiệm thời gian vận hành.</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-item__icon">🎯</div>
+        <div>
+          <h4>Kỹ năng lãnh đạo & đào tạo</h4>
+          <p>Dẫn dắt đội nhóm sản xuất, đào tạo và chuyển giao kiến thức thực chiến cho nhân sự.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA CUỐI TRANG
+     ============================================================ -->
+<section class="section section--surface">
+  <div class="container">
+    <div class="about-cta">
+      <h2>Muốn học cách ứng dụng AI vào công việc thật?</h2>
+      <p>Bộ ebook <em>Claude Cowork AI Thực Chiến</em> đúc kết cách Lisa và anh Quân dùng AI như một đồng nghiệp số — từ nền tảng đến tự động hóa workflow.</p>
+      <div class="about-cta__actions">
+        <a href="index.html#bang-gia" class="btn btn--primary btn--lg">Xem các gói ebook</a>
+        <a href="https://zalo.me/0904667411" target="_blank" rel="noopener" class="btn btn--outline btn--lg" style="border-color:#fff;color:#fff;">💬 Liên hệ Zalo 0904667411</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER — nguyên bản index.html
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">Claude Cowork AI Thực Chiến</div>
+        <p>Bộ ebook thực chiến giúp bạn dùng Claude Cowork như một đồng nghiệp số.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Liên kết</h4>
+        <a href="index.html#van-de">Vấn đề</a>
+        <a href="index.html#giai-phap">Giải pháp</a>
+        <a href="index.html#bang-gia">Các gói</a>
+        <a href="index.html#chi-tiet">Nội dung</a>
+        <a href="gioi-thieu.html">Giới thiệu</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#dat-mua">Đặt mua</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Liên hệ</h4>
+        <p style="color:#fff;margin-bottom:8px;">Tác giả: Nguyễn Quân</p>
+        <p class="footer__contact-line">Email: <a href="mailto:nguyenquan140882@gmail.com" class="footer__contact-link">nguyenquan140882@gmail.com</a></p>
+        <p class="footer__contact-line">Fanpage Facebook: <a href="https://facebook.com/profile.php?id=61590310835534" target="_blank" rel="noopener" class="footer__contact-link">Nguyễn Quân - AI Thực Chiến</a></p>
+        <p class="footer__contact-line">Zalo: <a href="https://zalo.me/0904667411" target="_blank" rel="noopener" class="footer__contact-link">0904667411</a></p>
+        <p class="footer__contact-line">Website: <a href="https://nguyenquanai.vn" target="_blank" rel="noopener" class="footer__contact-link">https://nguyenquanai.vn</a></p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>Ebook đọc online trên Heyzine. Quyền đọc gắn với email đăng ký, không chia sẻ link.</p>
+      <p>© 2026 Nguyễn Quân. Bảo lưu mọi quyền.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   JS — header scroll + mobile menu (nguyên bản từ index.html)
+   ============================================================ */
+
+// 1. Header shadow khi scroll
+var header = document.getElementById('header');
+window.addEventListener('scroll', function () {
+  header.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// 2. Mobile menu
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+var menuOverlay = document.getElementById('menuOverlay');
+var menuClose = document.getElementById('menuClose');
+
+function openMenu() { mobileMenu.classList.add('open'); menuOverlay.classList.add('open'); }
+function closeMenu() { mobileMenu.classList.remove('open'); menuOverlay.classList.remove('open'); }
+
+hamburger.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+menuOverlay.addEventListener('click', closeMenu);
+mobileMenu.querySelectorAll('a').forEach(function (a) {
+  a.addEventListener('click', closeMenu);
+});
+</script>
+
+</body>
+</html>
