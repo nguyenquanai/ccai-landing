@@ -366,9 +366,21 @@ ul { list-style: none; }
   box-shadow: 0 0 0 2px var(--c-border-strong);
 }
 .timeline__card {
-  background: var(--c-surface); border: 1px solid var(--c-border);
+  background: linear-gradient(160deg, #FFF8F1 0%, var(--c-accent-soft) 100%);
+  border: 1px solid rgba(232,93,38,0.16);
   border-radius: var(--radius-md); padding: var(--space-md);
-  box-shadow: var(--shadow-sm);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 10px 24px rgba(232,93,38,0.10),
+    0 2px 6px rgba(26,26,46,0.06);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.timeline__card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 16px 32px rgba(232,93,38,0.16),
+    0 4px 10px rgba(26,26,46,0.08);
 }
 .timeline__period { font-size: var(--fs-small); font-weight: 600; color: var(--c-accent-dark); margin-bottom: 4px; }
 .timeline__title { font-size: var(--fs-h4); font-weight: 700; margin-bottom: 2px; }
