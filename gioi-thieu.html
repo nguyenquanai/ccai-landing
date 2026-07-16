@@ -280,6 +280,43 @@ ul { list-style: none; }
 }
 
 /* ============================================================
+   SCROLL REVEAL — hiệu ứng mờ dần + trượt lên khi cuộn tới
+   (lấy cảm hứng từ hiệu ứng chuyển slide của Gamma)
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Các item trong nhóm (timeline, card, strength...) trồi lên lệch nhịp nhau một chút cho mượt */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 90ms; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 180ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 270ms; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 360ms; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 450ms; }
+
+/* Người dùng đã bật "giảm chuyển động" trên máy → tắt hiệu ứng, hiện luôn nội dung */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-stagger > * {
+    opacity: 1 !important; transform: none !important; transition: none !important;
+  }
+}
+
+/* ============================================================
    TRANG GIỚI THIỆU — style riêng của trang này
    ============================================================ */
 
@@ -437,10 +474,10 @@ ul { list-style: none; }
      ============================================================ -->
 <section class="about-hero section" id="hero">
   <div class="container about-hero__grid">
-    <div class="about-hero__photo">
+    <div class="about-hero__photo reveal">
       <img src="assets/author-nguyen-quan.jpg" alt="Nguyễn Quân — tác giả Claude Cowork AI Thực Chiến">
     </div>
-    <div>
+    <div class="reveal">
       <span class="eyebrow">👋 Giới thiệu</span>
       <h1 class="about-hero__name">Nguyễn Quân</h1>
       <p class="about-hero__role">Quản lý Sản xuất · Cơ khí – Tự động hóa · AI Agent & Automation</p>
@@ -459,12 +496,12 @@ ul { list-style: none; }
      ============================================================ -->
 <section class="section section--surface" id="giao-duc">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow">🎓 Học vấn</span>
       <h2>Nền tảng giáo dục</h2>
       <p>Hành trình học tập trải dài từ kỹ thuật cơ khí nền tảng đến quản trị kinh doanh và ứng dụng AI hiện đại.</p>
     </div>
-    <div class="timeline">
+    <div class="timeline reveal-stagger">
       <div class="timeline__item">
         <div class="timeline__dot">01</div>
         <div class="timeline__card">
@@ -519,12 +556,12 @@ ul { list-style: none; }
      ============================================================ -->
 <section class="section section--bg" id="kinh-nghiem">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow">💼 Sự nghiệp</span>
       <h2>Kinh nghiệm làm việc</h2>
       <p>Hơn 20 năm gắn bó với sản xuất — từ kỹ sư thiết kế đến trưởng phòng điều hành xưởng sản xuất thực tế.</p>
     </div>
-    <div class="timeline">
+    <div class="timeline reveal-stagger">
       <div class="timeline__item">
         <div class="timeline__dot">①</div>
         <div class="timeline__card">
@@ -561,12 +598,12 @@ ul { list-style: none; }
      ============================================================ -->
 <section class="section section--surface" id="dinh-huong">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow">🚀 Tương lai</span>
       <h2>Định hướng phát triển</h2>
       <p>Ba hướng đi trọng tâm trong giai đoạn tiếp theo, kết nối kinh nghiệm sản xuất thực tế với công nghệ AI hiện đại.</p>
     </div>
-    <div class="direction-grid">
+    <div class="direction-grid reveal-stagger">
       <div class="direction-card">
         <div class="direction-card__icon">📊</div>
         <h3>Dashboard quản trị sản xuất thông minh</h3>
@@ -591,12 +628,12 @@ ul { list-style: none; }
      ============================================================ -->
 <section class="section section--bg" id="the-manh">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow">⭐ Chuyên môn</span>
       <h2>Thế mạnh nổi bật</h2>
       <p>Kết hợp giữa kinh nghiệm sản xuất thực chiến và năng lực ứng dụng công nghệ mới.</p>
     </div>
-    <div class="strength-grid">
+    <div class="strength-grid reveal-stagger">
       <div class="strength-item">
         <div class="strength-item__icon">⚙️</div>
         <div>
@@ -648,7 +685,7 @@ ul { list-style: none; }
      ============================================================ -->
 <section class="section section--surface">
   <div class="container">
-    <div class="about-cta">
+    <div class="about-cta reveal">
       <h2>Muốn học cách ứng dụng AI vào công việc thật?</h2>
       <p>Bộ ebook <em>Claude Cowork AI Thực Chiến</em> đúc kết cách Lisa và anh Quân dùng AI như một đồng nghiệp số — từ nền tảng đến tự động hóa workflow.</p>
       <div class="about-cta__actions">
@@ -721,6 +758,23 @@ menuOverlay.addEventListener('click', closeMenu);
 mobileMenu.querySelectorAll('a').forEach(function (a) {
   a.addEventListener('click', closeMenu);
 });
+
+// 3. Scroll reveal — mờ dần + trượt lên khi cuộn tới (kiểu Gamma)
+var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+if ('IntersectionObserver' in window) {
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target); // chỉ chạy 1 lần, cuộn lên lại không lặp
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(function (el) { revealObserver.observe(el); });
+} else {
+  // Trình duyệt cũ không hỗ trợ IntersectionObserver → hiện luôn nội dung
+  revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+}
 </script>
 
 </body>
