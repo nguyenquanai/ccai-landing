@@ -319,14 +319,28 @@ ul { list-style: none; }
 /* ---- Hero (bản 2 — lấy cảm hứng Gamma: content + contact-card + ảnh + QR) ---- */
 .about-hero__desc2 { max-width: 560px; margin-bottom: var(--space-lg); }
 
+/* Contact card — đồng màu nền kem, nổi 3D nhẹ bằng đổ bóng, nhô lên khi hover */
 .contact-card {
-  background: var(--c-surface); border: 1px solid var(--c-border);
+  background: var(--c-bg);
+  border: 1px solid rgba(232, 93, 38, 0.14);
   border-radius: var(--radius-lg); padding: var(--space-md);
-  box-shadow: var(--shadow-md); max-width: 420px;
+  max-width: 420px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 10px 24px rgba(26,26,46,0.08),
+    0 2px 6px rgba(26,26,46,0.05);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 18px 36px rgba(26,26,46,0.12),
+    0 4px 10px rgba(26,26,46,0.07);
 }
 .contact-card__row {
   display: flex; align-items: center; gap: 12px; padding: 10px 2px;
-  border-bottom: 1px solid var(--c-border);
+  border-bottom: 1px solid rgba(232, 93, 38, 0.12);
 }
 .contact-card__row:last-child { border-bottom: none; }
 .contact-card__label {
@@ -336,7 +350,9 @@ ul { list-style: none; }
 }
 .contact-card__value { font-size: var(--fs-small); font-weight: 600; color: var(--c-ink); word-break: break-word; }
 
-.about-hero__photo-wrap { position: relative; }
+/* Ảnh + QR — QR tách riêng thành 1 khối nhỏ bên dưới ảnh, KHÔNG đè lên ảnh */
+.about-hero__visual { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.about-hero__photo-wrap { position: relative; width: 100%; }
 .about-hero__photo-wrap::before {
   content: ""; position: absolute; inset: -18px;
   background: radial-gradient(circle at 30% 20%, var(--c-accent-soft), transparent 65%);
@@ -346,18 +362,26 @@ ul { list-style: none; }
   position: relative; z-index: 1; width: 100%; aspect-ratio: 4/5; object-fit: cover;
   border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); border: 4px solid var(--c-surface);
 }
-.about-hero__qr {
-  position: absolute; z-index: 2; bottom: -18px; right: -14px;
-  background: #fff; border-radius: var(--radius-md); padding: 10px;
-  box-shadow: var(--shadow-lg); text-align: center; border: 1px solid var(--c-border);
+.about-hero__qr-card {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 12px;
+  background: var(--c-bg); border: 1px solid rgba(232, 93, 38, 0.14);
+  border-radius: var(--radius-md); padding: 10px 16px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 8px 18px rgba(26,26,46,0.08),
+    0 2px 5px rgba(26,26,46,0.05);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
-.about-hero__qr img { width: 84px; height: 84px; display: block; }
-.about-hero__qr span { display: block; font-size: 11px; font-weight: 600; color: var(--c-ink-soft); margin-top: 4px; }
-
-@media (max-width: 760px) {
-  .about-hero__qr { bottom: -14px; right: 12px; }
-  .about-hero__qr img { width: 64px; height: 64px; }
+.about-hero__qr-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 14px 28px rgba(26,26,46,0.12),
+    0 3px 8px rgba(26,26,46,0.06);
 }
+.about-hero__qr-card img { width: 56px; height: 56px; border-radius: 6px; display: block; flex-shrink: 0; }
+.about-hero__qr-card span { font-size: var(--fs-small); font-weight: 600; color: var(--c-ink-soft); }
 
 /* ---- Nền tảng giáo dục — số tròn + đường kẻ gradient (kiểu Gamma) ---- */
 .edu-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px; }
@@ -462,7 +486,7 @@ ul { list-style: none; }
 
 @media (max-width: 760px) {
   .about-hero__grid { grid-template-columns: 1fr; text-align: center; }
-  .about-hero__photo-wrap { width: 220px; margin: 0 auto var(--space-lg); }
+  .about-hero__visual { width: 220px; margin: 0 auto var(--space-lg); }
   .about-hero__desc2 { margin-left: auto; margin-right: auto; }
   .contact-card { margin: 0 auto; }
   .about-hero__tags { justify-content: center; }
@@ -607,11 +631,13 @@ ul { list-style: none; }
      ============================================================ -->
 <section class="about-hero section" id="hero">
   <div class="container about-hero__grid">
-    <div class="about-hero__photo-wrap reveal">
-      <img src="assets/author-nguyen-quan.jpg" alt="Nguyễn Quân — tác giả Claude Cowork AI Thực Chiến">
-      <div class="about-hero__qr">
+    <div class="about-hero__visual reveal">
+      <div class="about-hero__photo-wrap">
+        <img src="assets/author-nguyen-quan.jpg" alt="Nguyễn Quân — tác giả Claude Cowork AI Thực Chiến">
+      </div>
+      <div class="about-hero__qr-card">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://zalo.me/0904667411" alt="Quét mã QR liên hệ Zalo Nguyễn Quân">
-        <span>Quét Zalo</span>
+        <span>Quét mã để kết bạn<br>Zalo với Nguyễn Quân</span>
       </div>
     </div>
     <div class="reveal">
