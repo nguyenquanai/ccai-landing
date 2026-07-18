@@ -452,11 +452,26 @@ ul { list-style: none; }
   .zz-dot { position: absolute; left: 14px; }
 }
 
-/* ---- Định hướng phát triển — thêm viền gradient trên đầu card ---- */
-.direction-card { position: relative; overflow: hidden; }
-.direction-card::before {
-  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--c-accent), var(--c-accent-soft));
+/* ---- Tầm nhìn & Sứ mệnh ---- */
+.vision-head { max-width: 780px; margin-bottom: var(--space-xl); }
+.vision-head h2 { margin-bottom: var(--space-sm); }
+.vision-head p { font-size: var(--fs-body); }
+.vision-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  column-gap: var(--space-2xl); row-gap: var(--space-lg);
+}
+.vision-item { display: flex; gap: 16px; align-items: flex-start; }
+.vision-item__icon {
+  flex-shrink: 0; width: 44px; height: 44px; color: var(--c-accent);
+}
+.vision-item__icon svg { width: 100%; height: 100%; }
+.vision-item h4 { margin-bottom: 6px; }
+.vision-item p { font-size: var(--fs-body); margin: 0; }
+.vision-item a { color: var(--c-accent-dark); font-weight: 600; text-decoration: underline; }
+.vision-item a:hover { color: var(--c-accent); }
+
+@media (max-width: 760px) {
+  .vision-grid { grid-template-columns: 1fr; }
 }
 
 /* ============================================================
@@ -531,22 +546,6 @@ ul { list-style: none; }
 .timeline__title { font-size: var(--fs-h4); font-weight: 700; margin-bottom: 2px; }
 .timeline__org { font-size: var(--fs-small); color: var(--c-ink-faint); margin-bottom: 6px; }
 .timeline__desc { font-size: var(--fs-small); color: var(--c-ink-soft); margin: 0; }
-
-/* ---- Định hướng phát triển (cards ngang) ---- */
-.direction-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
-.direction-card {
-  background: var(--c-surface); border: 1px solid var(--c-border);
-  border-radius: var(--radius-lg); padding: var(--space-lg);
-  box-shadow: var(--shadow-sm); transition: var(--transition);
-}
-.direction-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
-.direction-card__icon { font-size: 30px; margin-bottom: var(--space-sm); }
-.direction-card h3 { margin-bottom: 8px; }
-.direction-card p { font-size: var(--fs-small); margin: 0; }
-
-@media (max-width: 860px) {
-  .direction-grid { grid-template-columns: 1fr; }
-}
 
 /* ---- Thế mạnh nổi bật (grid 6 ô) ---- */
 .strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
@@ -757,30 +756,68 @@ ul { list-style: none; }
 </section>
 
 <!-- ============================================================
-     ĐỊNH HƯỚNG PHÁT TRIỂN
+     TẦM NHÌN & SỨ MỆNH
      ============================================================ -->
-<section class="section section--surface" id="dinh-huong">
+<section class="section section--surface" id="tam-nhin">
   <div class="container">
-    <div class="section-head reveal">
+    <div class="vision-head reveal">
       <span class="eyebrow">🚀 Tương lai</span>
-      <h2>Định hướng phát triển</h2>
-      <p>Ba hướng đi trọng tâm trong giai đoạn tiếp theo, kết nối kinh nghiệm sản xuất thực tế với công nghệ AI hiện đại.</p>
+      <h2>Tầm nhìn &amp; Sứ mệnh</h2>
+      <p>Đưa AI thành công cụ làm việc hằng ngày của doanh nghiệp Việt Nam, giúp tối ưu quy trình, nâng cao năng suất và tạo lợi thế cạnh tranh bền vững.</p>
     </div>
-    <div class="direction-grid reveal-stagger">
-      <div class="direction-card">
-        <div class="direction-card__icon">📊</div>
-        <h3>Dashboard quản trị sản xuất thông minh</h3>
-        <p>Xây dựng hệ thống theo dõi, cảnh báo và ra quyết định sản xuất theo thời gian thực, dựa trên dữ liệu thật của xưởng.</p>
+    <div class="vision-grid reveal-stagger">
+      <div class="vision-item">
+        <div class="vision-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="12" rx="1.5"/>
+            <path d="M7 11l3-3 3 2 4-4"/>
+            <path d="M12 15v4M8 21h8"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Đào tạo &amp; Chuyển giao</h4>
+          <p>Đào tạo thực chiến, cầm tay chỉ việc và đồng hành triển khai để doanh nghiệp có thể ứng dụng AI ngay sau khóa học.</p>
+        </div>
       </div>
-      <div class="direction-card">
-        <div class="direction-card__icon">🤖</div>
-        <h3>Ứng dụng AI Agent & Automation</h3>
-        <p>Triển khai các agent AI xử lý công việc lặp lại, báo cáo, tổng hợp dữ liệu — giải phóng thời gian cho công việc ra quyết định.</p>
+      <div class="vision-item">
+        <div class="vision-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="7" r="2.5"/>
+            <path d="M3.5 18c0-3 2-5 4.5-5s4.5 2 4.5 5"/>
+            <circle cx="17" cy="8" r="2"/>
+            <path d="M13.5 18c0-2.5 1.6-4 3.5-4s3.5 1.5 3.5 4"/>
+          </svg>
+        </div>
+        <div>
+          <h4>AI cho doanh nghiệp</h4>
+          <p>Tư vấn và xây dựng quy trình ứng dụng AI phù hợp với từng doanh nghiệp, giúp nhân viên làm việc nhanh hơn và hiệu quả hơn.</p>
+        </div>
       </div>
-      <div class="direction-card">
-        <div class="direction-card__icon">🏭</div>
-        <h3>Chuyển đổi số nhà máy</h3>
-        <p>Đưa công nghệ số và AI vào vận hành nhà máy một cách thực tế, từng bước, phù hợp với nguồn lực doanh nghiệp vừa và nhỏ.</p>
+      <div class="vision-item">
+        <div class="vision-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 3v2.5M12 18.5V21M21 12h-2.5M5.5 12H3M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8M18.4 18.4l-1.8-1.8M7.4 7.4L5.6 5.6"/>
+          </svg>
+        </div>
+        <div>
+          <h4>AI trong sản xuất</h4>
+          <p>Ứng dụng AI vào quản lý sản xuất, lập kế hoạch, kiểm soát chất lượng và phân tích dữ liệu nhằm tối ưu vận hành nhà máy.</p>
+        </div>
+      </div>
+      <div class="vision-item">
+        <div class="vision-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="6" cy="6" r="2"/>
+            <circle cx="18" cy="6" r="2"/>
+            <circle cx="12" cy="18" r="2"/>
+            <path d="M7.7 7.2L10.5 16M16.3 7.2L13.5 16M8 6h8"/>
+          </svg>
+        </div>
+        <div>
+          <h4>AI &amp; Automation</h4>
+          <p>Thiết kế hệ thống tự động hóa bằng ChatGPT, Claude AI, <a href="https://www.make.com" target="_blank" rel="noopener">Make.com</a>, Google Workspace và AI Agentic để giảm công việc thủ công và tăng năng suất.</p>
+        </div>
       </div>
     </div>
   </div>
