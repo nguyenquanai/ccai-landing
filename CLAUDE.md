@@ -48,3 +48,10 @@ Combo 3 tập: 399.000đ (gói chủ lực, tiết kiệm 118k) | Bản đầy �
 ## Phong cách thiết kế (bắt buộc giữ nhất quán)
 Clean tech, nền kem/trắng ngà, chữ đen than, nhấn cam công nghệ. Font Be Vietnam Pro (nội dung),
 EB Garamond + Caladea (riêng logo 2 dòng). Nhiều khoảng trắng, card gọn, responsive mobile tốt.
+
+## Cập nhật tiếp tục bằng Codex
+- Bộ đếm lượt xem đã tích hợp trên `index.html` và `gioi-thieu.html` qua `assets/page-views.js`. Mỗi lần tải tài liệu là một lượt xem, không phải khách duy nhất; không đếm localhost.
+- Backend kiểm tra `action=tracking_config` trước khi nhận POST `action=page_view`, tránh request bộ đếm rơi vào luồng Leads của backend cũ.
+- Tab `Thống kê truy cập`: ngày theo giờ Việt Nam, lượt xem trang chủ, Giới thiệu, tổng lượt xem. Hàm tạo biểu đồ `taoBieuDoTruyCap`, chiều rộng 450 px, đã được chủ website xác nhận kiểm tra OK.
+- Mã Apps Script v13 được lưu tại `apps-script/Ma.gs`, hướng dẫn tại `apps-script/README.md`. GitHub không tự triển khai mã này vào Google Apps Script; giữ URL Web App và webhook SePay hiện có khi cập nhật.
+- Kiểm tra mô phỏng: `node --test tests/page-views.cjs`. Không gửi đơn thử/email thử vào production để kiểm tra bộ đếm.
