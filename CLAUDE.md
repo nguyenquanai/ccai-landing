@@ -56,10 +56,12 @@ EB Garamond + Caladea (riêng logo 2 dòng). Nhiều khoảng trắng, card gọ
 - Mã Apps Script v13 được lưu tại `apps-script/Ma.gs`, hướng dẫn tại `apps-script/README.md`. GitHub không tự triển khai mã này vào Google Apps Script; giữ URL Web App và webhook SePay hiện có khi cập nhật.
 - Kiểm tra mô phỏng: `node --test tests/page-views.cjs`. Không gửi đơn thử/email thử vào production để kiểm tra bộ đếm.
 
-## Chương trình đọc miễn phí (đang chuẩn bị triển khai)
+## Chương trình đọc miễn phí
 - Chủ website đã duyệt luồng đăng ký miễn phí cho cả 3 tập, dùng bản Heyzine riêng; giữ nguyên cấu hình và quyền đọc khách mua. Tab `Heyzine_config_free` đã được chủ website tạo và xác nhận.
 - Backend bổ sung `apps-script/FreeCampaign.gs`, hai nhánh action riêng trong `Ma.gs`; hướng dẫn tại `apps-script/FreeCampaign.md`. Chạy `setupFreeCampaign` tạo tab `Chương trình miễn phí` (mặc định TẮT) và `Đăng ký miễn phí`.
 - BẬT với ngày trống chạy không giới hạn; có ngày thì áp dụng lịch giờ Việt Nam. Chỉ có một ngày thì áp dụng mốc đó; ngày sai không mở. Khách đăng ký không được ghi là đã thanh toán hoặc cộng doanh thu.
 - Frontend `assets/free-campaign.js` và CSS riêng: chỉ hiện khi GET `free_campaign` xác nhận version 1/active; POST `register_free_campaign` trả JSON đọc được mới báo thành công. Không dùng no-cors để giả định email đã gửi.
 - Không hardcode mật khẩu hoặc link đọc đầy đủ trong frontend/repository. Hết hạn đăng ký không tự khóa Heyzine: chủ website phải đóng/đổi mã riêng bản miễn phí.
 - Test backend: `node --test tests/free-campaign.cjs tests/page-views.cjs`; kiểm tra browser dùng mock theo hướng dẫn. Chưa xác minh Google production; cần chủ website cập nhật Apps Script, chạy setup và nghiệm thu email thật.
+
+- Chủ website đã xác nhận thêm FreeCampaign.gs, cập nhật Mã.gs và hoàn tất bước Apps Script. Mã.gs được đồng bộ từ bản chủ website gửi, biểu đồ hiện rộng 300 px. Frontend được đưa lên main; cần nghiệm thu đăng ký/email thật, Codex chưa trực tiếp truy cập được Google production.
