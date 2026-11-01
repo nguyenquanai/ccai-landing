@@ -1,5 +1,20 @@
 /* Scoped to the free reading program; purchase controls keep their own styles. */
 #free-reading[hidden], #free-reading-cta[hidden] { display: none !important; }
+/* Green distinguishes free reading from the orange purchase buttons. */
+#free-reading-cta, #free-reading-submit {
+  background: #15803d;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(21, 128, 61, .25);
+}
+#free-reading-cta:hover, #free-reading-submit:not(:disabled):hover {
+  background: #166534;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(21, 128, 61, .32);
+}
+#free-reading-cta:focus-visible, #free-reading-submit:focus-visible {
+  outline: 3px solid #166534;
+  outline-offset: 4px;
+}
 .free-reading { background: #fff7ed; border-block: 1px solid #f0d5c2; }
 .free-reading__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 .free-reading__badge { display: inline-block; color: var(--c-accent); font-weight: 700; margin-bottom: 12px; }
