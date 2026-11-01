@@ -18,6 +18,7 @@
 
 <!-- ===== Font: Be Vietnam Pro ===== -->
 <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="assets/free-campaign.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=EB+Garamond:wght@700&family=Caladea:wght@700&display=swap" rel="stylesheet">
@@ -1000,6 +1001,7 @@ img:hover {
       <h1>Biến Claude Cowork thành <span class="hl-accent">đồng nghiệp số</span> làm việc cùng bạn</h1>
       <p class="hero__sub">Bộ ebook thực chiến 3 tập giúp bạn dùng AI đúng cách — từ nền tảng đến tự động hóa workflow. Tiếng Việt, dễ hiểu, áp dụng ngay vào công việc thật.</p>
       <div class="hero__cta">
+        <a href="#free-reading" id="free-reading-cta" class="btn btn--primary" hidden>Nhận quyền đọc miễn phí 3 tập</a>
         <a href="#bang-gia" class="btn btn--primary">Xem các gói ebook</a>
         <a href="#giai-phap" class="btn btn--outline">Tìm hiểu thêm</a>
       </div>
@@ -1130,6 +1132,41 @@ img:hover {
 <!-- ============================================================
      SECTION 6 — PRICING
      ============================================================ -->
+<!-- Chỉ hiện khi backend xác nhận chương trình miễn phí đang mở. -->
+<section class="section free-reading" id="free-reading" aria-labelledby="free-reading-title" hidden>
+  <div class="container free-reading__grid">
+    <div>
+      <span class="free-reading__badge">Chương trình đọc miễn phí</span>
+      <h2 id="free-reading-title">Đọc miễn phí bộ 3 tập</h2>
+      <p>Nhận link và mã truy cập riêng cho cả 3 tập qua email, đọc online trên Heyzine.</p>
+      <p id="free-reading-dates" class="free-reading__dates"></p>
+      <p>Chương trình không yêu cầu thanh toán. Nếu có ngày kết thúc, mốc đó áp dụng chung cho mọi người đăng ký.</p>
+      <p class="free-reading__note">Bạn đã mua sách? Tiếp tục dùng link và mã truy cập đã nhận khi mua. Chương trình này dùng bản đọc riêng.</p>
+    </div>
+    <form id="free-reading-form" class="free-reading__form">
+      <label for="free-fullname">Họ và tên
+        <input id="free-fullname" name="fullname" autocomplete="name" maxlength="100" required>
+      </label>
+      <label for="free-email">Email nhận sách
+        <input id="free-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+      </label>
+      <label for="free-phone">Số điện thoại (không bắt buộc)
+        <input id="free-phone" name="phone" type="tel" autocomplete="tel" maxlength="30">
+      </label>
+      <label class="free-reading__trap" aria-hidden="true">Để trống ô này
+        <input name="website" tabindex="-1" autocomplete="off">
+      </label>
+      <label class="free-reading__consent" for="free-consent">
+        <input id="free-consent" name="consent" type="checkbox" required>
+        <span>Tôi đồng ý để Nguyễn Quân lưu thông tin đăng ký và dùng email để gửi link đọc, hỗ trợ chương trình miễn phí.</span>
+      </label>
+      <button id="free-reading-submit" class="btn btn--primary btn--block" type="submit" disabled>Nhận link đọc miễn phí 3 tập</button>
+      <p class="free-reading__note">Hãy nhập đúng email và kiểm tra cả mục Spam. Thông tin đăng ký được lưu để hỗ trợ cấp quyền đọc.</p>
+      <p id="free-reading-status" class="free-reading__status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
 <section class="section section--bg" id="bang-gia">
   <div class="container">
     <div class="section-head">
@@ -2588,5 +2625,6 @@ window.addEventListener('scroll', function () {
 
 
 <script src="assets/page-views.js" defer></script>
+<script src="assets/free-campaign.js" defer></script>
 </body>
 </html>

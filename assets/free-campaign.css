@@ -1,0 +1,23 @@
+/* Scoped to the free reading program; purchase controls keep their own styles. */
+#free-reading[hidden], #free-reading-cta[hidden] { display: none !important; }
+.free-reading { background: #fff7ed; border-block: 1px solid #f0d5c2; }
+.free-reading__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.free-reading__badge { display: inline-block; color: var(--c-accent); font-weight: 700; margin-bottom: 12px; }
+.free-reading h2 { margin-bottom: 16px; }
+.free-reading__dates { font-weight: 600; margin: 16px 0; }
+.free-reading__note { font-size: 14px; color: var(--c-ink-soft); margin-top: 16px; }
+.free-reading__form { padding: 28px; background: #fff; border: 1px solid #edd9ca; border-radius: 16px; box-shadow: 0 6px 18px rgba(80, 45, 20, .06); }
+.free-reading__form label { display: block; margin-bottom: 16px; font-weight: 500; }
+.free-reading__form input:not([type=checkbox]) { display: block; width: 100%; margin-top: 6px; padding: 12px; min-height: 44px; border: 1px solid #b8aaa0; border-radius: 8px; font: inherit; }
+.free-reading__form input:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
+.free-reading__consent { display: flex !important; gap: 10px; align-items: start; font-size: 14px; }
+.free-reading__consent input { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
+.free-reading__form button:disabled { opacity: .65; cursor: wait; }
+.free-reading__status { margin-top: 16px; min-height: 24px; overflow-wrap: anywhere; }
+.free-reading__status[data-state=error] { color: #a52d20; }
+.free-reading__status[data-state=success] { color: #22613c; }
+.free-reading__trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (max-width: 760px) {
+  .free-reading__grid { grid-template-columns: 1fr; gap: 24px; }
+  .free-reading__form { padding: 20px; }
+}

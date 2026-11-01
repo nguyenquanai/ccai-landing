@@ -79,6 +79,10 @@ function parseClientTime(value) {
 // --- GET: Trả danh sách reviews (giữ nguyên từ v5) ---
 function doGet(e) {
   try {
+    if (e && e.parameter && e.parameter.action === 'free_campaign') {
+      return ContentService.createTextOutput(JSON.stringify(getFreeCampaign()))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
     if (e && e.parameter && e.parameter.action === 'tracking_config') {
       return ContentService.createTextOutput(JSON.stringify({ pageViewTracking: 1 }))
         .setMimeType(ContentService.MimeType.JSON);
@@ -217,6 +221,11 @@ function getActivePromos() {
 function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
+
+    if (data.action === 'register_free_campaign') {
+      return ContentService.createTextOutput(JSON.stringify(registerFreeCampaign(data)))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
 
     // Nhánh riêng: không cho lượt xem rơi vào luồng ghi Leads.
     if (data.action === 'page_view') {
