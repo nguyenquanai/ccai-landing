@@ -19,7 +19,17 @@
 .free-reading__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 .free-reading__badge { display: inline-block; color: var(--c-accent); font-weight: 700; margin-bottom: 12px; }
 .free-reading h2 { margin-bottom: 16px; }
-.free-reading__dates { font-weight: 600; margin: 16px 0; }
+.free-reading__dates {
+  margin: 16px 0;
+  padding: 14px 16px;
+  color: #9a3412;
+  background: #ffedd5;
+  border-left: 4px solid #ea580c;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.6;
+}
 .free-reading__note { font-size: 14px; color: var(--c-ink-soft); margin-top: 16px; }
 .free-reading__form { padding: 28px; background: #fff; border: 1px solid #edd9ca; border-radius: 16px; box-shadow: 0 6px 18px rgba(80, 45, 20, .06); }
 .free-reading__form label { display: block; margin-bottom: 16px; font-weight: 500; }
