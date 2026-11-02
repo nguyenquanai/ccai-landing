@@ -127,7 +127,7 @@ function registerFreeCampaign(data) {
   var source = String(data.source || 'Website').trim().slice(0, 100);
   if (data.consent !== true || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email) || email.length > 254 ||
       !name || name.length > 100 || /[\r\n\x00-\x1f]/.test(name) ||
-      phone.length > 30 || (phone && !/^[+\d\s().-]+$/.test(phone))) {
+      !phone || phone.length > 30 || !/^[+\d\s().-]+$/.test(phone)) {
     return { result: 'invalid', message: 'Vui lòng kiểm tra họ tên, email và điện thoại.' };
   }
   if (data.website) return { result: 'invalid', message: 'Không thể gửi đăng ký này.' };

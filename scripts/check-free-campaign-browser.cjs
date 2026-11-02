@@ -30,6 +30,7 @@ const assert = require('node:assert/strict');
   async function fill(){
    await page.locator('#free-fullname').fill('Người đọc thử');
    await page.locator('#free-email').fill('reader@example.com');
+   await page.locator('#free-phone').fill('0901234567');
    await page.locator('#free-consent').check();
   }
   await load();
@@ -38,7 +39,13 @@ const assert = require('node:assert/strict');
   assert.equal(await page.locator('a[data-pkg="combo"]').first().isVisible(),true);
   await page.locator('#free-reading').scrollIntoViewIfNeeded();
   await page.screenshot({path:require('node:path').join(require('node:os').tmpdir(),'free-reading-desktop.png')});
-  await fill(); await page.locator('#free-reading-submit').click();
+  await fill();
+  await page.locator('#free-phone').fill('');
+  await page.locator('#free-reading-submit').click();
+  assert.equal(posted.length, 0);
+  assert.equal(await page.locator('#free-phone').evaluate(el => el.validity.valueMissing), true);
+  await page.locator('#free-phone').fill('0901234567');
+  await page.locator('#free-reading-submit').click();
   await page.waitForFunction(()=>document.getElementById('free-reading-status').dataset.state==='success');
   assert.equal(posted.length,1); assert.equal(posted[0].consent,true);
   assert.equal(posted[0].action,'register_free_campaign');

@@ -70,7 +70,7 @@ function setup() {
       ...['Tập 1 Heyzine — 119.000đ', 'Tập 2 Heyzine — 179.000đ', 'Tập 3 Heyzine — 219.000đ'].map((name, i) => [name, `https://heyzine.com/flip-book/test${i}.html`, `test-only-${i}`])
     ]);
   }
-  const data = { consent: true, fullname: 'Người đọc', email: 'reader@example.com', phone: '', source: 'Website' };
+  const data = { consent: true, fullname: 'Người đọc', email: 'reader@example.com', phone: '0901234567', source: 'Website' };
   const register = input => context.doPost({ postData: { contents: JSON.stringify({ action: 'register_free_campaign', ...data, ...input }) } });
   return { context, sheets, config, activate, data, mails, register,
     setClock: value => clock = Date.parse(value),
@@ -142,7 +142,7 @@ test('Missing free books never fall back to paid books or send partial email', (
 });
 test('Invalid inputs, absent consent and honeypot are rejected', () => {
   const b = setup(); b.activate();
-  for (const input of [{ email: 'bad' }, { fullname: '' }, { fullname: 'a\nb' }, { consent: false }, { website: 'bot' }, { phone: '=1+1' }]) {
+  for (const input of [{ email: 'bad' }, { fullname: '' }, { fullname: 'a\nb' }, { consent: false }, { website: 'bot' }, { phone: '=1+1' }, { phone: '' }, { phone: '   ' }]) {
     assert.equal(b.register(input).result, 'invalid');
   }
   assert.equal(b.mails.length, 0); assert.equal(b.sheets['Đăng ký miễn phí'].rows.length, 1);

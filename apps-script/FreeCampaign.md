@@ -53,7 +53,7 @@ Tab **Chương trình miễn phí** có hai cột Cài đặt/Giá trị. Chỉ 
 
 ## Đăng ký và email
 
-Khách điền họ tên, email, tùy chọn điện thoại và đồng ý lưu thông tin để cấp quyền đọc. Tab **Đăng ký miễn phí** lưu chương trình, thời gian, họ tên, email, điện thoại, nguồn, trạng thái email và lần gửi gần nhất. Không thêm Leads, không đánh dấu đã thanh toán, không tính doanh thu.
+Khách bắt buộc điền họ tên, email, số điện thoại và đồng ý lưu thông tin để cấp quyền đọc. Tab **Đăng ký miễn phí** lưu chương trình, thời gian, họ tên, email, điện thoại, nguồn, trạng thái email và lần gửi gần nhất. Không thêm Leads, không đánh dấu đã thanh toán, không tính doanh thu.
 
 Email dùng riêng cả ba link/mã trong Heyzine_config_free, ghi thời hạn chung nếu có. Một email được lưu một dòng cho mỗi cặp mốc bắt đầu/kết thúc; gửi lại cập nhật dòng cũ, chờ 10 phút giữa các lần gửi. Đổi khoảng ngày tạo một đợt đăng ký mới. Đổi tên chương trình không tạo đợt mới. Tắt rồi bật lại với cùng ngày vẫn là cùng đợt. Hai ngày trống dùng một đợt không giới hạn.
 
