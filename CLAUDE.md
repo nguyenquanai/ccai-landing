@@ -67,3 +67,5 @@ EB Garamond + Caladea (riêng logo 2 dòng). Nhiều khoảng trắng, card gọ
 - Chủ website đã xác nhận thêm FreeCampaign.gs, cập nhật Mã.gs và hoàn tất bước Apps Script. Mã.gs được đồng bộ từ bản chủ website gửi, biểu đồ hiện rộng 300 px. Frontend được đưa lên main; cần nghiệm thu đăng ký/email thật, Codex chưa trực tiếp truy cập được Google production.
 
 - Đăng ký miễn phí: số điện thoại là bắt buộc trên form và trong registerFreeCampaign (cần đồng bộ FreeCampaign.gs lên deployment khi cập nhật). Chủ website đã xác nhận test luồng miễn phí và thay đổi ngày chương trình OK.
+
+- Form miễn phí dùng thông báo Việt–Anh cho thiếu họ tên/email/điện thoại/đồng ý, sai định dạng, gửi thành công và lỗi; frontend tự kiểm tra để không phụ thuộc ngôn ngữ thông báo mặc định của trình duyệt.

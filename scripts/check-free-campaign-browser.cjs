@@ -39,6 +39,24 @@ const assert = require('node:assert/strict');
   assert.equal(await page.locator('a[data-pkg="combo"]').first().isVisible(),true);
   await page.locator('#free-reading').scrollIntoViewIfNeeded();
   await page.screenshot({path:require('node:path').join(require('node:os').tmpdir(),'free-reading-desktop.png')});
+  for (const check of [
+    ['#free-fullname', '', /họ và tên.*full name/],
+    ['#free-fullname', '   ', /họ và tên.*full name/],
+    ['#free-email', '', /email nhận sách.*email address/],
+    ['#free-email', 'not-an-email', /định dạng.*valid email/],
+    ['#free-phone', '', /số điện thoại.*phone number/],
+    ['#free-phone', 'abcdef', /định dạng.*valid phone/],
+    ['#free-consent', null, /đồng ý.*agree/]
+  ]) {
+    await fill();
+    if (check[1] === null) await page.locator(check[0]).uncheck();
+    else await page.locator(check[0]).fill(check[1]);
+    await page.locator('#free-reading-submit').click();
+    assert.match(await page.locator('#free-reading-status').textContent(), check[2]);
+    assert.match(await page.locator(check[0]).evaluate(el => el.validationMessage), check[2]);
+    assert.equal(posted.length, 0);
+  }
+  console.log('PASS browser: bilingual inline and field validation for missing name/email/phone/consent and invalid formats');
   await fill();
   await page.locator('#free-phone').fill('');
   await page.locator('#free-reading-submit').click();
