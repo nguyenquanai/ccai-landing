@@ -19,7 +19,7 @@ Combo 3 tập: 399.000đ (gói chủ lực, tiết kiệm 118k) | Bản đầy �
 - Modal đặt mua 3 bước (form → xác nhận → QR/tặng miễn phí), mở từ mọi nút mua trên trang
 - Hệ thống Khuyến mãi tự động qua Google Sheet "Khuyến mãi" (Apps Script v11)
 - Hệ thống Tặng miễn phí qua Google Sheet "Tặng miễn phí" (Apps Script v12)
-- Nút "Đọc thử" cho 3 tập (mở Heyzine thật, có GA4 event read_sample_click)
+- Đã bỏ cả ba nút "Đọc thử" theo yêu cầu chủ website vì nguồn đọc thử đã xóa; giữ nút mua và chương trình đăng ký miễn phí.
 - Section "Bên trong từng tập có gì?" — đã gộp mục lục accordion, KHÔNG còn section mục lục riêng
 - Logo header 2 dòng (icon Q + "Claude Cowork" / "AI Thực Chiến")
 - GA4 đã chạy thật (G-LSDVNKJLVM), UTM tracking cho Facebook/Zalo/Google/TikTok Ads
